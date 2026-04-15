@@ -1,0 +1,181 @@
+@import '../styles/variables';
+
+/* Hero — two-column layout matching staffy-healthcare-website contact page */
+.contact-hero {
+  background: #E9F1F3;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    min-height: 369px;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__content {
+    order: 2;
+    padding: 48px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 640px;
+    margin: 0 auto;
+
+    @media (min-width: $breakpoint-lg) {
+      order: 1;
+      padding: 64px 48px 64px 96px;
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-family: $font-primary;
+    font-size: 40px;
+    font-weight: 700;
+    color: $navy;
+    line-height: 1.15;
+    margin-bottom: 20px;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 17px;
+    line-height: 1.55;
+    color: $navy;
+  }
+
+  &__image {
+    order: 1;
+    height: 280px;
+    overflow: hidden;
+
+    @media (min-width: $breakpoint-lg) {
+      order: 2;
+      height: auto;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 30%;
+    }
+  }
+}
+
+/* Form section */
+.contact-section {
+  padding: 72px 0;
+
+  @media (max-width: $breakpoint-sm) {
+    padding: 48px 0;
+  }
+}
+
+/* Contact Information — two-column intro + details */
+.contact-info {
+  background: $white;
+  padding: 120px 28px 72px;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 160px 0 96px;
+  }
+
+  &__grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+
+    @media (min-width: $breakpoint-lg) {
+      grid-template-columns: 1fr 1.4fr;
+      gap: 96px;
+      padding: 0 48px;
+    }
+  }
+
+  &__intro {
+    @media (min-width: $breakpoint-lg) {
+      align-self: start;
+    }
+  }
+
+  &__heading {
+    font-family: $font-primary;
+    font-size: 46px;
+    font-weight: 800;
+    color: $navy;
+    line-height: 1.15;
+    margin: 0 0 20px;
+
+    @media (max-width: $breakpoint-sm) {
+      font-size: 34px;
+    }
+  }
+
+  &__description {
+    font-size: 17px;
+    line-height: 1.65;
+    color: #333333;
+    margin: 0;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__block {
+    p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333333;
+      margin: 0 0 12px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    strong {
+      color: $navy;
+      font-weight: 700;
+    }
+  }
+
+  &__subheading {
+    font-family: $font-primary;
+    font-size: 22px;
+    font-weight: 700;
+    color: $navy;
+    margin: 0 0 16px;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+
+    li {
+      position: relative;
+      padding-left: 18px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333333;
+
+      &::before {
+        content: "•";
+        position: absolute;
+        left: 0;
+        color: $navy;
+      }
+    }
+  }
+}

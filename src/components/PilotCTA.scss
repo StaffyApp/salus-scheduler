@@ -1,0 +1,67 @@
+@import '../styles/variables';
+
+.pilot-cta {
+  padding: 80px 0;
+  background: $bg-subtle;
+
+  &__inner {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  &__label {
+    font-family: $font-primary;
+    font-size: 16px;
+    font-weight: 500;
+    color: $staffy-orange;
+    text-transform: none;
+    letter-spacing: normal;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 42px;
+    font-weight: 800;
+    color: $navy;
+    line-height: 1.15;
+    margin-bottom: 24px;
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 32px;
+    }
+  }
+
+  &__desc {
+    font-size: 18px;
+    font-weight: 400;
+    color: $text-body;
+    line-height: 1.70;
+    margin-bottom: 36px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__contact {
+    background: transparent;
+    color: $navy;
+    padding: 14px 32px;
+    border-radius: $radius-md;
+    border: 2px solid $staffy-orange;
+    font-family: $font-primary;
+    font-weight: 600;
+    font-size: 16px;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      background: rgba($staffy-orange, 0.05);
+    }
+  }
+}

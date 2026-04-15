@@ -1,0 +1,5 @@
+
+    const cmd = require("C:/Users/Admin/workspace/salus-scheduler/node_modules/gatsby/dist/commands/develop-process.js");
+    const args = {"_":["develop"],"p":"8001","port":8001,"verbose":false,"no-color":false,"no-colors":false,"noColors":false,"noColor":false,"json":false,"H":"localhost","host":"localhost","c":"","cert-file":"","certFile":"","k":"","key-file":"","keyFile":"","ca-file":"","caFile":"","graphql-tracing":false,"graphqlTracing":false,"$0":"gatsby","directory":"C:\\Users\\Admin\\workspace\\salus-scheduler","browserslist":[">0.25%","not dead"],"sitePackageJson":{"name":"salus-scheduler","version":"1.0.0","description":"Salus Scheduling - Healthcare workforce scheduling powered by Staffy","scripts":{"develop":"gatsby develop","start":"gatsby develop","build":"gatsby build","serve":"gatsby serve","clean":"gatsby clean"},"keywords":["healthcare","scheduling","staffing","gatsby"],"author":"Staffy Inc.","license":"MIT","dependencies":{"gatsby":"^5.16.1","gatsby-plugin-sass":"^6.16.0","react":"^18.3.1","react-dom":"^18.3.1","sass":"^1.99.0"}},"report":{"errorMap":{}},"useYarn":false,"proxyPort":8001,"debugInfo":null};
+    cmd(args);
+  

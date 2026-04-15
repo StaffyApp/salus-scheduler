@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="418" height="418" viewBox="0 0 418 418">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectángulo_1147" data-name="Rectángulo 1147" width="147.122" height="250.477" fill="#fe5f00"/>
+    </clipPath>
+    <clipPath id="clip-Mesa_de_trabajo_35">
+      <rect width="418" height="418"/>
+    </clipPath>
+  </defs>
+  <g id="Mesa_de_trabajo_35" data-name="Mesa de trabajo – 35" clip-path="url(#clip-Mesa_de_trabajo_35)">
+    <g id="Grupo_637" data-name="Grupo 637" transform="translate(-10.11 -16)">
+      <g id="Grupo_636" data-name="Grupo 636" transform="translate(145.109 100)">
+        <g id="Grupo_338" data-name="Grupo 338">
+          <path id="Trazado_1705" data-name="Trazado 1705" d="M0,67.881l66.762,33.506V31.208L0,20.491Z" transform="translate(0 55.676)" fill="#fe5f00" opacity="0.777"/>
+          <g id="Grupo_635" data-name="Grupo 635" transform="translate(0 0)">
+            <g id="Grupo_634" data-name="Grupo 634" clip-path="url(#clip-path)">
+              <path id="Trazado_1706" data-name="Trazado 1706" d="M107.725,69.514,0,123.583V59.31a8.519,8.519,0,0,1,4.7-7.605L107.725,0Z" transform="translate(0 -0.002)" fill="#fe5f00"/>
+              <path id="Trazado_1707" data-name="Trazado 1707" d="M88.4,58.633,21.612,25.124V95.3L88.4,106.019Z" transform="translate(58.72 68.262)" fill="#fe5f00" opacity="0.78"/>
+              <path id="Trazado_1708" data-name="Trazado 1708" d="M10.591,88.208,118.316,34.139V98.412a8.519,8.519,0,0,1-4.7,7.605L10.591,157.722Z" transform="translate(28.777 92.758)" fill="#fe5f00"/>
+            </g>
+          </g>
+        </g>
+        <path id="Icon_awesome-plus_-_Contorno" data-name="Icon awesome-plus - Contorno" d="M24.484,0H45.412V24.484H69.9V45.413H45.389L45.235,69.9H24.484V45.468L0,45.828V24.38l24.484.091Z" transform="translate(122.357 69.897) rotate(-90)" fill="#005eb8"/>
+      </g>
+    </g>
+  </g>
+</svg>

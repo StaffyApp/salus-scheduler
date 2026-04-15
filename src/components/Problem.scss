@@ -1,0 +1,120 @@
+@import '../styles/variables';
+
+.problem {
+  padding: $section-padding;
+  background: $white;
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  &__header {
+    margin-bottom: 32px;
+  }
+
+  &__intro {
+    font-size: 18px;
+    font-weight: 400;
+    color: $text-body;
+    line-height: 1.70;
+    margin-bottom: 28px;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 48px;
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__card {
+    padding: 28px;
+    background: $white;
+    border: 1px solid $border-gray;
+    border-radius: $radius-md;
+    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
+
+    &:hover {
+      border-color: $navy;
+      transform: translateY(-3px);
+    }
+
+    &-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-family: $font-primary;
+      font-size: 22px;
+      font-weight: 700;
+      color: $navy;
+      line-height: 1.30;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      color: $text-body;
+      line-height: 1.60;
+    }
+  }
+
+  &__gap {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    &-line {
+      flex: 1;
+      height: 1px;
+      background: $border-gray;
+      transform: scaleX(0);
+      transition: transform 0.8s var(--ease-out-expo);
+
+      &:first-child { transform-origin: right; }
+      &:last-child { transform-origin: left; }
+    }
+
+    &-text {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 400;
+      color: $text-body;
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.5s var(--ease-out-quart) 0.4s;
+
+      strong {
+        color: $navy;
+        font-weight: 700;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      &-text { white-space: normal; }
+    }
+  }
+
+  // When parent reveal triggers, animate the gap lines and text
+  &__inner.is-visible &__gap {
+    .problem__gap-line {
+      transform: scaleX(1);
+      transition-delay: 0.3s;
+    }
+
+    .problem__gap-text {
+      opacity: 1;
+    }
+  }
+}

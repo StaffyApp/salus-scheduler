@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm init:*)",
+      "Read(//c/Users/Admin/workspace/**)",
+      "Bash(npx create-gatsby:*)",
+      "Bash(npm install:*)",
+      "Bash(npx gatsby:*)",
+      "Bash(npx skills:*)",
+      "WebFetch(domain:staffy.com)",
+      "WebFetch(domain:www.staffy.com)",
+      "Bash(grep -rn '#242424' src/components/*.js)",
+      "Bash(export PATH=\"/c/Users/Admin/AppData/Roaming/nvm/v20.20.0:$PATH\")",
+      "Bash(npm run:*)",
+      "Bash(ls src/images/*flag* src/images/*Flag* src/images/*ca*)",
+      "Bash(npm uninstall:*)",
+      "WebFetch(domain:salus.staffy.com)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://salus.staffy.com/about/\" -o /tmp/salus_about.html)",
+      "Read(//tmp/**)",
+      "Bash(mkdir -p \"C:/Users/Admin/workspace/salus-scheduler/static/scripts\")",
+      "Bash(cp \"C:/Users/Admin/workspace/staffy-healthcare-website/static/scripts/zoho-crm-script-healthcare.js\" \"C:/Users/Admin/workspace/salus-scheduler/static/scripts/zoho-crm-script-healthcare.js\")",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" \"https://salus.staffy.com/contact/\" -o ~/salus_contact.html)",
+      "Read(//c/Users/Admin/**)",
+      "Bash(grep -oE \"Contact[A-Za-z ]{0,40}|[A-Z][a-z]+ Name|Subject|Message|Submit|Send[A-Za-z ]{0,20}|Get in [Tt]ouch|How can we help|email|phone|info@[a-z.]+|@staffy\\\\.com\" ~/salus_contact.html)",
+      "Bash(ls src/components/ContactForm*)"
+    ]
+  }
+}

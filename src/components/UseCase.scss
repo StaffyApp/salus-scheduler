@@ -1,0 +1,118 @@
+@import '../styles/variables';
+
+.use-case {
+  padding: $section-padding;
+  background: $bg-subtle;
+
+  &__inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    margin-bottom: 40px;
+  }
+
+  &__card {
+    background: $white;
+    border: 1px solid $border-gray;
+    border-radius: $radius-lg;
+    padding: 40px;
+
+    @media (max-width: $breakpoint-sm) {
+      padding: 28px 20px;
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid $border-gray;
+    }
+
+    &-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $navy;
+    }
+
+    h3 {
+      font-family: $font-primary;
+      font-size: 24px;
+      font-weight: 700;
+      color: $navy;
+      line-height: 1.30;
+    }
+  }
+
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    position: relative;
+  }
+
+  // Connecting line between step numbers
+  &__steps-line {
+    position: absolute;
+    left: 15px; // center of 32px circle
+    top: 32px; // below first circle
+    bottom: 32px; // above last circle
+    width: 2px;
+    background: $border-gray;
+    transform-origin: top;
+    transform: scaleY(0);
+    transition: transform 1s var(--ease-out-expo) 0.3s;
+  }
+
+  &__step {
+    display: flex;
+    gap: 20px;
+    position: relative;
+    z-index: 1;
+
+    &-num {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $navy;
+      color: $white;
+      border-radius: 50%;
+      font-family: $font-primary;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    &-content {
+      h4 {
+        font-family: $font-primary;
+        font-size: 20px;
+        font-weight: 600;
+        color: $navy;
+        line-height: 1.20;
+        margin-bottom: 8px;
+      }
+
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        color: $text-body;
+        line-height: 1.60;
+      }
+    }
+  }
+
+  // Draw line when section becomes visible
+  &__inner.is-visible &__steps-line {
+    transform: scaleY(1);
+  }
+}

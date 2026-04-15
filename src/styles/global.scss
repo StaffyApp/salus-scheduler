@@ -1,0 +1,328 @@
+@import 'fonts';
+@import 'variables';
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+}
+
+body {
+  font-family: $font-primary;
+  color: $text-body;
+  line-height: 1.70;
+  overflow-x: hidden;
+  background: $white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px;
+}
+
+section {
+  scroll-margin-top: 72px;
+}
+
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 40px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 24px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: $text-primary;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: $font-primary;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+:focus-visible {
+  outline: 2px solid $staffy-orange;
+  outline-offset: 2px;
+}
+
+// Animation tokens
+:root {
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+// Scroll progress bar
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 1100;
+  background: transparent;
+  pointer-events: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $staffy-orange;
+    transform-origin: left;
+    transform: scaleX(0);
+  }
+
+  @supports (animation-timeline: scroll()) {
+    &::after {
+      animation: scrollProgress linear both;
+      animation-timeline: scroll();
+    }
+  }
+}
+
+@keyframes scrollProgress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+// Scroll-reveal base
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out-quart), transform 0.6s var(--ease-out-quart);
+
+  &.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Stagger children — apply .reveal-stagger to parent, .reveal-child to each child
+.reveal-stagger .reveal-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s var(--ease-out-quart), transform 0.5s var(--ease-out-quart);
+}
+
+.reveal-stagger.is-visible .reveal-child {
+  opacity: 1;
+  transform: translateY(0);
+
+  @for $i from 1 through 8 {
+    &:nth-child(#{$i}) {
+      transition-delay: #{($i - 1) * 0.1}s;
+    }
+  }
+}
+
+// Hero entrance keyframes
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-enter {
+  opacity: 0;
+  animation: heroReveal 0.7s var(--ease-out-expo) forwards;
+
+  &--1 { animation-delay: 0.1s; }
+  &--2 { animation-delay: 0.25s; }
+  &--3 { animation-delay: 0.4s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// Typography
+h1 {
+  font-family: $font-primary;
+  font-weight: 800;
+  color: $navy;
+  line-height: 1.15;
+}
+
+h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  font-weight: 700;
+  color: $navy;
+  line-height: 1.20;
+}
+
+p, span {
+  font-size: 18px;
+  font-family: $font-primary;
+  font-weight: 400;
+  line-height: 1.70;
+  color: $text-body;
+}
+
+// Section helpers
+.section-label {
+  display: inline-block;
+  font-family: $font-primary;
+  font-size: 16px;
+  font-weight: 500;
+  color: $staffy-orange;
+  text-transform: none;
+  letter-spacing: normal;
+  margin-bottom: 8px;
+}
+
+.section-title {
+  font-family: $font-primary;
+  font-size: 42px;
+  font-weight: 800;
+  color: $navy;
+  line-height: 1.15;
+  margin-bottom: 20px;
+
+  @media (max-width: $breakpoint-lg) {
+    font-size: 36px;
+  }
+
+  @media (max-width: $breakpoint-md) {
+    font-size: 28px;
+  }
+}
+
+.section-subtitle {
+  font-family: $font-primary;
+  font-size: 18px;
+  font-weight: 400;
+  color: $text-body;
+  max-width: 680px;
+  line-height: 1.70;
+}
+
+// Buttons — Staffy Health style
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: $font-primary;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: normal;
+  transition: background-color 0.2s var(--ease-out-quart), border-color 0.2s var(--ease-out-quart), color 0.2s var(--ease-out-quart), transform 0.2s var(--ease-out-quart);
+  white-space: nowrap;
+  border-radius: $radius-md;
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &--orange {
+    background: $staffy-orange;
+    color: $white;
+    padding: 14px 32px;
+    border: 2px solid $staffy-orange;
+
+    &:hover {
+      background: darken($staffy-orange, 8%);
+      border-color: darken($staffy-orange, 8%);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--dark {
+    background: $navy;
+    color: $white;
+    padding: 14px 32px;
+    border: 2px solid $navy;
+
+    &:hover {
+      background: lighten($navy, 8%);
+      border-color: lighten($navy, 8%);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--outline {
+    background: transparent;
+    color: $navy;
+    padding: 14px 32px;
+    border: 2px solid $staffy-orange;
+
+    &:hover {
+      background: rgba($staffy-orange, 0.05);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--ghost {
+    background: $white;
+    color: $navy;
+    padding: 14px 32px;
+    border: 2px solid $border-gray;
+
+    &:hover {
+      border-color: $navy;
+      transform: translateY(-1px);
+    }
+  }
+
+  &--sm {
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    padding: 16px 36px;
+    font-size: 18px;
+  }
+
+  &--primary {
+    background: $staffy-orange;
+    color: $white;
+    padding: 14px 32px;
+    border: 2px solid $staffy-orange;
+
+    &:hover {
+      background: darken($staffy-orange, 8%);
+      border-color: darken($staffy-orange, 8%);
+      transform: translateY(-1px);
+    }
+  }
+
+  &--secondary {
+    background: $white;
+    color: $navy;
+    padding: 14px 32px;
+    border: 2px solid $border-gray;
+
+    &:hover {
+      border-color: $navy;
+      transform: translateY(-1px);
+    }
+  }
+}

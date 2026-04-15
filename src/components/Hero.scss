@@ -1,0 +1,69 @@
+@import '../styles/variables';
+
+.hero {
+  padding: 140px 0 80px;
+  background: $white;
+
+  &__inner {
+    max-width: 900px;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.15;
+    color: $navy;
+    margin-bottom: 24px;
+    opacity: 1 !important;
+
+    @media (max-width: $breakpoint-lg) {
+      font-size: 42px;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-family: $font-primary;
+    font-size: 18px;
+    font-weight: 400;
+    color: $text-body;
+    line-height: 1.70;
+    margin-bottom: 40px;
+    max-width: 600px;
+    opacity: 1 !important;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  // Scroll-driven parallax — title drifts up slower, creating depth
+  @supports (animation-timeline: scroll()) {
+    &__title,
+    &__subtitle,
+    &__actions {
+      opacity: 1;
+    }
+  }
+}
+
+@keyframes heroParallaxSlow {
+  from { transform: translateY(0); }
+  to { transform: translateY(-30px); }
+}
+
+@keyframes heroParallaxMedium {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50px); }
+}
+
+@keyframes heroParallaxFast {
+  from { transform: translateY(0); }
+  to { transform: translateY(-70px); }
+}

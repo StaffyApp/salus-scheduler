@@ -1,0 +1,16 @@
+@import '../styles/variables';
+
+.solution {
+  padding: $section-padding;
+  background: $bg-subtle;
+
+  &__inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .section-subtitle {
+    margin: 0 auto;
+  }
+}

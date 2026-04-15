@@ -1,0 +1,27 @@
+{
+  "name": "salus-scheduler",
+  "version": "1.0.0",
+  "description": "Salus Scheduling - Healthcare workforce scheduling powered by Staffy",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "keywords": [
+    "healthcare",
+    "scheduling",
+    "staffing",
+    "gatsby"
+  ],
+  "author": "Staffy Inc.",
+  "license": "MIT",
+  "dependencies": {
+    "gatsby": "^5.16.1",
+    "gatsby-plugin-sass": "^6.16.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.99.0"
+  }
+}

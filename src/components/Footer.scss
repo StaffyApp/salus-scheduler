@@ -1,0 +1,195 @@
+@import '../styles/variables';
+
+.footer {
+  background: $white;
+  color: $navy;
+  padding: 64px 0 0;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.2fr;
+    gap: 48px;
+    padding-bottom: 48px;
+
+    @media (max-width: $breakpoint-md) {
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  &__col {
+    h4 {
+      font-family: $font-primary;
+      font-size: 16px;
+      font-weight: 700;
+      color: $navy;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      padding: 12px 0;
+      border-bottom: 1px solid $border-gray;
+
+      &:first-child {
+        padding-top: 0;
+      }
+    }
+
+    a {
+      font-family: $font-primary;
+      font-size: 16px;
+      font-weight: 400;
+      color: $text-body;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $staffy-orange;
+      }
+    }
+
+    // "About Us" link styled in orange like the reference
+    a[href="#difference"] {
+      color: $staffy-orange;
+    }
+  }
+
+  // Canada badge
+  &__canada {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 32px;
+    padding: 10px 20px;
+    border: 1px solid $border-gray;
+    border-radius: 999px;
+
+    span {
+      font-family: $font-primary;
+      font-size: 14px;
+      font-weight: 400;
+      color: $text-body;
+    }
+
+    &-flag {
+      width: 28px;
+      height: auto;
+    }
+  }
+
+  // Social icons
+  &__social {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+
+    a {
+      color: $navy;
+      transition: color 0.2s;
+
+      &:hover {
+        color: $staffy-orange;
+      }
+    }
+  }
+
+  // Mobile Apps column
+  &__col--apps {
+    h4 {
+      color: $staffy-orange;
+      font-weight: 600;
+    }
+  }
+
+  &__app-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__app-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: $navy;
+    color: $white;
+    padding: 10px 20px;
+    border-radius: $radius-md;
+    text-decoration: none;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.85;
+      color: $white;
+    }
+
+    svg {
+      flex-shrink: 0;
+      fill: $white;
+    }
+
+    &-label {
+      display: block;
+      font-family: $font-primary;
+      font-size: 10px;
+      font-weight: 400;
+      color: $white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+
+    &-store {
+      display: block;
+      font-family: $font-primary;
+      font-size: 18px;
+      font-weight: 700;
+      color: $white;
+      line-height: 1.2;
+    }
+  }
+
+  // Bottom bar
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-top: 1px solid $border-gray;
+
+    p {
+      font-size: 14px;
+      font-weight: 400;
+      color: $mid-gray;
+    }
+
+    &-links {
+      display: flex;
+      gap: 24px;
+
+      a {
+        font-size: 14px;
+        font-weight: 400;
+        color: $mid-gray;
+        transition: color 0.2s;
+
+        &:hover {
+          color: $navy;
+        }
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      flex-direction: column;
+      gap: 8px;
+      text-align: center;
+    }
+  }
+}

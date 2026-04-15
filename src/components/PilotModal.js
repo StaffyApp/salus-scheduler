@@ -1,0 +1,293 @@
+import React, { useState, useEffect, useRef } from "react"
+import "./PilotModal.scss"
+
+const FACILITY_TYPE_LABELS = {
+  ltc: "Long-Term Care",
+  retirement: "Retirement Home",
+  hospital: "Hospital",
+  homecare: "Homecare",
+  other: "Other",
+}
+
+// Formsubmit.co relays form submissions to the target email with no backend.
+// First submission to a new address triggers a one-time activation email that
+// must be confirmed before subsequent submissions are delivered.
+const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@staffy.com"
+
+function validateFields(data) {
+  const errors = {}
+  if (!data.contactName.trim()) errors.contactName = "Contact name is required"
+  if (!data.email.trim()) {
+    errors.email = "Email is required"
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    errors.email = "Please enter a valid email"
+  }
+  if (!data.facilityType) errors.facilityType = "Please select a facility type"
+  return errors
+}
+
+const PilotModal = ({ isOpen, onClose }) => {
+  const [formData, setFormData] = useState({
+    facilityName: "",
+    contactName: "",
+    email: "",
+    phone: "",
+    facilityType: "",
+    staffCount: "",
+  })
+  const [submitted, setSubmitted] = useState(false)
+  const [fieldErrors, setFieldErrors] = useState({})
+  const [submitError, setSubmitError] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+  const modalRef = useRef(null)
+  const firstInputRef = useRef(null)
+
+  useEffect(() => {
+    let focusTimer
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+      focusTimer = setTimeout(() => firstInputRef.current?.focus(), 100)
+    } else {
+      document.body.style.overflow = ""
+      setSubmitted(false)
+      setSubmitError("")
+      setFieldErrors({})
+      setFormData({
+        facilityName: "",
+        contactName: "",
+        email: "",
+        phone: "",
+        facilityType: "",
+        staffCount: "",
+      })
+    }
+    return () => {
+      document.body.style.overflow = ""
+      if (focusTimer) clearTimeout(focusTimer)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    const handleEsc = (e) => { if (e.key === "Escape") onClose() }
+    if (isOpen) window.addEventListener("keydown", handleEsc)
+    return () => window.removeEventListener("keydown", handleEsc)
+  }, [isOpen, onClose])
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleBlur = (e) => {
+    const { name } = e.target
+    const errors = validateFields(formData)
+    if (errors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: errors[name] }))
+    } else {
+      setFieldErrors((prev) => {
+        const next = { ...prev }
+        delete next[name]
+        return next
+      })
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitError("")
+
+    const errors = validateFields(formData)
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      return
+    }
+
+    setFieldErrors({})
+    setSubmitting(true)
+
+    const facilityLabel =
+      FACILITY_TYPE_LABELS[formData.facilityType] || formData.facilityType
+
+    const payload = {
+      _subject: `Salus Beta Access Request — ${formData.facilityName || formData.contactName}`,
+      _template: "table",
+      _captcha: "false",
+      "Contact Name": formData.contactName,
+      Email: formData.email,
+      Phone: formData.phone || "—",
+      "Facility Name": formData.facilityName || "—",
+      "Facility Type": facilityLabel,
+      "Number of Staff": formData.staffCount || "—",
+      Source: "salus.staffy.com",
+    }
+
+    try {
+      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError("Something went wrong. Please try again.")
+    } finally {
+      setSubmitting(false)
+    }
+  }
+
+  const handleBackdropClick = (e) => {
+    if (e.target === modalRef.current) onClose()
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div
+      className="pilot-modal__backdrop"
+      ref={modalRef}
+      onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="pilot-modal-title"
+    >
+      <div className="pilot-modal__content">
+        <button
+          type="button"
+          className="pilot-modal__close"
+          onClick={onClose}
+          aria-label="Close dialog"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M5 5L15 15M15 5L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        </button>
+
+        {submitted ? (
+          <div className="pilot-modal__success" aria-live="polite">
+            <div className="pilot-modal__success-icon">
+              <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                <circle className="pilot-modal__success-circle" cx="24" cy="24" r="22" stroke="#10B981" strokeWidth="2" fill="#10B981" fillOpacity="0.12" />
+                <path className="pilot-modal__success-check" d="M16 24L22 30L32 18" stroke="#10B981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </div>
+            <h3>Request received</h3>
+            <p>Thank you for your interest. Our team will be in touch to discuss next steps.</p>
+            <button type="button" className="btn btn--secondary" onClick={onClose}>Close</button>
+          </div>
+        ) : (
+          <>
+            <h2 id="pilot-modal-title" className="pilot-modal__title">Request Beta Access</h2>
+            <p className="pilot-modal__desc">
+              Tell us about your facility and we'll reach out to discuss the beta program.
+            </p>
+            <form className="pilot-modal__form" onSubmit={handleSubmit}>
+              <div className="pilot-modal__field">
+                <label htmlFor="facilityName">Facility Name</label>
+                <input
+                  ref={firstInputRef}
+                  type="text"
+                  id="facilityName"
+                  name="facilityName"
+                  value={formData.facilityName}
+                  onChange={handleChange}
+                  placeholder="e.g. Sunrise Long-Term Care"
+                />
+              </div>
+              <div className="pilot-modal__row">
+                <div className={`pilot-modal__field${fieldErrors.contactName ? " pilot-modal__field--error" : ""}`}>
+                  <label htmlFor="contactName">Contact Name <span className="pilot-modal__required">*</span></label>
+                  <input
+                    type="text"
+                    id="contactName"
+                    name="contactName"
+                    value={formData.contactName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!fieldErrors.contactName}
+                    aria-describedby={fieldErrors.contactName ? "contactName-error" : undefined}
+                    placeholder="Jane Smith"
+                  />
+                  {fieldErrors.contactName && <span id="contactName-error" className="pilot-modal__error" role="alert">{fieldErrors.contactName}</span>}
+                </div>
+                <div className={`pilot-modal__field${fieldErrors.email ? " pilot-modal__field--error" : ""}`}>
+                  <label htmlFor="email">Email <span className="pilot-modal__required">*</span></label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!fieldErrors.email}
+                    aria-describedby={fieldErrors.email ? "email-error" : undefined}
+                    placeholder="jane@facility.com"
+                  />
+                  {fieldErrors.email && <span id="email-error" className="pilot-modal__error" role="alert">{fieldErrors.email}</span>}
+                </div>
+              </div>
+              <div className="pilot-modal__row">
+                <div className="pilot-modal__field">
+                  <label htmlFor="phone">Phone</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="(416) 555-0100"
+                  />
+                </div>
+                <div className={`pilot-modal__field${fieldErrors.facilityType ? " pilot-modal__field--error" : ""}`}>
+                  <label htmlFor="facilityType">Facility Type <span className="pilot-modal__required">*</span></label>
+                  <select
+                    id="facilityType"
+                    name="facilityType"
+                    value={formData.facilityType}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    required
+                    aria-required="true"
+                    aria-invalid={!!fieldErrors.facilityType}
+                    aria-describedby={fieldErrors.facilityType ? "facilityType-error" : undefined}
+                  >
+                    <option value="">Select type...</option>
+                    <option value="ltc">Long-Term Care</option>
+                    <option value="retirement">Retirement Home</option>
+                    <option value="hospital">Hospital</option>
+                    <option value="homecare">Homecare</option>
+                    <option value="other">Other</option>
+                  </select>
+                  {fieldErrors.facilityType && <span id="facilityType-error" className="pilot-modal__error" role="alert">{fieldErrors.facilityType}</span>}
+                </div>
+              </div>
+              <div className="pilot-modal__field">
+                <label htmlFor="staffCount">Number of Staff</label>
+                <input
+                  type="number"
+                  id="staffCount"
+                  name="staffCount"
+                  value={formData.staffCount}
+                  onChange={handleChange}
+                  placeholder="e.g. 150"
+                />
+              </div>
+              {submitError && <div className="pilot-modal__submit-error" role="alert">{submitError}</div>}
+              <button type="submit" className="btn btn--primary btn--lg pilot-modal__submit" disabled={submitting}>
+                {submitting ? "Submitting\u2026" : "Request Beta Access"}
+              </button>
+            </form>
+          </>
+        )}
+      </div>
+    </div>
+  )
+}
+
+export default PilotModal
