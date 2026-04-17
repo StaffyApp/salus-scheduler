@@ -1,29 +1,37 @@
 @import '../styles/variables';
 
 .hero {
-  padding: 140px 0 80px;
+  padding: 120px 0 60px;
   background: $white;
 
-  &__inner {
-    max-width: 900px;
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: 56px;
+    }
+  }
+
+  &__content {
+    max-width: 560px;
   }
 
   &__title {
     font-family: $font-display;
     font-size: 52px;
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     color: $navy;
     margin-bottom: 24px;
-    opacity: 1 !important;
+    animation: riseIn 0.8s var(--ease-out-expo) 0.1s both;
 
-    @media (max-width: $breakpoint-lg) {
-      font-size: 42px;
-    }
-
-    @media (max-width: $breakpoint-md) {
-      font-size: 32px;
-    }
+    @media (max-width: $breakpoint-lg) { font-size: 42px; }
+    @media (max-width: $breakpoint-md) { font-size: 32px; }
   }
 
   &__subtitle {
@@ -34,36 +42,79 @@
     line-height: 1.70;
     margin-bottom: 40px;
     max-width: 600px;
-    opacity: 1 !important;
+    animation: riseIn 0.8s var(--ease-out-expo) 0.25s both;
   }
 
   &__actions {
     display: flex;
-    gap: 16px;
+    gap: 24px;
     flex-wrap: wrap;
+    align-items: center;
+    animation: riseIn 0.8s var(--ease-out-expo) 0.4s both;
   }
 
-  // Scroll-driven parallax — title drifts up slower, creating depth
-  @supports (animation-timeline: scroll()) {
-    &__title,
-    &__subtitle,
-    &__actions {
-      opacity: 1;
+  &__secondary-link {
+    font-family: $font-primary;
+    font-size: 16px;
+    font-weight: 600;
+    color: $navy;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover {
+      color: $accent;
+      border-bottom-color: $accent;
     }
   }
-}
 
-@keyframes heroParallaxSlow {
-  from { transform: translateY(0); }
-  to { transform: translateY(-30px); }
-}
+  &__visual {
+    position: relative;
+    padding: 12px 0;
 
-@keyframes heroParallaxMedium {
-  from { transform: translateY(0); }
-  to { transform: translateY(-50px); }
-}
+    .mockup-frame {
+      animation: riseIn 1s var(--ease-out-expo) 0.3s both;
+    }
+  }
 
-@keyframes heroParallaxFast {
-  from { transform: translateY(0); }
-  to { transform: translateY(-70px); }
+  &__kpi-overlay {
+    position: absolute;
+    bottom: -40px;
+    left: -40px;
+    width: 58%;
+    max-width: 520px;
+    border: 1px solid $border-gray;
+    border-radius: 14px;
+    overflow: hidden;
+    background: $white;
+    box-shadow: $shadow-device;
+    z-index: 4;
+    transition: transform 0.35s var(--ease-out-quart), box-shadow 0.35s var(--ease-out-quart);
+    animation: riseIn 1s var(--ease-out-expo) 0.6s both;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: $shadow-device-hover;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: $breakpoint-lg) {
+      left: 0;
+      bottom: -32px;
+      width: 72%;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      position: relative;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
 }

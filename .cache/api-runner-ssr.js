@@ -1,4 +1,8 @@
 var plugins = [{
+      name: 'default-site-plugin',
+      plugin: require('C:/Users/Admin/workspace/salus-scheduler/gatsby-ssr.js'),
+      options: {"plugins":[]},
+    },{
       name: 'partytown',
       plugin: require('C:/Users/Admin/workspace/salus-scheduler/node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js'),
       options: {"plugins":[]},

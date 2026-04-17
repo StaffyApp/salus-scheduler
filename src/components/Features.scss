@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
 .features {
-  padding: $section-padding;
+  padding: 96px 0;
   background: $white;
 
   &__header {
@@ -34,11 +34,13 @@
     background: $white;
     border: 1px solid $border-gray;
     border-radius: $radius-md;
-    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
+    box-shadow: $shadow-card;
+    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
 
     &:hover {
       border-color: $navy;
       transform: translateY(-3px);
+      box-shadow: $shadow-card-hover;
     }
 
     &-top {
@@ -101,5 +103,20 @@
         svg { flex-shrink: 0; }
       }
     }
+  }
+
+  &__showcase {
+    margin-top: 64px;
+    max-width: 1360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &__showcase-caption {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: $staffy-orange;
+    margin-bottom: 20px;
   }
 }

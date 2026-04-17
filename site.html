@@ -1,0 +1,1636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Staffy Workforce Scheduling | Healthcare Workforce Management</title>
+<meta name="description" content="Schedule your people first. Fill the rest with ours. A closed-loop workforce management platform built specifically for healthcare. Every worker verified. Every shift compliant." />
+<style>
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-Regular.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-RegularItalic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-Book.otf') format('opentype'); font-weight: 450; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-SemiBold.otf') format('opentype'); font-weight: 600; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-SemiBoldItalic.otf') format('opentype'); font-weight: 600; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-BoldItalic.otf') format('opentype'); font-weight: 700; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-Heavy.otf') format('opentype'); font-weight: 800; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-HeavyItalic.otf') format('opentype'); font-weight: 800; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Mont'; src: url('src/fonts/Mont-Black.otf') format('opentype'); font-weight: 900; font-style: normal; font-display: swap; }
+</style>
+<style>
+  :root {
+    --navy: #1a2b3d;
+    --navy-hover: #2e4866;
+    --charcoal: #333333;
+    --mid-gray: #6b7280;
+    --light-gray: #e8eef3;
+    --border-gray: #d1d5db;
+    --white: #ffffff;
+    --orange: #ff4d00;
+    --orange-hover: #e64500;
+    --error: #ef4444;
+    --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-card: 0 1px 2px rgba(26, 43, 61, 0.06), 0 6px 16px rgba(26, 43, 61, 0.06);
+    --shadow-card-hover: 0 2px 4px rgba(26, 43, 61, 0.08), 0 12px 28px rgba(26, 43, 61, 0.10);
+    --shadow-device: 0 1px 3px rgba(26, 43, 61, 0.06), 0 20px 40px -12px rgba(26, 43, 61, 0.16);
+    --shadow-device-hover: 0 2px 4px rgba(26, 43, 61, 0.08), 0 28px 56px -14px rgba(26, 43, 61, 0.22);
+    --shadow-stat: 0 1px 2px rgba(26, 43, 61, 0.04), 0 8px 24px rgba(26, 43, 61, 0.10);
+  }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: 'Mont', Helvetica, Arial, sans-serif;
+    color: var(--charcoal);
+    line-height: 1.70;
+    overflow-x: hidden;
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+  }
+  section { scroll-margin-top: 72px; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .container--wide { max-width: 1240px; margin: 0 auto; padding: 0 40px; }
+  @media (max-width: 768px) { .container, .container--wide { padding: 0 24px; } }
+  a { text-decoration: none; color: var(--navy); }
+  img { max-width: 100%; height: auto; display: block; }
+  button { cursor: pointer; border: none; outline: none; font-family: inherit; background: none; }
+  ul { list-style: none; }
+  :focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+  h1 { font-weight: 800; color: var(--navy); line-height: 1.1; letter-spacing: -0.02em; }
+  h2, h3, h4, h5, h6 { font-weight: 700; color: var(--navy); line-height: 1.20; letter-spacing: -0.015em; }
+  p, span { font-size: 18px; font-weight: 400; line-height: 1.70; color: var(--charcoal); }
+
+  .section-label { display: inline-block; font-size: 15px; font-weight: 600; color: var(--orange); margin-bottom: 12px; letter-spacing: 0.01em; }
+  .section-title { font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.02em; }
+  @media (max-width: 1024px) { .section-title { font-size: 36px; } }
+  @media (max-width: 768px) { .section-title { font-size: 28px; } }
+  .section-subtitle { font-size: 18px; font-weight: 400; color: var(--charcoal); max-width: 680px; line-height: 1.70; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    font-family: inherit; font-weight: 600; font-size: 15px;
+    line-height: normal; white-space: nowrap; border-radius: 8px;
+    transition: background-color 0.2s var(--ease-out-quart), border-color 0.2s var(--ease-out-quart), color 0.2s var(--ease-out-quart), transform 0.2s var(--ease-out-quart);
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn--orange, .btn--primary { background: var(--orange); color: var(--white); padding: 14px 32px; border: 2px solid var(--orange); }
+  .btn--orange:hover, .btn--primary:hover { background: var(--orange-hover); border-color: var(--orange-hover); transform: translateY(-1px); }
+  .btn--dark { background: var(--navy); color: var(--white); padding: 14px 32px; border: 2px solid var(--navy); }
+  .btn--dark:hover { background: var(--navy-hover); border-color: var(--navy-hover); transform: translateY(-1px); }
+  .btn--secondary { background: var(--white); color: var(--navy); padding: 14px 32px; border: 2px solid var(--border-gray); }
+  .btn--secondary:hover { border-color: var(--navy); transform: translateY(-1px); }
+  .btn--lg { padding: 16px 36px; font-size: 18px; }
+  .btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .scroll-progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 1100; pointer-events: none; }
+  .scroll-progress::after { content: ""; position: absolute; inset: 0; background: var(--orange); transform-origin: left; transform: scaleX(var(--p, 0)); }
+
+  /* Navbar — matches Navbar.scss */
+  .navbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 1px solid transparent;
+    transition: box-shadow 0.25s var(--ease-out-quart), border-color 0.25s var(--ease-out-quart), background-color 0.25s var(--ease-out-quart);
+  }
+  .navbar--scrolled {
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: var(--shadow-soft);
+    border-bottom-color: var(--border-gray);
+  }
+  .navbar__inner { display: flex; align-items: center; justify-content: flex-start; padding: 0 0 0 21px; max-width: 100%; }
+  .navbar__logo { display: block; z-index: 1001; width: 10%; flex-shrink: 0; padding: 0; }
+  .navbar__logo-img { display: block; width: 90%; height: auto; }
+
+  .navbar__menu { display: flex; align-items: center; gap: 4px; width: 100%; justify-content: space-between; margin-top: -7px; }
+  .navbar__links { display: flex; align-items: center; justify-content: center; gap: 0; flex: 1; margin-left: 10%; }
+  .navbar__links li a {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 8px 12px; font-size: 15px; font-weight: 600; color: var(--navy);
+    white-space: nowrap; position: relative;
+    transition: color 0.15s var(--ease-out-quart);
+  }
+  .navbar__links li a::after {
+    content: ""; position: absolute; bottom: 4px; left: 12px; right: 12px;
+    height: 2px; background: var(--orange);
+    transform: scaleX(0); transform-origin: center;
+    transition: transform 0.25s var(--ease-out-quart);
+  }
+  .navbar__links li a:hover, .navbar__links li a.active { color: var(--orange); }
+  .navbar__links li a:hover::after, .navbar__links li a.active::after { transform: scaleX(1); }
+  .navbar__actions { display: flex; align-items: stretch; gap: 0; flex-shrink: 0; }
+  .navbar__link-cta { font-size: 15px; font-weight: 600; color: var(--navy); padding: 8px 20px; white-space: nowrap; display: flex; align-items: center; transition: color 0.15s ease; }
+  .navbar__link-cta:hover { color: var(--orange); }
+  .navbar__btn { padding: 26px 32px 18px 32px; font-size: 15px; font-weight: 600; line-height: 1.30; text-align: center; white-space: nowrap; border-radius: 0; border: none; }
+  .navbar__hamburger { display: none; flex-direction: column; align-items: center; justify-content: center; background: none; padding: 8px; z-index: 1001; color: var(--navy); }
+  .navbar__hamburger span { display: block; width: 28px; height: 2.5px; background: var(--navy); margin: 3px 0; }
+  .navbar__mobile-only { display: none; }
+
+  @media (max-width: 1024px) {
+    .navbar__inner { padding: 12px 20px; justify-content: space-between; }
+    .navbar__logo { width: 140px; }
+    .navbar__logo-img { width: 100%; }
+    .navbar__hamburger { display: flex; }
+    .navbar__menu {
+      position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: var(--white); flex-direction: column; justify-content: flex-start;
+      gap: 0; margin-top: 0; padding-top: 80px; overflow-y: auto;
+      transform: translateX(100%); transition: transform 0.35s var(--ease-out-expo);
+    }
+    .navbar__menu--open { transform: translateX(0); }
+    .navbar__links { flex-direction: column; width: 100%; margin-left: 0; }
+    .navbar__links li { width: 100%; border-bottom: 1px solid var(--border-gray); }
+    .navbar__links li a { display: flex; padding: 18px 24px; font-size: 18px; font-weight: 700; width: 100%; }
+    .navbar__actions { flex-direction: column; width: 100%; margin-top: auto; }
+    .navbar__link-cta { justify-content: center; padding: 18px 24px; font-size: 16px; background: var(--light-gray); width: 100%; }
+    .navbar__btn { padding: 20px 24px; font-size: 16px; width: 100%; justify-content: center; }
+    .navbar__mobile-only { display: block; }
+  }
+  @media (max-width: 640px) { .navbar__logo { width: 120px; } }
+
+  /* Hero — matches Hero.scss */
+  .hero { padding: 140px 0 80px; background: var(--white); }
+  .hero__content { max-width: 560px; }
+  .hero__title { font-size: 52px; font-weight: 800; line-height: 1.15; color: var(--navy); margin-bottom: 24px; }
+  .hero__subtitle { font-size: 18px; font-weight: 400; color: var(--charcoal); line-height: 1.70; margin-bottom: 40px; max-width: 600px; }
+  .hero__actions { display: flex; gap: 24px; flex-wrap: wrap; align-items: center; }
+  .hero__secondary-link {
+    font-family: inherit; font-size: 16px; font-weight: 600; color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .hero__secondary-link:hover { color: var(--orange); border-bottom-color: var(--orange); }
+  @media (max-width: 1024px) { .hero__title { font-size: 42px; } }
+  @media (max-width: 768px) { .hero__title { font-size: 32px; } }
+
+  /* Problem */
+  .problem { padding: 96px 0; background: var(--white); }
+  .problem__inner { max-width: 800px; margin: 0 auto; }
+  .problem__header { margin-bottom: 32px; }
+  .problem__intro { font-size: 18px; font-weight: 400; color: var(--charcoal); line-height: 1.70; margin-bottom: 28px; }
+  .problem__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 48px; }
+  @media (max-width: 640px) { .problem__cards { grid-template-columns: 1fr; } }
+  .problem__card { padding: 28px; background: var(--white); border: 1px solid var(--border-gray); border-radius: 8px; box-shadow: var(--shadow-card); transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart); }
+  .problem__card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+  .problem__card-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
+  .problem__card h3 { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.30; margin-bottom: 8px; }
+  .problem__card p { font-size: 16px; font-weight: 400; color: var(--charcoal); line-height: 1.60; }
+  .problem__gap { display: flex; align-items: center; gap: 24px; }
+  .problem__gap-line { flex: 1; height: 1px; background: var(--border-gray); }
+  .problem__gap-text { text-align: center; font-size: 18px; font-weight: 400; color: var(--charcoal); white-space: nowrap; }
+  .problem__gap-text strong { color: var(--navy); font-weight: 700; }
+  @media (max-width: 640px) { .problem__gap-text { white-space: normal; } }
+
+  /* Solution */
+  .solution { padding: 96px 0; background: var(--light-gray); }
+  .solution__inner { max-width: 720px; text-align: center; margin: 0 auto; }
+  .solution .section-subtitle { margin: 0 auto; }
+
+  /* Features */
+  .features { padding: 96px 0; background: var(--white); }
+  .features__header { text-align: center; margin: 0 auto 56px; max-width: 680px; }
+  .features__header .section-subtitle { margin: 0 auto; }
+  .features__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 1024px) { .features__grid { grid-template-columns: 1fr; gap: 20px; max-width: 560px; margin: 0 auto; } }
+  .features__card { padding: 32px; background: var(--white); border: 1px solid var(--border-gray); border-radius: 8px; box-shadow: var(--shadow-card); transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart); }
+  .features__card:hover { border-color: var(--navy); transform: translateY(-3px); box-shadow: var(--shadow-card-hover); }
+  .features__card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+  .features__card-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--navy); }
+  .features__card-number { font-size: 13px; font-weight: 600; color: var(--mid-gray); text-transform: uppercase; letter-spacing: 0.5px; }
+  .features__card-title { font-size: 22px; font-weight: 700; color: var(--navy); line-height: 1.30; margin-bottom: 12px; }
+  .features__card-desc { font-size: 16px; font-weight: 400; color: var(--charcoal); line-height: 1.60; margin-bottom: 20px; }
+  .features__card-list { display: flex; flex-direction: column; gap: 8px; }
+  .features__card-list li { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; color: var(--navy); }
+  .features__card-list li svg { flex-shrink: 0; }
+
+  /* Differentiation */
+  .diff { padding: 96px 0; background: var(--white); }
+  .diff__header { text-align: center; max-width: 760px; margin: 0 auto 56px; }
+  .diff__header .section-subtitle { margin: 0 auto; }
+  .diff__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 1024px) { .diff__body { grid-template-columns: 1fr; gap: 48px; } }
+
+  .diff__visual { margin: 0; }
+
+  .diff__list { display: flex; flex-direction: column; gap: 14px; }
+  .diff__item {
+    display: flex; align-items: center; gap: 18px;
+    padding: 20px 24px;
+    background: var(--white);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-quart), background-color 0.3s var(--ease-out-quart), box-shadow 0.3s var(--ease-out-quart);
+  }
+  .diff__item:hover {
+    border-color: var(--orange);
+    transform: translateX(6px);
+    background: rgba(255, 77, 0, 0.02);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .diff__item-check {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    background: var(--orange);
+    color: var(--white);
+    border-radius: 50%;
+    transition: transform 0.3s var(--ease-out-quart);
+  }
+  .diff__item:hover .diff__item-check { transform: scale(1.08); }
+  .diff__item-text { display: flex; flex-direction: column; gap: 2px; }
+  .diff__item-text strong {
+    font-size: 17px; font-weight: 700; color: var(--navy); line-height: 1.35;
+  }
+  .diff__item-text small {
+    font-size: 14px; font-weight: 400; color: var(--mid-gray); line-height: 1.5;
+  }
+
+  /* UseCase */
+  .use-case { padding: 96px 0; background: var(--light-gray); }
+  .use-case__inner { max-width: 800px; margin: 0 auto; }
+  .use-case .section-title { margin-bottom: 40px; }
+  .use-case__card { background: var(--white); border: 1px solid var(--border-gray); border-radius: 12px; padding: 40px; box-shadow: var(--shadow-card); }
+  @media (max-width: 640px) { .use-case__card { padding: 28px 20px; } }
+  .use-case__card-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--border-gray); }
+  .use-case__card-icon { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; color: var(--navy); }
+  .use-case__card h3 { font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1.30; }
+  .use-case__steps { display: flex; flex-direction: column; gap: 28px; position: relative; }
+  .use-case__steps-line { position: absolute; left: 15px; top: 32px; bottom: 32px; width: 2px; background: var(--border-gray); }
+  .use-case__step { display: flex; gap: 20px; position: relative; z-index: 1; }
+  .use-case__step-num { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; background: var(--navy); color: var(--white); border-radius: 50%; font-size: 14px; font-weight: 600; margin-top: 2px; }
+  .use-case__step-content h4 { font-size: 20px; font-weight: 600; color: var(--navy); line-height: 1.20; margin-bottom: 8px; }
+  .use-case__step-content p { font-size: 16px; font-weight: 400; color: var(--charcoal); line-height: 1.60; }
+
+  /* PilotCTA */
+  .pilot-cta { padding: 96px 0; background: var(--light-gray); }
+  .pilot-cta__inner { text-align: center; max-width: 680px; margin: 0 auto; }
+  .pilot-cta__label { font-size: 16px; font-weight: 500; color: var(--orange); margin-bottom: 8px; display: block; }
+  .pilot-cta__title { font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 24px; }
+  @media (max-width: 768px) { .pilot-cta__title { font-size: 32px; } }
+  .pilot-cta__desc { font-size: 18px; font-weight: 400; color: var(--charcoal); line-height: 1.70; margin-bottom: 36px; }
+  .pilot-cta__actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .pilot-cta__contact { background: transparent; color: var(--navy); padding: 14px 32px; border-radius: 8px; border: 2px solid var(--orange); font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; transition: background-color 0.2s ease, border-color 0.2s ease; }
+  .pilot-cta__contact:hover { background: rgba(255, 77, 0, 0.05); }
+
+  /* Contact page */
+  .contact-info { padding: 140px 0 80px; background: var(--white); }
+  .contact-info__grid { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; align-items: start; }
+  @media (max-width: 1024px) { .contact-info__grid { grid-template-columns: 1fr; gap: 40px; padding: 0 24px; } }
+  .contact-info__heading { font-size: 42px; font-weight: 800; color: var(--navy); line-height: 1.15; margin-bottom: 20px; }
+  .contact-info__description { font-size: 18px; color: var(--charcoal); line-height: 1.70; }
+  .contact-info__block { margin-bottom: 36px; }
+  .contact-info__block:last-child { margin-bottom: 0; }
+  .contact-info__subheading { font-size: 22px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .contact-info__block p { font-size: 16px; color: var(--charcoal); line-height: 1.70; }
+  .contact-info__block p strong { color: var(--navy); }
+  .contact-info__list { list-style: disc; margin-top: 12px; padding-left: 24px; }
+  .contact-info__list li { font-size: 16px; color: var(--charcoal); line-height: 1.70; }
+
+  /* Footer — matches Footer.scss */
+  .footer { background: var(--white); color: var(--navy); padding: 64px 0 0; }
+  .footer__top { display: grid; grid-template-columns: 2fr 1fr 1fr 1.2fr; gap: 48px; padding-bottom: 48px; }
+  @media (max-width: 768px) { .footer__top { grid-template-columns: 1fr 1fr; gap: 32px; } }
+  @media (max-width: 640px) { .footer__top { grid-template-columns: 1fr; } }
+  .footer__col h4 { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 20px; }
+  .footer__col ul { list-style: none; }
+  .footer__col li { padding: 12px 0; border-bottom: 1px solid var(--border-gray); }
+  .footer__col li:first-child { padding-top: 0; }
+  .footer__col a { font-size: 16px; font-weight: 400; color: var(--charcoal); transition: color 0.2s; }
+  .footer__col a:hover { color: var(--orange); }
+  .footer__canada { display: inline-flex; align-items: center; gap: 8px; margin-top: 32px; padding: 10px 20px; border: 1px solid var(--border-gray); border-radius: 999px; }
+  .footer__canada span { font-size: 14px; font-weight: 400; color: var(--charcoal); }
+  .footer__canada-flag { width: 28px; height: auto; }
+  .footer__social { display: flex; gap: 16px; margin-top: 20px; }
+  .footer__social a { color: var(--navy); transition: color 0.2s; display: inline-flex; }
+  .footer__social a:hover { color: var(--orange); }
+  .footer__col--apps h4 { color: var(--orange); font-weight: 600; }
+  .footer__app-badges { display: flex; flex-direction: column; gap: 12px; }
+  .footer__app-badge { display: inline-flex; align-items: center; gap: 10px; background: var(--navy); color: var(--white); padding: 10px 20px; border-radius: 8px; transition: opacity 0.2s; }
+  .footer__app-badge:hover { opacity: 0.85; color: var(--white); }
+  .footer__app-badge svg { flex-shrink: 0; fill: var(--white); }
+  .footer__app-badge-label { display: block; font-size: 10px; font-weight: 400; color: var(--white); text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.2; }
+  .footer__app-badge-store { display: block; font-size: 18px; font-weight: 700; color: var(--white); line-height: 1.2; }
+  .footer__bottom { padding: 20px 0; border-top: 1px solid var(--border-gray); text-align: center; }
+  .footer__bottom p { font-size: 14px; font-weight: 400; color: var(--mid-gray); }
+
+  /* Pilot Modal — matches PilotModal.scss */
+  .pilot-modal__backdrop {
+    position: fixed; inset: 0; z-index: 2000;
+    background: rgba(26, 43, 61, 0.5);
+    display: none; align-items: center; justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.2s var(--ease-out-quart);
+  }
+  .pilot-modal__backdrop.open { display: flex; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .pilot-modal__content {
+    background: var(--white); border: 1px solid var(--border-gray);
+    border-radius: 12px; padding: 40px;
+    max-width: 560px; width: 100%;
+    max-height: 90vh; overflow-y: auto; position: relative;
+    box-shadow: var(--shadow-card);
+    animation: slideUp 0.3s var(--ease-out-expo);
+  }
+  @media (max-width: 640px) { .pilot-modal__content { padding: 28px 20px; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+  .pilot-modal__close {
+    position: absolute; top: 16px; right: 16px;
+    background: none; color: var(--mid-gray); padding: 8px;
+    display: inline-flex; align-items: center; justify-content: center;
+    transition: color 0.2s var(--ease-out-quart), transform 0.2s var(--ease-out-quart);
+  }
+  .pilot-modal__close:hover { color: var(--navy); transform: rotate(90deg); }
+  .pilot-modal__title { font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1.30; margin-bottom: 8px; }
+  .pilot-modal__desc { font-size: 16px; font-weight: 400; color: var(--charcoal); margin-bottom: 28px; }
+  .pilot-modal__form { display: flex; flex-direction: column; gap: 22px; }
+
+  .pilot-modal__row {
+    display: flex; gap: 12px; align-items: flex-start;
+  }
+  @media (max-width: 640px) {
+    .pilot-modal__row { flex-direction: column; gap: 14px; }
+  }
+
+  .pilot-modal__field {
+    position: relative;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .pilot-modal__field label {
+    display: block;
+    height: 20px;
+    font-family: inherit; font-size: 14px; font-weight: 600; color: var(--navy);
+    line-height: 20px;
+    margin: 0 0 6px 0;
+    white-space: nowrap;
+  }
+
+  .pilot-modal__field input,
+  .pilot-modal__field select {
+    display: block;
+    width: 100%; height: 44px;
+    margin: 0; padding: 0 14px;
+    border: 1px solid var(--border-gray); border-radius: 8px;
+    font-family: inherit; font-size: 16px; font-weight: 400;
+    line-height: 1.5; color: var(--navy); background: var(--white);
+    box-sizing: border-box;
+    transition: border-color 0.2s var(--ease-out-quart), box-shadow 0.2s var(--ease-out-quart);
+  }
+
+  .pilot-modal__required {
+    display: inline-block; margin-left: 2px;
+    color: var(--error); font-weight: 600;
+    line-height: inherit; vertical-align: baseline;
+  }
+  .pilot-modal__error {
+    position: absolute; top: 100%; left: 0;
+    margin-top: 4px;
+    font-size: 13px; font-weight: 500; line-height: 1.4;
+    color: var(--error);
+  }
+  .pilot-modal__submit-error { font-size: 14px; font-weight: 500; color: var(--error); background: rgba(239, 68, 68, 0.06); border: 1px solid rgba(239, 68, 68, 0.2); border-radius: 8px; padding: 10px 14px; text-align: center; }
+
+  .pilot-modal input::placeholder, .pilot-modal select::placeholder { color: var(--mid-gray); }
+  .pilot-modal input:focus, .pilot-modal select:focus {
+    outline: none; border-color: var(--orange);
+    box-shadow: 0 0 0 3px rgba(255, 77, 0, 0.12);
+  }
+  .pilot-modal select {
+    appearance: none; -webkit-appearance: none; -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%236b7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 36px;
+  }
+  .pilot-modal input.input--error, .pilot-modal select.input--error { border-color: var(--error); }
+  .pilot-modal input.input--error:focus, .pilot-modal select.input--error:focus { box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12); }
+
+  .pilot-modal__submit { width: 100%; margin-top: 4px; }
+  .pilot-modal__success { text-align: center; padding: 20px 0; }
+  .pilot-modal__success-icon { margin-bottom: 20px; display: flex; justify-content: center; }
+  .pilot-modal__success h3 { font-size: 24px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  .pilot-modal__success p { font-size: 16px; color: var(--charcoal); margin-bottom: 24px; }
+
+  /* Browser-style mockup frame — polished chrome with hover zoom */
+  .mockup-frame {
+    position: relative;
+    background: var(--white);
+    border: 1px solid var(--border-gray);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: var(--shadow-device);
+    transition: border-color 0.35s var(--ease-out-quart), transform 0.35s var(--ease-out-quart), box-shadow 0.35s var(--ease-out-quart);
+  }
+  .mockup-frame:hover { border-color: var(--navy); transform: translateY(-6px) scale(1.015); box-shadow: var(--shadow-device-hover); }
+  .mockup-frame__bar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 10px 16px;
+    background: var(--light-gray);
+    border-bottom: 1px solid var(--border-gray);
+  }
+  .mockup-frame__dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    background: var(--border-gray);
+    box-shadow: inset 0 0 0 0.5px rgba(0,0,0,0.08);
+  }
+  .mockup-frame__dot:nth-child(1) { background: #ff5f57; }
+  .mockup-frame__dot:nth-child(2) { background: #febc2e; }
+  .mockup-frame__dot:nth-child(3) { background: #28c840; }
+  .mockup-frame__url {
+    margin-left: 12px; padding: 5px 14px;
+    background: var(--white);
+    border: 1px solid var(--border-gray);
+    border-radius: 999px;
+    font-size: 12px; font-weight: 500;
+    color: var(--mid-gray);
+    letter-spacing: 0.01em;
+  }
+  .mockup-frame__media { overflow: hidden; }
+  .mockup-frame__media img { display: block; width: 100%; height: auto; }
+
+  /* Modifier: crop the left side (used for mockups with legacy cbi HEALTH sidebar) */
+  .mockup-frame--crop-left .mockup-frame__media img {
+    transform: scale(1.14);
+    transform-origin: right center;
+  }
+  .mockup-frame > img { display: block; width: 100%; height: auto; }
+
+  /* Phone bezel — realistic device frame */
+  .phone-frame {
+    position: relative;
+    width: 260px;
+    background: var(--navy);
+    border-radius: 42px;
+    padding: 10px;
+    flex-shrink: 0;
+    box-shadow: var(--shadow-device);
+    transition: transform 0.35s var(--ease-out-quart), box-shadow 0.35s var(--ease-out-quart);
+  }
+  .phone-frame:hover { box-shadow: var(--shadow-device-hover); }
+  .phone-frame::before {
+    content: "";
+    position: absolute; inset: 0;
+    border-radius: 42px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+  }
+  .phone-frame::after {
+    content: "";
+    position: absolute; top: 12px; left: 50%;
+    transform: translateX(-50%);
+    width: 90px; height: 22px;
+    background: var(--navy);
+    border-radius: 0 0 14px 14px;
+    z-index: 2;
+  }
+  .phone-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 32px;
+    background: var(--white);
+  }
+
+  /* Floating stat-card overlay — adds depth to a visual */
+  .stat-card {
+    position: absolute;
+    display: flex; align-items: center; gap: 12px;
+    background: var(--white);
+    border: 1px solid var(--border-gray);
+    border-radius: 12px;
+    padding: 14px 18px;
+    min-width: 180px;
+    box-shadow: var(--shadow-stat);
+    z-index: 3;
+  }
+  .stat-card__icon {
+    width: 36px; height: 36px;
+    display: flex; align-items: center; justify-content: center;
+    background: rgba(255, 77, 0, 0.1);
+    color: var(--orange);
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .stat-card__value { font-size: 18px; font-weight: 800; color: var(--navy); line-height: 1.2; }
+  .stat-card__label { font-size: 12px; font-weight: 500; color: var(--mid-gray); line-height: 1.3; }
+
+  /* Hero — 2-col with product visual + stat overlay */
+  .hero { padding: 120px 0 60px; }
+  .hero__layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 1024px) { .hero__layout { grid-template-columns: 1fr; gap: 56px; } }
+  .hero__visual { position: relative; padding: 12px 0; }
+  .hero__visual .stat-card {
+    bottom: -24px; left: -32px;
+  }
+  @media (max-width: 640px) {
+    .hero__visual .stat-card { left: 8px; bottom: -16px; min-width: 0; padding: 10px 14px; }
+    .hero__visual .stat-card__value { font-size: 16px; }
+  }
+  .hero__kpi-overlay {
+    position: absolute;
+    bottom: -40px; left: -40px;
+    width: 58%;
+    max-width: 520px;
+    border: 1px solid var(--border-gray);
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: var(--shadow-device);
+    z-index: 4;
+    transition: transform 0.35s var(--ease-out-quart), box-shadow 0.35s var(--ease-out-quart);
+  }
+  .hero__kpi-overlay:hover { transform: translateY(-4px); box-shadow: var(--shadow-device-hover); }
+  .hero__kpi-overlay img { display: block; width: 100%; height: auto; }
+  @media (max-width: 1024px) {
+    .hero__kpi-overlay { left: 0; bottom: -32px; width: 72%; }
+  }
+  @media (max-width: 640px) {
+    .hero__kpi-overlay { position: relative; left: 0; bottom: 0; width: 100%; margin-top: 20px; }
+  }
+
+  /* Solution — centered product preview */
+  .solution__visual { margin: 56px auto 0; max-width: 1000px; padding: 0 20px; }
+  .solution__visual .mockup-frame__media img {
+    transform: scale(1.08);
+    transform-origin: bottom center;
+  }
+
+  /* Features — showcase strip */
+  .features__showcase { margin-top: 64px; max-width: 1160px; margin-left: auto; margin-right: auto; }
+  .features__showcase-caption {
+    text-align: center;
+    font-size: 16px; font-weight: 500; color: var(--orange);
+    margin-bottom: 20px;
+  }
+
+  /* Workforce — hero spotlight for the talent directory */
+  .workforce { padding: 96px 0; background: var(--white); position: relative; overflow: hidden; }
+  .workforce::before {
+    content: "";
+    position: absolute;
+    top: -160px; right: -160px;
+    width: 480px; height: 480px;
+    background: radial-gradient(circle at center, rgba(255, 77, 0, 0.06) 0%, rgba(255, 77, 0, 0) 70%);
+    pointer-events: none;
+  }
+  .workforce__header { text-align: center; max-width: 720px; margin: 0 auto 48px; position: relative; }
+  .workforce__header .section-subtitle { margin: 0 auto; }
+  .workforce__visual {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+  }
+  .workforce__visual .stat-card { display: flex; }
+  .workforce__visual .stat-card--top {
+    top: 20px; right: -16px;
+  }
+  .workforce__visual .stat-card--bottom {
+    bottom: 24px; left: -20px;
+  }
+  @media (max-width: 900px) {
+    .workforce__visual .stat-card--top { right: 8px; top: 8px; padding: 10px 14px; min-width: 0; }
+    .workforce__visual .stat-card--bottom { left: 8px; bottom: 8px; padding: 10px 14px; min-width: 0; }
+  }
+
+  /* Differentiation visual */
+  .diff__visual { margin-top: 28px; }
+
+  /* Use Case — calm 2-col with single phone + halo + stat overlay */
+  .use-case__layout {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+  @media (max-width: 1024px) { .use-case__layout { grid-template-columns: 1fr; gap: 56px; } }
+
+  .use-case__device {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+  }
+  .use-case__device::before {
+    content: "";
+    position: absolute;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle at center, rgba(255, 77, 0, 0.12) 0%, rgba(255, 77, 0, 0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .use-case__device .phone-frame { position: relative; z-index: 1; }
+  .use-case__device .stat-card {
+    top: 72px; right: -8px;
+  }
+  .use-case__device .stat-card--bottom {
+    top: auto; right: auto; bottom: 56px; left: -8px;
+  }
+  @media (max-width: 640px) {
+    .use-case__device::before { width: 240px; height: 240px; }
+    .phone-frame { width: 220px; }
+    .use-case__device .stat-card { right: 0; min-width: 0; padding: 10px 14px; }
+    .use-case__device .stat-card--bottom { left: 0; }
+  }
+
+  /* Pilot CTA — device family composition */
+  .pilot-cta__visual {
+    position: relative;
+    max-width: 1200px;
+    margin: 64px auto 0;
+    padding: 40px 0 80px 40px;
+  }
+  .pilot-cta__visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 75% 50%, rgba(255, 77, 0, 0.07), transparent 60%),
+      radial-gradient(ellipse at 25% 70%, rgba(26, 43, 61, 0.05), transparent 60%);
+    border-radius: 28px;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .pilot-cta__desktop {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin-left: 0;
+  }
+  .pilot-cta__phone-float {
+    position: absolute;
+    bottom: 24px;
+    right: 20px;
+    z-index: 2;
+    width: 210px;
+  }
+  .pilot-cta__phone-float .phone-frame {
+    width: 100%;
+    box-shadow: 0 0 0 6px var(--white);
+  }
+  @media (max-width: 900px) {
+    .pilot-cta__visual {
+      padding: 24px;
+      display: flex; flex-direction: column; align-items: center; gap: 32px;
+    }
+    .pilot-cta__desktop { max-width: 100%; }
+    .pilot-cta__phone-float { position: static; width: 220px; }
+    .pilot-cta__phone-float .phone-frame { box-shadow: none; }
+  }
+  @media (max-width: 640px) {
+    .pilot-cta__phone-float { width: 180px; }
+  }
+
+  /* ========= Global animation system ========= */
+  @keyframes riseIn {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes softFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  @keyframes slideInLeft {
+    from { opacity: 0; transform: translateX(-24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slideInRight {
+    from { opacity: 0; transform: translateX(24px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  /* Hero entrance — staggered from first paint */
+  .hero__content .section-label,
+  .hero__content .hero__title,
+  .hero__content .hero__subtitle,
+  .hero__actions,
+  .hero__visual .mockup-frame,
+  .hero__kpi-overlay {
+    animation: riseIn 0.8s var(--ease-out-expo) both;
+  }
+  .hero__content .hero__title { animation-delay: 0.1s; }
+  .hero__content .hero__subtitle { animation-delay: 0.25s; }
+  .hero__actions { animation-delay: 0.4s; }
+  .hero__visual .mockup-frame { animation-delay: 0.3s; animation-duration: 1s; }
+  .hero__kpi-overlay { animation-delay: 0.6s; animation-duration: 1s; }
+
+  /* Scroll-reveal — cascaded when element enters viewport */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.7s var(--ease-out-quart), transform 0.7s var(--ease-out-quart);
+    will-change: opacity, transform;
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal--delay-1.in-view { transition-delay: 0.08s; }
+  .reveal--delay-2.in-view { transition-delay: 0.16s; }
+  .reveal--delay-3.in-view { transition-delay: 0.24s; }
+  .reveal--delay-4.in-view { transition-delay: 0.32s; }
+  .reveal--delay-5.in-view { transition-delay: 0.40s; }
+
+  /* Stat cards gently float after loading */
+  .stat-card { animation: fadeIn 0.8s var(--ease-out-quart) 0.8s both, softFloat 6s ease-in-out 1.8s infinite; }
+
+  /* Primary CTA pulse halo for attention */
+  .btn--orange { position: relative; overflow: hidden; }
+  .btn--orange::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.35), transparent 55%);
+    transform: translateX(-100%);
+    transition: transform 0.55s var(--ease-out-quart);
+    pointer-events: none;
+  }
+  .btn--orange:hover::after { transform: translateX(100%); }
+
+  /* Link underline animation in navbar (already present via ::after) — amplify subtle transforms */
+  .btn { transform: translateZ(0); }
+
+  /* Respect reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .hero__content .section-label,
+    .hero__content .hero__title,
+    .hero__content .hero__subtitle,
+    .hero__actions,
+    .hero__visual .mockup-frame,
+    .hero__kpi-overlay,
+    .stat-card { animation: none !important; }
+    .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    * { transition: none !important; }
+  }
+
+  .page { display: none; }
+  .page.active { display: block; }
+</style>
+</head>
+<body>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- NAVBAR — matches Navbar.js -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Primary navigation">
+    <div class="navbar__inner">
+      <a href="#home" class="navbar__logo" aria-label="Go to homepage" data-nav="home">
+        <img src="src/images/logo-v3.png" alt="Staffy Health + Hospitality — Made in Canada" class="navbar__logo-img" />
+      </a>
+
+      <button type="button" class="navbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="navbar-menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div id="navbar-menu" class="navbar__menu">
+        <ul class="navbar__links">
+          <li><a href="#solution" data-section="solution">Solutions</a></li>
+          <li><a href="#features" data-section="features">How it works</a></li>
+          <li><a href="#difference" data-section="difference">Why Us</a></li>
+          <li><a href="#use-case" data-section="use-case">Use Cases</a></li>
+          <li class="navbar__mobile-only"><a href="https://salus.staffy.com/roi-calculator/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+          <li class="navbar__mobile-only"><a href="#contact" data-nav="contact">Contact</a></li>
+          <li class="navbar__mobile-only"><a href="#problem">FAQ</a></li>
+        </ul>
+        <div class="navbar__actions">
+          <a href="https://app.salus.staffy.com/login" class="navbar__link-cta" target="_blank" rel="noopener noreferrer">Login</a>
+          <a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer" class="btn btn--orange navbar__btn">Book a demo<br>(Facilities)</a>
+          <a href="https://staffy.com/app" target="_blank" rel="noopener noreferrer" class="btn btn--dark navbar__btn">Download the app<br>(Professionals)</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME PAGE -->
+  <div class="page active" id="page-home">
+    <main>
+
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container container--wide">
+          <div class="hero__layout">
+            <div class="hero__content">
+              <h1 class="hero__title">Schedule your people first.<br>Fill the rest with ours.</h1>
+              <p class="hero__subtitle">A closed-loop workforce management platform built specifically for healthcare. Every worker verified. Every shift compliant.</p>
+              <div class="hero__actions">
+                <button type="button" class="btn btn--orange" onclick="openModal()">Request Beta Access</button>
+                <a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer" class="hero__secondary-link">Or book a demo →</a>
+              </div>
+            </div>
+            <div class="hero__visual">
+              <div class="mockup-frame">
+                <div class="mockup-frame__bar" aria-hidden="true">
+                  <span class="mockup-frame__dot"></span>
+                  <span class="mockup-frame__dot"></span>
+                  <span class="mockup-frame__dot"></span>
+                </div>
+                <div class="mockup-frame__media">
+                  <img src="src/images/mockups/Untitled5.png" alt="Upcoming shifts calendar — April 2026 monthly view with staff-assigned shift pills across days, filter controls, and a side list of upcoming shifts by role" loading="eager" />
+                </div>
+              </div>
+              <div class="hero__kpi-overlay" aria-label="Workforce KPIs at a glance">
+                <img src="src/images/mockups/Screenshot%202026-04-17%20102152.png" alt="KPI summary — 9 unfilled requests, 6 filled, 0 completed, 27 total shifts" loading="eager" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROBLEM — matches Problem.js -->
+      <section class="problem" id="problem">
+        <div class="container">
+          <div class="problem__inner">
+            <div class="problem__header reveal">
+              <span class="section-label">The Problem</span>
+              <h2 class="section-title">Healthcare scheduling is broken.</h2>
+            </div>
+            <p class="problem__intro reveal reveal--delay-1">The market has two types of tools:</p>
+            <div class="problem__cards">
+              <div class="problem__card reveal reveal--delay-1">
+                <div class="problem__card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="#1a2b3d" stroke-width="1.5"/><path d="M3 10H21M7 4V2M17 4V2" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Scheduling systems</h3>
+                <p>Manage internal staff but hit a wall when shifts can't fill.</p>
+              </div>
+              <div class="problem__card reveal reveal--delay-2">
+                <div class="problem__card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="#1a2b3d" stroke-width="1.5"/><circle cx="17" cy="10" r="2.5" stroke="#1a2b3d" stroke-width="1.5"/><path d="M3 20C3 16.69 5.69 14 9 14C12.31 14 15 16.69 15 20" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <h3>Staffing marketplaces</h3>
+                <p>Supply external workers but have zero visibility into a facility's internal operations.</p>
+              </div>
+            </div>
+            <div class="problem__gap">
+              <div class="problem__gap-line"></div>
+              <p class="problem__gap-text"><strong>Nobody connects both sides.</strong> That's the gap we solve.</p>
+              <div class="problem__gap-line"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOLUTION — matches Solution.js -->
+      <section class="solution" id="solution">
+        <div class="container">
+          <div class="solution__inner reveal">
+            <div class="section-label">The Solution</div>
+            <h2 class="section-title">One platform. One workflow. Fully connected staffing.</h2>
+            <p class="section-subtitle">Staffy Workforce Scheduling is a closed-loop workforce management platform built specifically for healthcare facilities — including long-term care, retirement homes, hospitals, and homecare organizations.</p>
+          </div>
+        </div>
+        <div class="container container--wide">
+          <div class="solution__visual reveal">
+            <div class="mockup-frame">
+              <div class="mockup-frame__bar" aria-hidden="true">
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+              </div>
+              <div class="mockup-frame__media">
+                <img src="src/images/mockups/Untitled10.png" alt="Schedule and broadcast a shift — single-day, multi-day and recurring options, month calendars, start and end times, unpaid break, broadcast to team and shift notes" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURES — matches Features.js -->
+      <section class="features" id="features">
+        <div class="container">
+          <div class="features__header reveal">
+            <h2 class="section-title">How it works</h2>
+            <p class="section-subtitle">A complete system that prioritizes your team, fills gaps automatically, and ensures every worker is qualified.</p>
+          </div>
+          <div class="features__grid">
+            <div class="features__card reveal reveal--delay-1">
+              <div class="features__card-top">
+                <div class="features__card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10H21M7 4V2M17 4V2M7 14H10M7 17H13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="features__card-number">01</span>
+              </div>
+              <h3 class="features__card-title">Internal Scheduling First</h3>
+              <p class="features__card-desc">Facilities schedule their own staff first using a system that is CBA-compliant, credential-aware, and preference-based — built specifically for healthcare.</p>
+              <ul class="features__card-list">
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>CBA-compliant scheduling</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Credential-aware assignments</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Preference-based shift allocation</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>One platform — not stitched-together tools</li>
+              </ul>
+            </div>
+            <div class="features__card reveal reveal--delay-2">
+              <div class="features__card-top">
+                <div class="features__card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M3 20C3 16.69 5.69 14 9 14C12.31 14 15 16.69 15 20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M18 8V14M15 11H21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <span class="features__card-number">02</span>
+              </div>
+              <h3 class="features__card-title">Automatic External Fill</h3>
+              <p class="features__card-desc">When a shift doesn't fill internally, it automatically cascades to Staffy's marketplace of 20,000+ vetted healthcare workers.</p>
+              <ul class="features__card-list">
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No phone calls</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No agency negotiations</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>No separate workflow</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automatic cascade to vetted workers</li>
+              </ul>
+            </div>
+            <div class="features__card reveal reveal--delay-3">
+              <div class="features__card-top">
+                <div class="features__card-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7V12C4 17.52 7.58 22.74 12 24C16.42 22.74 20 17.52 20 12V7L12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="features__card-number">03</span>
+              </div>
+              <h3 class="features__card-title">Real-Time Credential Verification</h3>
+              <p class="features__card-desc">Every worker on every shift is credential-verified before assignment. If a credential expires or a background check is pending, the system automatically blocks the worker and assigns the next compliant professional.</p>
+              <ul class="features__card-list">
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Automated license checks</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Background verification enforcement</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Auto-block non-compliant workers</li>
+                <li><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7L6 10L11 4" stroke="#1a2b3d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Compliance built into the scheduling engine</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="container container--wide">
+          <div class="features__showcase reveal">
+            <p class="features__showcase-caption">The full month — upcoming, completed, and daily summaries, in one calendar</p>
+            <div class="mockup-frame">
+              <div class="mockup-frame__bar" aria-hidden="true">
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+              </div>
+              <div class="mockup-frame__media">
+                <img src="src/images/mockups/Untitled8.png" alt="Full calendar month view — upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WORKFORCE — spotlight on the verified talent directory -->
+      <section class="workforce" id="workforce">
+        <div class="container">
+          <div class="workforce__header reveal">
+            <span class="section-label">Verified Workforce</span>
+            <h2 class="section-title">Every worker, vetted and on file.</h2>
+            <p class="section-subtitle">Browse an approved roster with reliability ratings, shift history, suspension signals, and credential status — all in one view. No spreadsheets. No agency intermediaries.</p>
+          </div>
+        </div>
+        <div class="container container--wide">
+          <div class="workforce__visual reveal reveal--delay-1">
+            <div class="mockup-frame mockup-frame--crop-left">
+              <div class="mockup-frame__bar" aria-hidden="true">
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+                <span class="mockup-frame__dot"></span>
+              </div>
+              <div class="mockup-frame__media">
+                <img src="src/images/mockups/main.png" alt="Approved Talent directory — a table of vetted healthcare workers with shift counts, acceptance rate, reliability rating, and credential status" loading="lazy" />
+              </div>
+            </div>
+            <div class="stat-card stat-card--top" aria-hidden="true">
+              <div class="stat-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7v5c0 5.5 3.6 10.7 8 12 4.4-1.3 8-6.5 8-12V7l-8-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div>
+                <div class="stat-card__value">20,000+</div>
+                <div class="stat-card__label">Vetted healthcare workers</div>
+              </div>
+            </div>
+            <div class="stat-card stat-card--bottom" aria-hidden="true">
+              <div class="stat-card__icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              </div>
+              <div>
+                <div class="stat-card__value">Live reliability</div>
+                <div class="stat-card__label">Updated every shift</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DIFFERENTIATION — matches Differentiation.js (7 items) -->
+      <section class="diff" id="difference">
+        <div class="container">
+          <div class="diff__header reveal">
+            <span class="section-label">Why Us</span>
+            <h2 class="section-title">What makes this different</h2>
+            <p class="section-subtitle">Other tools solve one half of the problem. Staffy Workforce Scheduling is the only platform that connects internal scheduling with external workforce fulfillment — with compliance built in.</p>
+          </div>
+          <div class="diff__body">
+            <div class="diff__visual reveal reveal--delay-1">
+              <div class="mockup-frame">
+                <div class="mockup-frame__bar" aria-hidden="true">
+                  <span class="mockup-frame__dot"></span>
+                  <span class="mockup-frame__dot"></span>
+                  <span class="mockup-frame__dot"></span>
+                </div>
+                <div class="mockup-frame__media">
+                  <img src="src/images/mockups/Untitled6.png" alt="Ongoing Shifts detail — a Friday registered-nurse shift with the hired contractor's 88 reliability score, attendance status, late-arrival counts and contractor details" loading="lazy" />
+                </div>
+              </div>
+            </div>
+            <ul class="diff__list reveal reveal--delay-2">
+              <li class="diff__item">
+                <div class="diff__item-check" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="diff__item-text">
+                  <strong>Closed-loop workforce management</strong>
+                  <small>Schedule, fill, and verify in one system.</small>
+                </div>
+              </li>
+              <li class="diff__item">
+                <div class="diff__item-check" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="diff__item-text">
+                  <strong>Internal and external staffing in one workflow</strong>
+                  <small>No switching tools when shifts cascade externally.</small>
+                </div>
+              </li>
+              <li class="diff__item">
+                <div class="diff__item-check" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="diff__item-text">
+                  <strong>Real-time compliance enforcement</strong>
+                  <small>Expired credentials are blocked before assignment.</small>
+                </div>
+              </li>
+              <li class="diff__item">
+                <div class="diff__item-check" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="diff__item-text">
+                  <strong>Healthcare-specific design</strong>
+                  <small>Built around CBA rules, credentials, and unit coverage.</small>
+                </div>
+              </li>
+              <li class="diff__item">
+                <div class="diff__item-check" aria-hidden="true">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8L7 11L12 5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="diff__item-text">
+                  <strong>Automated shift fulfillment</strong>
+                  <small>No phone calls, no agency negotiations.</small>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- USE CASE — matches UseCase.js -->
+      <section class="use-case" id="use-case">
+        <div class="container">
+          <div class="use-case__inner">
+            <div class="section-label reveal">Use Case</div>
+            <h2 class="section-title reveal">Built for real healthcare operations</h2>
+            <div class="use-case__layout">
+              <div class="use-case__card reveal reveal--delay-1">
+                <div class="use-case__card-header">
+                  <div class="use-case__card-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 9L12 2L21 9V20C21 21.1 20.1 22 19 22H5C3.9 22 3 21.1 3 20V9Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22V12H15V22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <h3>Long-Term Care Facility</h3>
+                </div>
+                <div class="use-case__steps">
+                  <div class="use-case__steps-line" aria-hidden="true"></div>
+                  <div class="use-case__step">
+                    <div class="use-case__step-num">1</div>
+                    <div class="use-case__step-content">
+                      <h4>Schedule internal staff first</h4>
+                      <p>The facility uses Staffy Workforce Scheduling to assign shifts to their existing workforce based on availability, credentials, and CBA rules.</p>
+                    </div>
+                  </div>
+                  <div class="use-case__step">
+                    <div class="use-case__step-num">2</div>
+                    <div class="use-case__step-content">
+                      <h4>Gaps cascade automatically</h4>
+                      <p>When coverage gaps remain, unfilled shifts automatically cascade to Staffy's marketplace of 20,000+ vetted external workers.</p>
+                    </div>
+                  </div>
+                  <div class="use-case__step">
+                    <div class="use-case__step-num">3</div>
+                    <div class="use-case__step-content">
+                      <h4>Every assignment is verified</h4>
+                      <p>Every worker — internal or external — is verified for compliance before the assignment is confirmed. No exceptions.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="use-case__device reveal reveal--delay-2" aria-label="Worker-side mobile app">
+                <div class="phone-frame">
+                  <img src="src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone%20XR).png" alt="Available shifts feed on the worker mobile app — new shifts matching the worker's profile appear automatically" loading="lazy" />
+                </div>
+                <div class="stat-card" aria-hidden="true">
+                  <div class="stat-card__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0a3 3 0 11-6 0" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <div class="stat-card__value">New shift match</div>
+                    <div class="stat-card__label">Sent to verified workers</div>
+                  </div>
+                </div>
+                <div class="stat-card stat-card--bottom" aria-hidden="true">
+                  <div class="stat-card__icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 3L4 7v5c0 5.5 3.6 10.7 8 12 4.4-1.3 8-6.5 8-12V7l-8-4z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <div>
+                    <div class="stat-card__value">Credential verified</div>
+                    <div class="stat-card__label">Before every assignment</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- PILOT CTA — matches PilotCTA.js -->
+      <section class="pilot-cta" id="pilot">
+        <div class="container">
+          <div class="pilot-cta__inner reveal">
+            <span class="pilot-cta__label">Beta Program</span>
+            <h2 class="pilot-cta__title">Join the beta program</h2>
+            <p class="pilot-cta__desc">We're launching Staffy Workforce Scheduling with select healthcare partners. Participate in the beta to help shape the future of workforce management.</p>
+            <div class="pilot-cta__actions">
+              <button type="button" class="btn btn--orange" onclick="openModal()">Request Beta Access</button>
+              <a href="#contact" class="pilot-cta__contact" data-nav="contact">Contact Us</a>
+            </div>
+            <div class="pilot-cta__visual reveal reveal--delay-1" aria-label="Sign in on desktop or mobile">
+              <div class="pilot-cta__desktop">
+                <div class="mockup-frame">
+                  <div class="mockup-frame__bar" aria-hidden="true">
+                    <span class="mockup-frame__dot"></span>
+                    <span class="mockup-frame__dot"></span>
+                    <span class="mockup-frame__dot"></span>
+                  </div>
+                  <div class="mockup-frame__media">
+                    <img src="src/images/mockups/login-desktop.png" alt="Sign in to Staffy Workforce Scheduling — brand panel on the left with the tagline 'Making a Difference', sign-in form on the right" loading="lazy" />
+                  </div>
+                </div>
+              </div>
+              <div class="pilot-cta__phone-float" aria-hidden="true">
+                <div class="phone-frame">
+                  <img src="src/images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone%20XR)%20(1).png" alt="" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- CONTACT PAGE — matches contact.js -->
+  <div class="page" id="page-contact">
+    <main>
+      <section class="contact-info">
+        <div class="contact-info__grid">
+          <div class="contact-info__intro">
+            <h2 class="contact-info__heading">Contact Information</h2>
+            <p class="contact-info__description">We'd love to hear from you! Whether you're interested in learning more about Salus, requesting a demo, or have questions about our platform, our team is here to help.</p>
+          </div>
+          <div class="contact-info__details">
+            <div class="contact-info__block">
+              <h3 class="contact-info__subheading">Get in Touch</h3>
+              <p><strong>Email:</strong> info@staffy.com <strong>Phone:</strong> +1 (647) 492-7823 <strong>Address:</strong> 485 Queen Street West, Suite 200, Toronto, ON, Canada M5V 2A9</p>
+            </div>
+            <div class="contact-info__block">
+              <h3 class="contact-info__subheading">Business Hours</h3>
+              <p><strong>Monday to Friday:</strong> 9:00 AM — 6:00 PM Eastern Time <strong>Holiday Schedule:</strong> Closed on Canadian statutory holidays <strong>Response Time:</strong> We strive to respond to all inquiries within one business day</p>
+            </div>
+            <div class="contact-info__block">
+              <h3 class="contact-info__subheading">Support Services</h3>
+              <p>Our dedicated support team is available to assist with:</p>
+              <ul class="contact-info__list">
+                <li>Platform demonstrations and product tours</li>
+                <li>Onboarding assistance for new organizations</li>
+                <li>Technical support and troubleshooting</li>
+                <li>Custom configuration and integration guidance</li>
+                <li>Training resources and best practices</li>
+                <li>Pricing and subscription inquiries</li>
+              </ul>
+            </div>
+            <div class="contact-info__block">
+              <h3 class="contact-info__subheading">Connect With Us Online</h3>
+              <p><strong>Website:</strong> salus.staffy.com</p>
+              <p>You can also fill out the contact form on our website, and a member of our team will reach out to you promptly with more information tailored to your organization's specific needs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- FOOTER — matches Footer.js -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__col footer__col--solutions">
+          <h4>Our solutions</h4>
+          <ul>
+            <li><a href="https://staffy.com/" target="_blank" rel="noopener noreferrer">Marketplace</a></li>
+            <li><a href="https://salus.staffy.com/" target="_blank" rel="noopener noreferrer">Credential Management</a></li>
+          </ul>
+          <div class="footer__canada">
+            <span>Proudly made in Canada</span>
+            <img src="src/images/flaf.png" alt="Canadian flag" class="footer__canada-flag" />
+          </div>
+        </div>
+        <div class="footer__col">
+          <ul>
+            <li><a href="https://staffy.com/find-talent" target="_blank" rel="noopener noreferrer">Find Talent</a></li>
+            <li><a href="#difference" data-nav="home" data-section-target="difference">About Us</a></li>
+            <li><a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer">Book a demo</a></li>
+          </ul>
+          <div class="footer__social">
+            <a href="https://twitter.com/staffyapp" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="https://www.facebook.com/StaffyApp" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            <a href="https://www.linkedin.com/company/staffyapp" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer__col">
+          <ul>
+            <li><a href="https://salus.staffy.com/roi-calculator/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+            <li><a href="#contact" data-nav="contact">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer__col footer__col--apps">
+          <h4>Mobile Apps</h4>
+          <div class="footer__app-badges">
+            <a href="https://apps.apple.com/us/app/staffy/id1133559351" target="_blank" rel="noopener noreferrer" class="footer__app-badge" aria-label="Download on the App Store">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+              <div><span class="footer__app-badge-label">Download on the</span><span class="footer__app-badge-store">App Store</span></div>
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=ca.staffy.app" target="_blank" rel="noopener noreferrer" class="footer__app-badge" aria-label="Get it on Google Play">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.71c.17.09.37.14.56.14.19 0 .37-.04.54-.14L17.6 16.3l-3.56-3.57L3.18 23.71zM20.16 10.13l-3.89-2.23-3.79 3.79 3.79 3.79 3.89-2.23c.74-.43.74-1.13 0-1.56v-1.56zM2.1 1.05C2.04 1.2 2 1.37 2 1.56v20.88c0 .19.04.36.1.51L13.44 11.6 2.1 1.05zM17.6 7.7L4.28.84c-.35-.2-.75-.2-1.1 0L14.04 11.6 17.6 7.7z"/></svg>
+              <div><span class="footer__app-badge-label">GET IT ON</span><span class="footer__app-badge-store">Google Play</span></div>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom"><p id="copyright">&copy; Staffy Health. All rights reserved.</p></div>
+    </div>
+  </footer>
+
+  <!-- PILOT MODAL — matches PilotModal.js -->
+  <div class="pilot-modal__backdrop" id="pilotModal" role="dialog" aria-modal="true" aria-labelledby="pilot-modal-title">
+    <div class="pilot-modal__content" id="pilotModalContent">
+      <button type="button" class="pilot-modal__close" onclick="closeModal()" aria-label="Close dialog">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 5L15 15M15 5L5 15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+
+      <div id="pilotForm">
+        <h2 id="pilot-modal-title" class="pilot-modal__title">Request Beta Access</h2>
+        <p class="pilot-modal__desc">Tell us about your facility and we'll reach out to discuss the beta program.</p>
+        <form class="pilot-modal__form" id="pilotFormEl" novalidate>
+
+          <div class="pilot-modal__field">
+            <label for="facilityName">Facility Name</label>
+            <input type="text" id="facilityName" name="facilityName" placeholder="e.g. Sunrise Long-Term Care" />
+          </div>
+
+          <div class="pilot-modal__row">
+            <div class="pilot-modal__field">
+              <label for="contactName">Contact Name <span class="pilot-modal__required">*</span></label>
+              <input type="text" id="contactName" name="contactName" required placeholder="Jane Smith" />
+            </div>
+            <div class="pilot-modal__field">
+              <label for="email">Email <span class="pilot-modal__required">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="jane@facility.com" />
+            </div>
+          </div>
+
+          <div class="pilot-modal__row">
+            <div class="pilot-modal__field">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="phone" placeholder="(416) 555-0100" />
+            </div>
+            <div class="pilot-modal__field">
+              <label for="facilityType">Facility Type <span class="pilot-modal__required">*</span></label>
+              <select id="facilityType" name="facilityType" required>
+                <option value="">Select type...</option>
+                <option value="ltc">Long-Term Care</option>
+                <option value="retirement">Retirement Home</option>
+                <option value="hospital">Hospital</option>
+                <option value="homecare">Homecare</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="pilot-modal__field">
+            <label for="staffCount">Number of Staff</label>
+            <input type="number" id="staffCount" name="staffCount" placeholder="e.g. 150" min="0" />
+          </div>
+
+          <div class="pilot-modal__submit-error" id="submitError" style="display:none;" role="alert"></div>
+          <button type="submit" class="btn btn--primary btn--lg pilot-modal__submit" id="submitBtn">Request Beta Access</button>
+        </form>
+      </div>
+
+      <div id="pilotSuccess" class="pilot-modal__success" style="display:none;" aria-live="polite">
+        <div class="pilot-modal__success-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+            <circle cx="24" cy="24" r="22" stroke="#10B981" stroke-width="2" fill="#10B981" fill-opacity="0.12"/>
+            <path d="M16 24L22 30L32 18" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <h3>Request received</h3>
+        <p>Thank you for your interest. Our team will be in touch to discuss next steps.</p>
+        <button type="button" class="btn btn--secondary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('copyright').innerHTML = '&copy; ' + new Date().getFullYear() + ' Staffy Health. All rights reserved.';
+
+    // Scroll-reveal — respects prefers-reduced-motion
+    (function () {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var targets = document.querySelectorAll('.reveal');
+      if (reduced || !('IntersectionObserver' in window)) {
+        targets.forEach(function (el) { el.classList.add('in-view'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+      targets.forEach(function (el) { observer.observe(el); });
+    })();
+
+    // Page router (Home ↔ Contact)
+    var pageHome = document.getElementById('page-home');
+    var pageContact = document.getElementById('page-contact');
+    function showPage(name) {
+      if (name === 'contact') { pageHome.classList.remove('active'); pageContact.classList.add('active'); }
+      else { pageContact.classList.remove('active'); pageHome.classList.add('active'); }
+      window.scrollTo({ top: 0 });
+    }
+    document.querySelectorAll('[data-nav]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        showPage(el.getAttribute('data-nav'));
+        var target = el.getAttribute('data-section-target');
+        if (target) {
+          setTimeout(function () {
+            var t = document.getElementById(target);
+            if (t) t.scrollIntoView({ behavior: 'smooth' });
+          }, 50);
+        }
+        menu.classList.remove('navbar__menu--open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // rAF-throttled scroll (matches Navbar.js)
+    var navbar = document.getElementById('navbar');
+    var links = document.querySelectorAll('.navbar__links a[data-section]');
+    var progress = document.querySelector('.scroll-progress');
+    var sections = ['solution', 'features', 'use-case', 'difference'];
+    var ticking = false;
+    function update() {
+      navbar.classList.toggle('navbar--scrolled', window.scrollY > 10);
+      var docH = document.documentElement.scrollHeight - window.innerHeight;
+      var p = docH > 0 ? window.scrollY / docH : 0;
+      if (progress) progress.style.setProperty('--p', p);
+      // Only highlight section links when the Home page is active
+      if (!pageHome.classList.contains('active')) {
+        links.forEach(function (a) { a.classList.remove('active'); });
+        ticking = false;
+        return;
+      }
+      var current = '', minDist = Infinity;
+      for (var i = 0; i < sections.length; i++) {
+        var el = document.getElementById(sections[i]); if (!el) continue;
+        var top = el.getBoundingClientRect().top;
+        if (top <= 150 && Math.abs(top) < minDist) { minDist = Math.abs(top); current = sections[i]; }
+      }
+      links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('data-section') === current); });
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+    update();
+
+    // Section links — when on Contact page, switch to Home first then scroll
+    document.querySelectorAll('.navbar__links a[data-section]').forEach(function (el) {
+      el.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetId = el.getAttribute('data-section');
+        var scrollToTarget = function () {
+          var t = document.getElementById(targetId);
+          if (t) t.scrollIntoView({ behavior: 'smooth' });
+        };
+        if (!pageHome.classList.contains('active')) {
+          pageContact.classList.remove('active');
+          pageHome.classList.add('active');
+          window.scrollTo({ top: 0 });
+          setTimeout(scrollToTarget, 60);
+        } else {
+          scrollToTarget();
+        }
+        menu.classList.remove('navbar__menu--open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Mobile menu
+    var ham = document.getElementById('hamburger');
+    var menu = document.getElementById('navbar-menu');
+    ham.addEventListener('click', function () {
+      var open = menu.classList.toggle('navbar__menu--open');
+      ham.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      if (a.hasAttribute('data-nav')) return;
+      a.addEventListener('click', function () {
+        menu.classList.remove('navbar__menu--open');
+        ham.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Pilot Modal + focus trap (matches PilotModal.js)
+    var modal = document.getElementById('pilotModal');
+    var modalContent = document.getElementById('pilotModalContent');
+    var formWrap = document.getElementById('pilotForm');
+    var successWrap = document.getElementById('pilotSuccess');
+    var formEl = document.getElementById('pilotFormEl');
+    var submitBtn = document.getElementById('submitBtn');
+    var submitError = document.getElementById('submitError');
+    var previousFocus = null;
+    var FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
+    function openModal() {
+      previousFocus = document.activeElement;
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      formWrap.style.display = '';
+      successWrap.style.display = 'none';
+      formEl.reset();
+      submitError.style.display = 'none';
+      clearFieldErrors();
+      setTimeout(function () { document.getElementById('facilityName').focus(); }, 100);
+    }
+    function closeModal() {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+      if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
+    }
+    modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+
+    document.addEventListener('keydown', function (e) {
+      if (!modal.classList.contains('open')) return;
+      if (e.key === 'Escape') { closeModal(); return; }
+      if (e.key !== 'Tab') return;
+      var focusable = Array.prototype.slice.call(modalContent.querySelectorAll(FOCUSABLE))
+        .filter(function (el) { return el.offsetParent !== null; });
+      if (!focusable.length) return;
+      var first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+
+    // Form validation + Formsubmit POST
+    var FACILITY_LABELS = { ltc: 'Long-Term Care', retirement: 'Retirement Home', hospital: 'Hospital', homecare: 'Homecare', other: 'Other' };
+
+    function showFieldError(id, msg) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      el.classList.toggle('input--error', !!msg);
+      var field = el.closest('.pilot-modal__field');
+      if (!field) return;
+      var existing = field.querySelector('.pilot-modal__error');
+      if (existing) existing.remove();
+      if (msg) {
+        var span = document.createElement('span');
+        span.className = 'pilot-modal__error';
+        span.setAttribute('role', 'alert');
+        span.textContent = msg;
+        field.appendChild(span);
+      }
+    }
+    function clearFieldErrors() {
+      ['facilityName', 'contactName', 'email', 'phone', 'facilityType', 'staffCount'].forEach(function (n) {
+        showFieldError(n, '');
+      });
+    }
+    function validate(data) {
+      var errors = {};
+      if (data.facilityName.trim() && !/^[A-Za-z0-9\s\-\.\,\'\&]{2,100}$/.test(data.facilityName.trim())) {
+        errors.facilityName = 'Please enter a valid facility name (letters, numbers, spaces)';
+      }
+      if (!data.contactName.trim()) {
+        errors.contactName = 'Contact name is required';
+      } else if (!/^[A-Za-z\s\-\.\']{2,80}$/.test(data.contactName.trim())) {
+        errors.contactName = 'Name must be 2+ letters (no numbers or special characters)';
+      }
+      if (!data.email.trim()) {
+        errors.email = 'Email is required';
+      } else if (!/^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$/.test(data.email.trim())) {
+        errors.email = 'Please enter a valid email address';
+      }
+      if (data.phone.trim() && !/^[\d\s\(\)\+\-\.]{7,20}$/.test(data.phone.trim())) {
+        errors.phone = 'Please enter a valid phone number';
+      }
+      if (!data.facilityType) {
+        errors.facilityType = 'Please select a facility type';
+      }
+      if (data.staffCount !== '' && (isNaN(data.staffCount) || Number(data.staffCount) < 0 || Number(data.staffCount) > 100000)) {
+        errors.staffCount = 'Please enter a valid number (0–100,000)';
+      }
+      return errors;
+    }
+    ['facilityName', 'contactName', 'email', 'phone', 'facilityType', 'staffCount'].forEach(function (name) {
+      var el = document.getElementById(name);
+      if (!el) return;
+      el.addEventListener('blur', function () {
+        var e = validate(getFormData());
+        showFieldError(name, e[name] || '');
+      });
+    });
+    function getFormData() {
+      return {
+        facilityName: document.getElementById('facilityName').value,
+        contactName: document.getElementById('contactName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        facilityType: document.getElementById('facilityType').value,
+        staffCount: document.getElementById('staffCount').value,
+      };
+    }
+    formEl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitError.style.display = 'none';
+      var data = getFormData();
+      var errors = validate(data);
+      clearFieldErrors();
+      if (Object.keys(errors).length) {
+        Object.keys(errors).forEach(function (k) { showFieldError(k, errors[k]); });
+        return;
+      }
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting…';
+      var payload = {
+        _subject: 'Salus Beta Access Request — ' + (data.facilityName || data.contactName),
+        _template: 'table',
+        _captcha: 'false',
+        'Contact Name': data.contactName,
+        Email: data.email,
+        Phone: data.phone || '—',
+        'Facility Name': data.facilityName || '—',
+        'Facility Type': FACILITY_LABELS[data.facilityType] || data.facilityType,
+        'Number of Staff': data.staffCount || '—',
+        Source: 'salus.staffy.com',
+      };
+      fetch('https://formsubmit.co/ajax/info@staffy.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      }).then(function (res) {
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        formWrap.style.display = 'none';
+        successWrap.style.display = 'block';
+      }).catch(function () {
+        submitError.textContent = 'Something went wrong. Please try again.';
+        submitError.style.display = 'block';
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Request Beta Access';
+      });
+    });
+  </script>
+
+</body>
+</html>

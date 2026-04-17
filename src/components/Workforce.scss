@@ -1,0 +1,63 @@
+@import '../styles/variables';
+
+.workforce {
+  padding: 96px 0;
+  background: $white;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -160px;
+    right: -160px;
+    width: 480px;
+    height: 480px;
+    background: radial-gradient(circle at center, rgba(255, 77, 0, 0.06) 0%, rgba(255, 77, 0, 0) 70%);
+    pointer-events: none;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    position: relative;
+
+    .section-subtitle {
+      margin: 0 auto;
+    }
+  }
+
+  &__visual {
+    position: relative;
+    max-width: 1160px;
+    margin: 0 auto;
+
+    .stat-card { display: flex; }
+
+    .stat-card--top {
+      top: 20px;
+      right: -16px;
+    }
+
+    .stat-card--bottom {
+      bottom: 24px;
+      left: -20px;
+    }
+
+    @media (max-width: 900px) {
+      .stat-card--top {
+        right: 8px;
+        top: 8px;
+        padding: 10px 14px;
+        min-width: 0;
+      }
+      .stat-card--bottom {
+        left: 8px;
+        bottom: 8px;
+        padding: 10px 14px;
+        min-width: 0;
+      }
+    }
+  }
+}

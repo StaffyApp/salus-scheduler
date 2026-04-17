@@ -6,11 +6,16 @@
   left: 0;
   right: 0;
   z-index: 1000;
-  background: $white;
-  transition: box-shadow 0.25s var(--ease-out-quart);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: saturate(160%) blur(12px);
+  -webkit-backdrop-filter: saturate(160%) blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.25s var(--ease-out-quart), border-color 0.25s var(--ease-out-quart), background-color 0.25s var(--ease-out-quart);
 
   &--scrolled {
+    background: rgba(255, 255, 255, 0.96);
     box-shadow: $shadow-soft;
+    border-bottom-color: $border-gray;
   }
 
   &__inner {

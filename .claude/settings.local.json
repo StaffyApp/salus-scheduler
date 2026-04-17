@@ -22,7 +22,13 @@
       "Bash(curl -sL -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" \"https://salus.staffy.com/contact/\" -o ~/salus_contact.html)",
       "Read(//c/Users/Admin/**)",
       "Bash(grep -oE \"Contact[A-Za-z ]{0,40}|[A-Z][a-z]+ Name|Subject|Message|Submit|Send[A-Za-z ]{0,20}|Get in [Tt]ouch|How can we help|email|phone|info@[a-z.]+|@staffy\\\\.com\" ~/salus_contact.html)",
-      "Bash(ls src/components/ContactForm*)"
+      "Bash(ls src/components/ContactForm*)",
+      "Bash(ls *)",
+      "Bash(node *)",
+      "Bash(grep -oE '\\(src|href\\)=\"\\(/[^\"]+|data:[^\"]{0,20}\\)' salus-preview.html)",
+      "Bash(grep -E '^\\\\$' src/styles/variables.scss)",
+      "Bash(grep *)",
+      "Bash(python -c ' *)"
     ]
   }
 }

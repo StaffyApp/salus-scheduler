@@ -4,6 +4,7 @@ import Hero from "../components/Hero"
 import Problem from "../components/Problem"
 import Solution from "../components/Solution"
 import Features from "../components/Features"
+import Workforce from "../components/Workforce"
 import Differentiation from "../components/Differentiation"
 import UseCase from "../components/UseCase"
 import PilotCTA from "../components/PilotCTA"
@@ -21,6 +22,7 @@ const IndexPage = () => {
       <Problem />
       <Solution />
       <Features />
+      <Workforce />
       <Differentiation />
       <UseCase />
       <PilotCTA onOpenModal={() => setModalOpen(true)} />

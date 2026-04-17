@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
 .use-case {
-  padding: $section-padding;
+  padding: 96px 0;
   background: $bg-subtle;
 
   &__inner {
@@ -13,11 +13,24 @@
     margin-bottom: 40px;
   }
 
+  &__layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 48px;
+    align-items: center;
+
+    @media (max-width: $breakpoint-lg) {
+      grid-template-columns: 1fr;
+      gap: 48px;
+    }
+  }
+
   &__card {
     background: $white;
     border: 1px solid $border-gray;
     border-radius: $radius-lg;
     padding: 40px;
+    box-shadow: $shadow-card;
 
     @media (max-width: $breakpoint-sm) {
       padding: 28px 20px;
@@ -57,17 +70,13 @@
     position: relative;
   }
 
-  // Connecting line between step numbers
   &__steps-line {
     position: absolute;
-    left: 15px; // center of 32px circle
-    top: 32px; // below first circle
-    bottom: 32px; // above last circle
+    left: 15px;
+    top: 32px;
+    bottom: 32px;
     width: 2px;
     background: $border-gray;
-    transform-origin: top;
-    transform: scaleY(0);
-    transition: transform 1s var(--ease-out-expo) 0.3s;
   }
 
   &__step {
@@ -79,22 +88,20 @@
     &-num {
       width: 32px;
       height: 32px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
       background: $navy;
       color: $white;
       border-radius: 50%;
-      font-family: $font-primary;
       font-size: 14px;
       font-weight: 600;
-      flex-shrink: 0;
       margin-top: 2px;
     }
 
     &-content {
       h4 {
-        font-family: $font-primary;
         font-size: 20px;
         font-weight: 600;
         color: $navy;
@@ -111,8 +118,56 @@
     }
   }
 
-  // Draw line when section becomes visible
-  &__inner.is-visible &__steps-line {
-    transform: scaleY(1);
+  &__device {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle at center, rgba(255, 77, 0, 0.12) 0%, rgba(255, 77, 0, 0) 70%);
+      border-radius: 50%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .phone-frame {
+      position: relative;
+      z-index: 1;
+    }
+
+    .stat-card {
+      top: 72px;
+      right: -8px;
+    }
+
+    .stat-card--bottom {
+      top: auto;
+      right: auto;
+      bottom: 56px;
+      left: -8px;
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      &::before {
+        width: 240px;
+        height: 240px;
+      }
+
+      .phone-frame { width: 220px; }
+
+      .stat-card {
+        right: 0;
+        min-width: 0;
+        padding: 10px 14px;
+      }
+
+      .stat-card--bottom { left: 0; }
+    }
   }
 }

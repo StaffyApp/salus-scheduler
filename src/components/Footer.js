@@ -81,10 +81,6 @@ const Footer = () => {
 
         <div className="footer__bottom">
           <p>&copy; {new Date().getFullYear()} Staffy Health. All rights reserved.</p>
-          <div className="footer__bottom-links">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
-          </div>
         </div>
       </div>
     </footer>

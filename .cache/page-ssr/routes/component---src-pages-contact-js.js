@@ -10346,13 +10346,7 @@ const Footer = () => {
     className: "footer__app-badge-store"
   }, "Google Play")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__bottom"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA9 ", new Date().getFullYear(), " Staffy Health. All rights reserved."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "footer__bottom-links"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#"
-  }, "Privacy Policy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#"
-  }, "Terms of Service")))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA9 ", new Date().getFullYear(), " Staffy Health. All rights reserved."))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
 
@@ -10405,7 +10399,8 @@ const Navbar = ({
     1: setActiveTab
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleScroll = () => {
+    let ticking = false;
+    const update = () => {
       setScrolled(window.scrollY > 10);
       const sections = ["solution", "features", "use-case", "difference"];
       let current = "";
@@ -10420,6 +10415,13 @@ const Navbar = ({
         }
       }
       setActiveTab(current);
+      ticking = false;
+    };
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
     };
     window.addEventListener("scroll", handleScroll, {
       passive: true
@@ -10479,7 +10481,7 @@ const Navbar = ({
     href: "/#use-case",
     className: activeTab === "use-case" ? "active" : "",
     onClick: () => setMobileOpen(false)
-  }, "Jobs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, "Use Cases")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "navbar__mobile-only"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://salus.staffy.com/roi-calculator/",
@@ -10564,13 +10566,26 @@ const FACILITY_TYPE_LABELS = {
 const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@staffy.com";
 function validateFields(data) {
   const errors = {};
-  if (!data.contactName.trim()) errors.contactName = "Contact name is required";
+  if (data.facilityName.trim() && !/^[A-Za-z0-9\s\-.,'&]{2,100}$/.test(data.facilityName.trim())) {
+    errors.facilityName = "Please enter a valid facility name (letters, numbers, spaces)";
+  }
+  if (!data.contactName.trim()) {
+    errors.contactName = "Contact name is required";
+  } else if (!/^[A-Za-z\s\-.']{2,80}$/.test(data.contactName.trim())) {
+    errors.contactName = "Please enter a name using letters only";
+  }
   if (!data.email.trim()) {
     errors.email = "Email is required";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Please enter a valid email";
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email.trim())) {
+    errors.email = "Please enter a valid email address";
+  }
+  if (data.phone.trim() && !/^[\d\s()+\-.]{7,20}$/.test(data.phone.trim())) {
+    errors.phone = "Please enter a valid phone number";
   }
   if (!data.facilityType) errors.facilityType = "Please select a facility type";
+  if (data.staffCount !== "" && (isNaN(data.staffCount) || Number(data.staffCount) < 0 || Number(data.staffCount) > 100000)) {
+    errors.staffCount = "Please enter a valid number (0–100,000)";
+  }
   return errors;
 }
 const PilotModal = ({
@@ -10605,10 +10620,13 @@ const PilotModal = ({
     1: setSubmitting
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const contentRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const firstInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const previousFocusRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     let focusTimer;
     if (isOpen) {
+      previousFocusRef.current = document.activeElement;
       document.body.style.overflow = "hidden";
       focusTimer = setTimeout(() => {
         var _firstInputRef$curren;
@@ -10631,14 +10649,35 @@ const PilotModal = ({
     return () => {
       document.body.style.overflow = "";
       if (focusTimer) clearTimeout(focusTimer);
+      if (!isOpen && previousFocusRef.current && typeof previousFocusRef.current.focus === "function") {
+        previousFocusRef.current.focus();
+      }
     };
   }, [isOpen]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleEsc = e => {
-      if (e.key === "Escape") onClose();
+    if (!isOpen) return;
+    const handleKey = e => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const root = contentRef.current;
+      if (!root) return;
+      const focusables = root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
-    if (isOpen) window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
   const handleChange = e => {
     setFormData({
@@ -10718,7 +10757,8 @@ const PilotModal = ({
     "aria-modal": "true",
     "aria-labelledby": "pilot-modal-title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__content"
+    className: "pilot-modal__content",
+    ref: contentRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     className: "pilot-modal__close",
@@ -10775,7 +10815,7 @@ const PilotModal = ({
     className: "pilot-modal__form",
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.facilityName ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "facilityName"
   }, "Facility Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -10785,8 +10825,15 @@ const PilotModal = ({
     name: "facilityName",
     value: formData.facilityName,
     onChange: handleChange,
+    onBlur: handleBlur,
+    "aria-invalid": !!fieldErrors.facilityName,
+    "aria-describedby": fieldErrors.facilityName ? "facilityName-error" : undefined,
     placeholder: "e.g. Sunrise Long-Term Care"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.facilityName && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "facilityName-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.facilityName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: `pilot-modal__field${fieldErrors.contactName ? " pilot-modal__field--error" : ""}`
@@ -10835,7 +10882,7 @@ const PilotModal = ({
   }, fieldErrors.email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.phone ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "phone"
   }, "Phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -10844,8 +10891,15 @@ const PilotModal = ({
     name: "phone",
     value: formData.phone,
     onChange: handleChange,
+    onBlur: handleBlur,
+    "aria-invalid": !!fieldErrors.phone,
+    "aria-describedby": fieldErrors.phone ? "phone-error" : undefined,
     placeholder: "(416) 555-0100"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.phone && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "phone-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: `pilot-modal__field${fieldErrors.facilityType ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "facilityType"
@@ -10878,7 +10932,7 @@ const PilotModal = ({
     className: "pilot-modal__error",
     role: "alert"
   }, fieldErrors.facilityType))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.staffCount ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "staffCount"
   }, "Number of Staff"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -10887,8 +10941,14 @@ const PilotModal = ({
     name: "staffCount",
     value: formData.staffCount,
     onChange: handleChange,
+    onBlur: handleBlur,
+    min: "0",
     placeholder: "e.g. 150"
-  })), submitError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.staffCount && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "staffCount-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.staffCount)), submitError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__submit-error",
     role: "alert"
   }, submitError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {

@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
 .pilot-cta {
-  padding: 80px 0;
+  padding: 96px 0;
   background: $bg-subtle;
 
   &__inner {
@@ -11,27 +11,22 @@
   }
 
   &__label {
-    font-family: $font-primary;
     font-size: 16px;
     font-weight: 500;
     color: $staffy-orange;
-    text-transform: none;
-    letter-spacing: normal;
     margin-bottom: 8px;
     display: block;
   }
 
   &__title {
-    font-family: $font-display;
+    font-family: $font-primary;
     font-size: 42px;
     font-weight: 800;
     color: $navy;
     line-height: 1.15;
     margin-bottom: 24px;
 
-    @media (max-width: $breakpoint-md) {
-      font-size: 32px;
-    }
+    @media (max-width: $breakpoint-md) { font-size: 32px; }
   }
 
   &__desc {
@@ -55,13 +50,79 @@
     padding: 14px 32px;
     border-radius: $radius-md;
     border: 2px solid $staffy-orange;
-    font-family: $font-primary;
     font-weight: 600;
     font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     transition: background-color 0.2s ease, border-color 0.2s ease;
 
     &:hover {
       background: rgba($staffy-orange, 0.05);
+    }
+  }
+
+  &__visual {
+    position: relative;
+    max-width: 1200px;
+    margin: 64px auto 0;
+    padding: 40px 0 80px 40px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 75% 50%, rgba(255, 77, 0, 0.07), transparent 60%),
+        radial-gradient(ellipse at 25% 70%, rgba(26, 43, 61, 0.05), transparent 60%);
+      border-radius: 28px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 900px) {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+
+  &__desktop {
+    position: relative;
+    z-index: 1;
+    max-width: 1040px;
+    margin-left: 0;
+
+    @media (max-width: 900px) {
+      max-width: 100%;
+    }
+  }
+
+  &__phone-float {
+    position: absolute;
+    bottom: 24px;
+    right: 20px;
+    z-index: 2;
+    width: 210px;
+
+    .phone-frame {
+      width: 100%;
+      box-shadow: 0 0 0 6px $white, $shadow-device;
+    }
+
+    @media (max-width: 900px) {
+      position: static;
+      width: 220px;
+
+      .phone-frame {
+        box-shadow: $shadow-device;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      width: 180px;
     }
   }
 }

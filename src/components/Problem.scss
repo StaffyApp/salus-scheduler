@@ -1,7 +1,7 @@
 @import '../styles/variables';
 
 .problem {
-  padding: $section-padding;
+  padding: 96px 0;
   background: $white;
 
   &__inner {
@@ -37,11 +37,13 @@
     background: $white;
     border: 1px solid $border-gray;
     border-radius: $radius-md;
-    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart);
+    box-shadow: $shadow-card;
+    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
 
     &:hover {
       border-color: $navy;
       transform: translateY(-3px);
+      box-shadow: $shadow-card-hover;
     }
 
     &-icon {

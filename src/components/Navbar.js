@@ -9,7 +9,8 @@ const Navbar = ({ onOpenModal }) => {
   const [activeTab, setActiveTab] = useState("")
 
   useEffect(() => {
-    const handleScroll = () => {
+    let ticking = false
+    const update = () => {
       setScrolled(window.scrollY > 10)
       const sections = ["solution", "features", "use-case", "difference"]
       let current = ""
@@ -24,6 +25,13 @@ const Navbar = ({ onOpenModal }) => {
         }
       }
       setActiveTab(current)
+      ticking = false
+    }
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true
+        window.requestAnimationFrame(update)
+      }
     }
     window.addEventListener("scroll", handleScroll, { passive: true })
     return () => window.removeEventListener("scroll", handleScroll)
@@ -64,7 +72,7 @@ const Navbar = ({ onOpenModal }) => {
             <li><a href="/#solution" className={activeTab === "solution" ? "active" : ""} onClick={() => setMobileOpen(false)}>Solutions</a></li>
             <li><a href="/#features" className={activeTab === "features" ? "active" : ""} onClick={() => setMobileOpen(false)}>How it works</a></li>
             <li><a href="/#difference" className={activeTab === "difference" ? "active" : ""} onClick={() => setMobileOpen(false)}>Why Us</a></li>
-            <li><a href="/#use-case" className={activeTab === "use-case" ? "active" : ""} onClick={() => setMobileOpen(false)}>Jobs</a></li>
+            <li><a href="/#use-case" className={activeTab === "use-case" ? "active" : ""} onClick={() => setMobileOpen(false)}>Use Cases</a></li>
             <li className="navbar__mobile-only"><a href="https://salus.staffy.com/roi-calculator/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>Blog</a></li>
             <li className="navbar__mobile-only"><a href="/contact" onClick={() => setMobileOpen(false)}>Contact</a></li>
             <li className="navbar__mobile-only"><a href="/#problem" onClick={() => setMobileOpen(false)}>FAQ</a></li>

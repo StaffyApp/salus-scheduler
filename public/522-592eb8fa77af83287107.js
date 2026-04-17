@@ -1,1 +1,0 @@
-(self.webpackChunksalus_scheduler=self.webpackChunksalus_scheduler||[]).push([[522],{522:function(){}}]);

@@ -1,9 +1,11 @@
 import React from "react"
 import useScrollReveal from "../hooks/useScrollReveal"
+import shiftDetailsImg from "../images/mockups/Untitled10.png"
 import "./Solution.scss"
 
 const Solution = () => {
   const revealRef = useScrollReveal()
+  const visualRef = useScrollReveal()
 
   return (
     <section className="solution" id="solution">
@@ -18,6 +20,24 @@ const Solution = () => {
             platform built specifically for healthcare facilities — including
             long-term care, retirement homes, hospitals, and homecare organizations.
           </p>
+        </div>
+      </div>
+      <div className="container container--wide">
+        <div className="solution__visual reveal" ref={visualRef}>
+          <div className="mockup-frame">
+            <div className="mockup-frame__bar" aria-hidden="true">
+              <span className="mockup-frame__dot" />
+              <span className="mockup-frame__dot" />
+              <span className="mockup-frame__dot" />
+            </div>
+            <div className="mockup-frame__media">
+              <img
+                src={shiftDetailsImg}
+                alt="Schedule and broadcast a shift — single-day, multi-day and recurring options, month calendars, start and end times, unpaid break, broadcast to team and shift notes"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

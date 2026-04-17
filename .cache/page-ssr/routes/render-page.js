@@ -32,6 +32,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   apiRunnerAsync: () => (/* binding */ apiRunnerAsync)
 /* harmony export */ });
 var plugins = [{
+  name: 'default-site-plugin',
+  plugin: __webpack_require__(/*! ./gatsby-ssr.js */ "./gatsby-ssr.js"),
+  options: {
+    "plugins": []
+  }
+}, {
   name: 'partytown',
   plugin: __webpack_require__(/*! ./node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js */ "./node_modules/gatsby/dist/internal-plugins/partytown/gatsby-ssr.js"),
   options: {
@@ -380,6 +386,67 @@ HTML.propTypes = {
   preBodyComponents: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().array),
   body: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().string),
   postBodyComponents: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().array)
+};
+
+/***/ }),
+
+/***/ "./gatsby-ssr.js":
+/*!***********************!*\
+  !*** ./gatsby-ssr.js ***!
+  \***********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   onRenderBody: () => (/* binding */ onRenderBody)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _src_styles_global_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./src/styles/global.scss */ "./src/styles/global.scss");
+/* harmony import */ var _src_styles_global_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_src_styles_global_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _src_fonts_Mont_Regular_otf__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./src/fonts/Mont-Regular.otf */ "./src/fonts/Mont-Regular.otf");
+/* harmony import */ var _src_fonts_Mont_SemiBold_otf__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./src/fonts/Mont-SemiBold.otf */ "./src/fonts/Mont-SemiBold.otf");
+/* harmony import */ var _src_fonts_Mont_Bold_otf__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./src/fonts/Mont-Bold.otf */ "./src/fonts/Mont-Bold.otf");
+/* harmony import */ var _src_fonts_Mont_Heavy_otf__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./src/fonts/Mont-Heavy.otf */ "./src/fonts/Mont-Heavy.otf");
+
+
+
+
+
+
+const onRenderBody = ({
+  setHeadComponents
+}) => {
+  setHeadComponents([/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+    key: "font-regular",
+    rel: "preload",
+    as: "font",
+    type: "font/otf",
+    href: _src_fonts_Mont_Regular_otf__WEBPACK_IMPORTED_MODULE_2__["default"],
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+    key: "font-semibold",
+    rel: "preload",
+    as: "font",
+    type: "font/otf",
+    href: _src_fonts_Mont_SemiBold_otf__WEBPACK_IMPORTED_MODULE_3__["default"],
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+    key: "font-bold",
+    rel: "preload",
+    as: "font",
+    type: "font/otf",
+    href: _src_fonts_Mont_Bold_otf__WEBPACK_IMPORTED_MODULE_4__["default"],
+    crossOrigin: "anonymous"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("link", {
+    key: "font-heavy",
+    rel: "preload",
+    as: "font",
+    type: "font/otf",
+    href: _src_fonts_Mont_Heavy_otf__WEBPACK_IMPORTED_MODULE_5__["default"],
+    crossOrigin: "anonymous"
+  })]);
 };
 
 /***/ }),
@@ -5051,6 +5118,76 @@ exports.typeOf = typeOf;
 if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-is.development.js */ "./node_modules/react-is/cjs/react-is.development.js");
 }
+
+
+/***/ }),
+
+/***/ "./src/fonts/Mont-Bold.otf":
+/*!*********************************!*\
+  !*** ./src/fonts/Mont-Bold.otf ***!
+  \*********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Mont-Bold-03c8c2f6127c1da0fc39d112e642c55f.otf");
+
+/***/ }),
+
+/***/ "./src/fonts/Mont-Heavy.otf":
+/*!**********************************!*\
+  !*** ./src/fonts/Mont-Heavy.otf ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Mont-Heavy-1b3ba2d71fc1b2b28d58cd7a02ae9229.otf");
+
+/***/ }),
+
+/***/ "./src/fonts/Mont-Regular.otf":
+/*!************************************!*\
+  !*** ./src/fonts/Mont-Regular.otf ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Mont-Regular-1d26d89f7339866d31337b4cad51b491.otf");
+
+/***/ }),
+
+/***/ "./src/fonts/Mont-SemiBold.otf":
+/*!*************************************!*\
+  !*** ./src/fonts/Mont-SemiBold.otf ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Mont-SemiBold-8979d71a3146ca1d761f19cd42d50396.otf");
+
+/***/ }),
+
+/***/ "./src/styles/global.scss":
+/*!********************************!*\
+  !*** ./src/styles/global.scss ***!
+  \********************************/
+/***/ (() => {
+
 
 
 /***/ }),

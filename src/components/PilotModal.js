@@ -16,13 +16,26 @@ const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@staffy.com"
 
 function validateFields(data) {
   const errors = {}
-  if (!data.contactName.trim()) errors.contactName = "Contact name is required"
+  if (data.facilityName.trim() && !/^[A-Za-z0-9\s\-.,'&]{2,100}$/.test(data.facilityName.trim())) {
+    errors.facilityName = "Please enter a valid facility name (letters, numbers, spaces)"
+  }
+  if (!data.contactName.trim()) {
+    errors.contactName = "Contact name is required"
+  } else if (!/^[A-Za-z\s\-.']{2,80}$/.test(data.contactName.trim())) {
+    errors.contactName = "Please enter a name using letters only"
+  }
   if (!data.email.trim()) {
     errors.email = "Email is required"
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Please enter a valid email"
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email.trim())) {
+    errors.email = "Please enter a valid email address"
+  }
+  if (data.phone.trim() && !/^[\d\s()+\-.]{7,20}$/.test(data.phone.trim())) {
+    errors.phone = "Please enter a valid phone number"
   }
   if (!data.facilityType) errors.facilityType = "Please select a facility type"
+  if (data.staffCount !== "" && (isNaN(data.staffCount) || Number(data.staffCount) < 0 || Number(data.staffCount) > 100000)) {
+    errors.staffCount = "Please enter a valid number (0–100,000)"
+  }
   return errors
 }
 
@@ -40,11 +53,14 @@ const PilotModal = ({ isOpen, onClose }) => {
   const [submitError, setSubmitError] = useState("")
   const [submitting, setSubmitting] = useState(false)
   const modalRef = useRef(null)
+  const contentRef = useRef(null)
   const firstInputRef = useRef(null)
+  const previousFocusRef = useRef(null)
 
   useEffect(() => {
     let focusTimer
     if (isOpen) {
+      previousFocusRef.current = document.activeElement
       document.body.style.overflow = "hidden"
       focusTimer = setTimeout(() => firstInputRef.current?.focus(), 100)
     } else {
@@ -64,13 +80,38 @@ const PilotModal = ({ isOpen, onClose }) => {
     return () => {
       document.body.style.overflow = ""
       if (focusTimer) clearTimeout(focusTimer)
+      if (!isOpen && previousFocusRef.current && typeof previousFocusRef.current.focus === "function") {
+        previousFocusRef.current.focus()
+      }
     }
   }, [isOpen])
 
   useEffect(() => {
-    const handleEsc = (e) => { if (e.key === "Escape") onClose() }
-    if (isOpen) window.addEventListener("keydown", handleEsc)
-    return () => window.removeEventListener("keydown", handleEsc)
+    if (!isOpen) return
+    const handleKey = (e) => {
+      if (e.key === "Escape") {
+        onClose()
+        return
+      }
+      if (e.key !== "Tab") return
+      const root = contentRef.current
+      if (!root) return
+      const focusables = root.querySelectorAll(
+        'a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      )
+      if (focusables.length === 0) return
+      const first = focusables[0]
+      const last = focusables[focusables.length - 1]
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+    window.addEventListener("keydown", handleKey)
+    return () => window.removeEventListener("keydown", handleKey)
   }, [isOpen, onClose])
 
   const handleChange = (e) => {
@@ -153,7 +194,7 @@ const PilotModal = ({ isOpen, onClose }) => {
       aria-modal="true"
       aria-labelledby="pilot-modal-title"
     >
-      <div className="pilot-modal__content">
+      <div className="pilot-modal__content" ref={contentRef}>
         <button
           type="button"
           className="pilot-modal__close"
@@ -184,7 +225,7 @@ const PilotModal = ({ isOpen, onClose }) => {
               Tell us about your facility and we'll reach out to discuss the beta program.
             </p>
             <form className="pilot-modal__form" onSubmit={handleSubmit}>
-              <div className="pilot-modal__field">
+              <div className={`pilot-modal__field${fieldErrors.facilityName ? " pilot-modal__field--error" : ""}`}>
                 <label htmlFor="facilityName">Facility Name</label>
                 <input
                   ref={firstInputRef}
@@ -193,8 +234,12 @@ const PilotModal = ({ isOpen, onClose }) => {
                   name="facilityName"
                   value={formData.facilityName}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  aria-invalid={!!fieldErrors.facilityName}
+                  aria-describedby={fieldErrors.facilityName ? "facilityName-error" : undefined}
                   placeholder="e.g. Sunrise Long-Term Care"
                 />
+                {fieldErrors.facilityName && <span id="facilityName-error" className="pilot-modal__error" role="alert">{fieldErrors.facilityName}</span>}
               </div>
               <div className="pilot-modal__row">
                 <div className={`pilot-modal__field${fieldErrors.contactName ? " pilot-modal__field--error" : ""}`}>
@@ -233,7 +278,7 @@ const PilotModal = ({ isOpen, onClose }) => {
                 </div>
               </div>
               <div className="pilot-modal__row">
-                <div className="pilot-modal__field">
+                <div className={`pilot-modal__field${fieldErrors.phone ? " pilot-modal__field--error" : ""}`}>
                   <label htmlFor="phone">Phone</label>
                   <input
                     type="tel"
@@ -241,8 +286,12 @@ const PilotModal = ({ isOpen, onClose }) => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
+                    onBlur={handleBlur}
+                    aria-invalid={!!fieldErrors.phone}
+                    aria-describedby={fieldErrors.phone ? "phone-error" : undefined}
                     placeholder="(416) 555-0100"
                   />
+                  {fieldErrors.phone && <span id="phone-error" className="pilot-modal__error" role="alert">{fieldErrors.phone}</span>}
                 </div>
                 <div className={`pilot-modal__field${fieldErrors.facilityType ? " pilot-modal__field--error" : ""}`}>
                   <label htmlFor="facilityType">Facility Type <span className="pilot-modal__required">*</span></label>
@@ -267,7 +316,7 @@ const PilotModal = ({ isOpen, onClose }) => {
                   {fieldErrors.facilityType && <span id="facilityType-error" className="pilot-modal__error" role="alert">{fieldErrors.facilityType}</span>}
                 </div>
               </div>
-              <div className="pilot-modal__field">
+              <div className={`pilot-modal__field${fieldErrors.staffCount ? " pilot-modal__field--error" : ""}`}>
                 <label htmlFor="staffCount">Number of Staff</label>
                 <input
                   type="number"
@@ -275,8 +324,11 @@ const PilotModal = ({ isOpen, onClose }) => {
                   name="staffCount"
                   value={formData.staffCount}
                   onChange={handleChange}
+                  onBlur={handleBlur}
+                  min="0"
                   placeholder="e.g. 150"
                 />
+                {fieldErrors.staffCount && <span id="staffCount-error" className="pilot-modal__error" role="alert">{fieldErrors.staffCount}</span>}
               </div>
               {submitError && <div className="pilot-modal__submit-error" role="alert">{submitError}</div>}
               <button type="submit" className="btn btn--primary btn--lg pilot-modal__submit" disabled={submitting}>

@@ -1,5 +1,6 @@
 import React from "react"
 import useScrollReveal from "../hooks/useScrollReveal"
+import calendarShowcase from "../images/mockups/Untitled8.png"
 import "./Features.scss"
 
 const features = [
@@ -63,6 +64,7 @@ const features = [
 const Features = () => {
   const headerRef = useScrollReveal()
   const gridRef = useScrollReveal({ threshold: 0.1 })
+  const showcaseRef = useScrollReveal()
 
   return (
     <section className="features" id="features">
@@ -96,6 +98,27 @@ const Features = () => {
               </ul>
             </div>
           ))}
+        </div>
+      </div>
+      <div className="container container--wide">
+        <div className="features__showcase reveal" ref={showcaseRef}>
+          <p className="features__showcase-caption">
+            The full month — upcoming, completed, and daily summaries, in one calendar
+          </p>
+          <div className="mockup-frame">
+            <div className="mockup-frame__bar" aria-hidden="true">
+              <span className="mockup-frame__dot" />
+              <span className="mockup-frame__dot" />
+              <span className="mockup-frame__dot" />
+            </div>
+            <div className="mockup-frame__media">
+              <img
+                src={calendarShowcase}
+                alt="Full calendar month view — upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls"
+                loading="lazy"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>

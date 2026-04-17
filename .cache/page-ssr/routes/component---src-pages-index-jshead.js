@@ -10205,14 +10205,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _Differentiation_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Differentiation.scss */ "./src/components/Differentiation.scss");
-/* harmony import */ var _Differentiation_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Differentiation_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_mockups_Untitled6_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/Untitled6.png */ "./src/images/mockups/Untitled6.png");
+/* harmony import */ var _Differentiation_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Differentiation.scss */ "./src/components/Differentiation.scss");
+/* harmony import */ var _Differentiation_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Differentiation_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-const items = ["Closed-loop workforce management", "Internal and external staffing in one workflow", "Real-time compliance enforcement", "Credential-aware scheduling", "Healthcare-specific design", "Automated shift fulfillment", "No agency coordination required"];
+
+const items = [{
+  title: "Closed-loop workforce management",
+  detail: "Schedule, fill, and verify in one system."
+}, {
+  title: "Internal and external staffing in one workflow",
+  detail: "No switching tools when shifts cascade externally."
+}, {
+  title: "Real-time compliance enforcement",
+  detail: "Expired credentials are blocked before assignment."
+}, {
+  title: "Healthcare-specific design",
+  detail: "Built around CBA rules, credentials, and unit coverage."
+}, {
+  title: "Automated shift fulfillment",
+  detail: "No phone calls, no agency negotiations."
+}];
 const Differentiation = () => {
-  const contentRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const headerRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const visualRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   const listRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])({
     threshold: 0.1
   });
@@ -10222,37 +10240,59 @@ const Differentiation = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "diff__inner"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "diff__content reveal",
-    ref: contentRef
+    className: "diff__header reveal",
+    ref: headerRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
     className: "section-label"
   }, "Why Us"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
     className: "section-title"
   }, "What makes this different"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "diff__desc"
+    className: "section-subtitle"
   }, "Other tools solve one half of the problem. Staffy Workforce Scheduling is the only platform that connects internal scheduling with external workforce fulfillment \u2014 with compliance built in.")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "diff__body"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "diff__visual reveal",
+    ref: visualRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_Untitled6_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Ongoing Shifts detail \u2014 a Friday registered-nurse shift with the hired contractor's 88 reliability score, attendance status, late-arrival counts and contractor details",
+    loading: "lazy"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("ul", {
     className: "diff__list reveal-stagger",
     ref: listRef
-  }, items.map((item, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }, items.map((item, i) => /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     key: i,
     className: "diff__item reveal-child"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "diff__item-check"
+    className: "diff__item-check",
+    "aria-hidden": "true"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
     width: "16",
     height: "16",
     viewBox: "0 0 16 16",
-    fill: "none",
-    "aria-hidden": "true"
+    fill: "none"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
     d: "M4 8L7 11L12 5",
-    stroke: "#1a2b3d",
-    strokeWidth: "2",
+    stroke: "currentColor",
+    strokeWidth: "2.2",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", null, item)))))));
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "diff__item-text"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("strong", null, item.title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("small", null, item.detail))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Differentiation);
 
@@ -10282,8 +10322,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Features.scss */ "./src/components/Features.scss");
-/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Features_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_mockups_Untitled8_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/Untitled8.png */ "./src/images/mockups/Untitled8.png");
+/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Features.scss */ "./src/components/Features.scss");
+/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Features_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
@@ -10370,6 +10412,7 @@ const Features = () => {
   const gridRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])({
     threshold: 0.1
   });
+  const showcaseRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "features",
     id: "features"
@@ -10414,7 +10457,31 @@ const Features = () => {
     strokeWidth: "1.5",
     strokeLinecap: "round",
     strokeLinejoin: "round"
-  })), detail))))))));
+  })), detail))))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container container--wide"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "features__showcase reveal",
+    ref: showcaseRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "features__showcase-caption"
+  }, "The full month \u2014 upcoming, completed, and daily summaries, in one calendar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_Untitled8_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Full calendar month view \u2014 upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls",
+    loading: "lazy"
+  }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Features);
 
@@ -10585,13 +10652,7 @@ const Footer = () => {
     className: "footer__app-badge-store"
   }, "Google Play")))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "footer__bottom"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA9 ", new Date().getFullYear(), " Staffy Health. All rights reserved."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "footer__bottom-links"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#"
-  }, "Privacy Policy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
-    href: "#"
-  }, "Terms of Service")))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "\xA9 ", new Date().getFullYear(), " Staffy Health. All rights reserved."))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
 
@@ -10620,8 +10681,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Hero_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Hero.scss */ "./src/components/Hero.scss");
-/* harmony import */ var _Hero_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_Hero_scss__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _images_mockups_Untitled5_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../images/mockups/Untitled5.png */ "./src/images/mockups/Untitled5.png");
+/* harmony import */ var _images_mockups_Screenshot_2026_04_17_102152_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/Screenshot 2026-04-17 102152.png */ "./src/images/mockups/Screenshot 2026-04-17 102152.png");
+/* harmony import */ var _Hero_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Hero.scss */ "./src/components/Hero.scss");
+/* harmony import */ var _Hero_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Hero_scss__WEBPACK_IMPORTED_MODULE_3__);
+
+
 
 
 const Hero = ({
@@ -10630,13 +10695,17 @@ const Hero = ({
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "hero"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "container hero__inner"
+    className: "container container--wide"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "hero__layout"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "hero__content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     className: "hero__title"
   }, "Schedule your people first.", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("br", null), "Fill the rest with ours."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
-    className: "hero__subtitle hero-enter hero-enter--2"
+    className: "hero__subtitle"
   }, "A closed-loop workforce management platform built specifically for healthcare. Every worker verified. Every shift compliant."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "hero__actions hero-enter hero-enter--3"
+    className: "hero__actions"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     className: "btn btn--orange",
@@ -10645,8 +10714,34 @@ const Hero = ({
     href: "https://salus.staffy.com/#book",
     target: "_blank",
     rel: "noopener noreferrer",
-    className: "btn btn--dark"
-  }, "Book a Demo"))));
+    className: "hero__secondary-link"
+  }, "Or book a demo \u2192"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "hero__visual"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_Untitled5_png__WEBPACK_IMPORTED_MODULE_1__["default"],
+    alt: "Staffy Workforce Scheduling \u2014 April 2026 upcoming shifts calendar with staff-assigned shift pills across the month",
+    loading: "eager"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "hero__kpi-overlay",
+    "aria-label": "Workforce KPIs at a glance"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_Screenshot_2026_04_17_102152_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "KPI summary \u2014 9 unfilled requests, 6 filled, 0 completed, 27 total shifts",
+    loading: "eager"
+  }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Hero);
 
@@ -10699,7 +10794,8 @@ const Navbar = ({
     1: setActiveTab
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("");
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleScroll = () => {
+    let ticking = false;
+    const update = () => {
       setScrolled(window.scrollY > 10);
       const sections = ["solution", "features", "use-case", "difference"];
       let current = "";
@@ -10714,6 +10810,13 @@ const Navbar = ({
         }
       }
       setActiveTab(current);
+      ticking = false;
+    };
+    const handleScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
     };
     window.addEventListener("scroll", handleScroll, {
       passive: true
@@ -10773,7 +10876,7 @@ const Navbar = ({
     href: "/#use-case",
     className: activeTab === "use-case" ? "active" : "",
     onClick: () => setMobileOpen(false)
-  }, "Jobs")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
+  }, "Use Cases")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("li", {
     className: "navbar__mobile-only"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "https://salus.staffy.com/roi-calculator/",
@@ -10840,8 +10943,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _PilotCTA_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./PilotCTA.scss */ "./src/components/PilotCTA.scss");
-/* harmony import */ var _PilotCTA_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_PilotCTA_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_mockups_login_desktop_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/login-desktop.png */ "./src/images/mockups/login-desktop.png");
+/* harmony import */ var _images_mockups_workforce_scheduling_staffy_com_auth_login_iPhone_XR_1_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1).png */ "./src/images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1).png");
+/* harmony import */ var _PilotCTA_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./PilotCTA.scss */ "./src/components/PilotCTA.scss");
+/* harmony import */ var _PilotCTA_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_PilotCTA_scss__WEBPACK_IMPORTED_MODULE_4__);
+
+
 
 
 
@@ -10849,6 +10956,7 @@ const PilotCTA = ({
   onOpenModal
 }) => {
   const revealRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const visualRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "pilot-cta",
     id: "pilot"
@@ -10872,7 +10980,39 @@ const PilotCTA = ({
   }, "Request Beta Access"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
     href: "/contact",
     className: "pilot-cta__contact"
-  }, "Contact Us")))));
+  }, "Contact Us")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pilot-cta__visual reveal",
+    "aria-label": "Sign in on desktop or mobile",
+    ref: visualRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pilot-cta__desktop"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_login_desktop_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Sign in to Staffy Workforce Scheduling \u2014 brand panel on the left with the tagline 'Making a Difference', sign-in form on the right",
+    loading: "lazy"
+  })))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pilot-cta__phone-float",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "phone-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_workforce_scheduling_staffy_com_auth_login_iPhone_XR_1_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+    alt: "",
+    loading: "lazy"
+  })))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PilotCTA);
 
@@ -10920,13 +11060,26 @@ const FACILITY_TYPE_LABELS = {
 const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@staffy.com";
 function validateFields(data) {
   const errors = {};
-  if (!data.contactName.trim()) errors.contactName = "Contact name is required";
+  if (data.facilityName.trim() && !/^[A-Za-z0-9\s\-.,'&]{2,100}$/.test(data.facilityName.trim())) {
+    errors.facilityName = "Please enter a valid facility name (letters, numbers, spaces)";
+  }
+  if (!data.contactName.trim()) {
+    errors.contactName = "Contact name is required";
+  } else if (!/^[A-Za-z\s\-.']{2,80}$/.test(data.contactName.trim())) {
+    errors.contactName = "Please enter a name using letters only";
+  }
   if (!data.email.trim()) {
     errors.email = "Email is required";
-  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    errors.email = "Please enter a valid email";
+  } else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email.trim())) {
+    errors.email = "Please enter a valid email address";
+  }
+  if (data.phone.trim() && !/^[\d\s()+\-.]{7,20}$/.test(data.phone.trim())) {
+    errors.phone = "Please enter a valid phone number";
   }
   if (!data.facilityType) errors.facilityType = "Please select a facility type";
+  if (data.staffCount !== "" && (isNaN(data.staffCount) || Number(data.staffCount) < 0 || Number(data.staffCount) > 100000)) {
+    errors.staffCount = "Please enter a valid number (0–100,000)";
+  }
   return errors;
 }
 const PilotModal = ({
@@ -10961,10 +11114,13 @@ const PilotModal = ({
     1: setSubmitting
   } = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const modalRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const contentRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   const firstInputRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  const previousFocusRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     let focusTimer;
     if (isOpen) {
+      previousFocusRef.current = document.activeElement;
       document.body.style.overflow = "hidden";
       focusTimer = setTimeout(() => {
         var _firstInputRef$curren;
@@ -10987,14 +11143,35 @@ const PilotModal = ({
     return () => {
       document.body.style.overflow = "";
       if (focusTimer) clearTimeout(focusTimer);
+      if (!isOpen && previousFocusRef.current && typeof previousFocusRef.current.focus === "function") {
+        previousFocusRef.current.focus();
+      }
     };
   }, [isOpen]);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
-    const handleEsc = e => {
-      if (e.key === "Escape") onClose();
+    if (!isOpen) return;
+    const handleKey = e => {
+      if (e.key === "Escape") {
+        onClose();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const root = contentRef.current;
+      if (!root) return;
+      const focusables = root.querySelectorAll('a[href], button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])');
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
     };
-    if (isOpen) window.addEventListener("keydown", handleEsc);
-    return () => window.removeEventListener("keydown", handleEsc);
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [isOpen, onClose]);
   const handleChange = e => {
     setFormData({
@@ -11074,7 +11251,8 @@ const PilotModal = ({
     "aria-modal": "true",
     "aria-labelledby": "pilot-modal-title"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__content"
+    className: "pilot-modal__content",
+    ref: contentRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
     type: "button",
     className: "pilot-modal__close",
@@ -11131,7 +11309,7 @@ const PilotModal = ({
     className: "pilot-modal__form",
     onSubmit: handleSubmit
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.facilityName ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "facilityName"
   }, "Facility Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -11141,8 +11319,15 @@ const PilotModal = ({
     name: "facilityName",
     value: formData.facilityName,
     onChange: handleChange,
+    onBlur: handleBlur,
+    "aria-invalid": !!fieldErrors.facilityName,
+    "aria-describedby": fieldErrors.facilityName ? "facilityName-error" : undefined,
     placeholder: "e.g. Sunrise Long-Term Care"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.facilityName && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "facilityName-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.facilityName)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: `pilot-modal__field${fieldErrors.contactName ? " pilot-modal__field--error" : ""}`
@@ -11191,7 +11376,7 @@ const PilotModal = ({
   }, fieldErrors.email))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__row"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.phone ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "phone"
   }, "Phone"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -11200,8 +11385,15 @@ const PilotModal = ({
     name: "phone",
     value: formData.phone,
     onChange: handleChange,
+    onBlur: handleBlur,
+    "aria-invalid": !!fieldErrors.phone,
+    "aria-describedby": fieldErrors.phone ? "phone-error" : undefined,
     placeholder: "(416) 555-0100"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.phone && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "phone-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: `pilot-modal__field${fieldErrors.facilityType ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "facilityType"
@@ -11234,7 +11426,7 @@ const PilotModal = ({
     className: "pilot-modal__error",
     role: "alert"
   }, fieldErrors.facilityType))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "pilot-modal__field"
+    className: `pilot-modal__field${fieldErrors.staffCount ? " pilot-modal__field--error" : ""}`
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
     htmlFor: "staffCount"
   }, "Number of Staff"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
@@ -11243,8 +11435,14 @@ const PilotModal = ({
     name: "staffCount",
     value: formData.staffCount,
     onChange: handleChange,
+    onBlur: handleBlur,
+    min: "0",
     placeholder: "e.g. 150"
-  })), submitError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  }), fieldErrors.staffCount && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    id: "staffCount-error",
+    className: "pilot-modal__error",
+    role: "alert"
+  }, fieldErrors.staffCount)), submitError && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pilot-modal__submit-error",
     role: "alert"
   }, submitError), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
@@ -11394,13 +11592,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _Solution_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Solution.scss */ "./src/components/Solution.scss");
-/* harmony import */ var _Solution_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_Solution_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_mockups_Untitled10_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/Untitled10.png */ "./src/images/mockups/Untitled10.png");
+/* harmony import */ var _Solution_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Solution.scss */ "./src/components/Solution.scss");
+/* harmony import */ var _Solution_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Solution_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 const Solution = () => {
   const revealRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const visualRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "solution",
     id: "solution"
@@ -11415,7 +11616,29 @@ const Solution = () => {
     className: "section-title"
   }, "One platform. One workflow. Fully connected staffing."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "section-subtitle"
-  }, "Staffy Workforce Scheduling is a closed-loop workforce management platform built specifically for healthcare facilities \u2014 including long-term care, retirement homes, hospitals, and homecare organizations."))));
+  }, "Staffy Workforce Scheduling is a closed-loop workforce management platform built specifically for healthcare facilities \u2014 including long-term care, retirement homes, hospitals, and homecare organizations."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container container--wide"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "solution__visual reveal",
+    ref: visualRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_Untitled10_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Schedule and broadcast a shift \u2014 single-day, multi-day and recurring options, month calendars, start and end times, unpaid break, broadcast to team and shift notes",
+    loading: "lazy"
+  }))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Solution);
 
@@ -11445,27 +11668,40 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UseCase.scss */ "./src/components/UseCase.scss");
-/* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_UseCase_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _images_mockups_workforce_scheduling_staffy_com_talent_dashboard_home_iPhone_XR_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png */ "./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png");
+/* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UseCase.scss */ "./src/components/UseCase.scss");
+/* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_UseCase_scss__WEBPACK_IMPORTED_MODULE_3__);
+
 
 
 
 const UseCase = () => {
-  const revealRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const labelRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const titleRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const cardRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    threshold: 0.1
+  });
+  const deviceRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])({
+    threshold: 0.1
+  });
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
     className: "use-case",
     id: "use-case"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "use-case__inner reveal",
-    ref: revealRef
+    className: "use-case__inner"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "section-label"
+    className: "section-label reveal",
+    ref: labelRef
   }, "Use Case"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
-    className: "section-title"
+    className: "section-title reveal",
+    ref: titleRef
   }, "Built for real healthcare operations"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "use-case__card"
+    className: "use-case__layout"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "use-case__card reveal",
+    ref: cardRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "use-case__card-header"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -11511,7 +11747,63 @@ const UseCase = () => {
     className: "use-case__step-num"
   }, "3"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "use-case__step-content"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Every assignment is verified"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Every worker \u2014 internal or external \u2014 is verified for compliance before the assignment is confirmed. No exceptions."))))))));
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h4", null, "Every assignment is verified"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Every worker \u2014 internal or external \u2014 is verified for compliance before the assignment is confirmed. No exceptions."))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "use-case__device reveal",
+    "aria-label": "Worker-side mobile app",
+    ref: deviceRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "phone-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_workforce_scheduling_staffy_com_talent_dashboard_home_iPhone_XR_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Available shifts feed on the worker mobile app \u2014 new shifts matching the worker's profile appear automatically",
+    loading: "lazy"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M15 17h5l-1.4-1.4A2 2 0 0118 14.2V11a6 6 0 10-12 0v3.2a2 2 0 01-.6 1.4L4 17h5m6 0a3 3 0 11-6 0",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__value"
+  }, "New shift match"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__label"
+  }, "Sent to verified workers"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card stat-card--bottom",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M12 3L4 7v5c0 5.5 3.6 10.7 8 12 4.4-1.3 8-6.5 8-12V7l-8-4z",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M9 12l2 2 4-4",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__value"
+  }, "Credential verified"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__label"
+  }, "Before every assignment"))))))));
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UseCase);
 
@@ -11521,6 +11813,131 @@ const UseCase = () => {
 /*!*************************************!*\
   !*** ./src/components/UseCase.scss ***!
   \*************************************/
+/***/ (() => {
+
+
+
+/***/ }),
+
+/***/ "./src/components/Workforce.js":
+/*!*************************************!*\
+  !*** ./src/components/Workforce.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
+/* harmony import */ var _images_mockups_main_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/main.png */ "./src/images/mockups/main.png");
+/* harmony import */ var _Workforce_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Workforce.scss */ "./src/components/Workforce.scss");
+/* harmony import */ var _Workforce_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Workforce_scss__WEBPACK_IMPORTED_MODULE_3__);
+
+
+
+
+const Workforce = () => {
+  const headerRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  const visualRef = (0,_hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__["default"])();
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("section", {
+    className: "workforce",
+    id: "workforce"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "workforce__header reveal",
+    ref: headerRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "section-label"
+  }, "Verified Workforce"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h2", {
+    className: "section-title"
+  }, "Every worker, vetted and on file."), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
+    className: "section-subtitle"
+  }, "Browse an approved roster with reliability ratings, shift history, suspension signals, and credential status \u2014 all in one view. No spreadsheets. No agency intermediaries."))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "container container--wide"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "workforce__visual reveal",
+    ref: visualRef
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame mockup-frame--crop-left"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__bar",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: "mockup-frame__dot"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "mockup-frame__media"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_main_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Approved Talent directory \u2014 a table of vetted healthcare workers with shift counts, acceptance rate, reliability rating, and credential status",
+    loading: "lazy"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card stat-card--top",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M12 3L4 7v5c0 5.5 3.6 10.7 8 12 4.4-1.3 8-6.5 8-12V7l-8-4z",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M9 12l2 2 4-4",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round",
+    strokeLinejoin: "round"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__value"
+  }, "20,000+"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__label"
+  }, "Vetted healthcare workers"))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card stat-card--bottom",
+    "aria-hidden": "true"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__icon"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("svg", {
+    width: "18",
+    height: "18",
+    viewBox: "0 0 24 24",
+    fill: "none"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M3 12a9 9 0 1018 0 9 9 0 00-18 0z",
+    stroke: "currentColor",
+    strokeWidth: "2"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("path", {
+    d: "M12 7v5l3 2",
+    stroke: "currentColor",
+    strokeWidth: "2",
+    strokeLinecap: "round"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__value"
+  }, "Live reliability"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "stat-card__label"
+  }, "Updated every shift"))))));
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Workforce);
+
+/***/ }),
+
+/***/ "./src/components/Workforce.scss":
+/*!***************************************!*\
+  !*** ./src/components/Workforce.scss ***!
+  \***************************************/
 /***/ (() => {
 
 
@@ -11606,6 +12023,141 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./src/images/mockups/Screenshot 2026-04-17 102152.png":
+/*!*************************************************************!*\
+  !*** ./src/images/mockups/Screenshot 2026-04-17 102152.png ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Screenshot 2026-04-17 102152-ca629344cdf668b9293aabf5055e5137.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/Untitled10.png":
+/*!*******************************************!*\
+  !*** ./src/images/mockups/Untitled10.png ***!
+  \*******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Untitled10-9a4f34eaef650108377eb238725002a4.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/Untitled5.png":
+/*!******************************************!*\
+  !*** ./src/images/mockups/Untitled5.png ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Untitled5-655e3897d082f201abcb4cba2bb3d669.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/Untitled6.png":
+/*!******************************************!*\
+  !*** ./src/images/mockups/Untitled6.png ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Untitled6-ca5fb0b10a78397a50ecacd322c27c9f.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/Untitled8.png":
+/*!******************************************!*\
+  !*** ./src/images/mockups/Untitled8.png ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Untitled8-492a824a7bc83994a98bd96a12bbcbf8.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/login-desktop.png":
+/*!**********************************************!*\
+  !*** ./src/images/mockups/login-desktop.png ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/login-desktop-a2ac8cae0dd89d340480f24c573df09b.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/main.png":
+/*!*************************************!*\
+  !*** ./src/images/mockups/main.png ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/main-4776f4c2d5bb0ce5f71ee4b6d55eb9dd.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1).png":
+/*!******************************************************************************************!*\
+  !*** ./src/images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1).png ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1)-7b45ab90301bce3f970986aaaa304c1c.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png":
+/*!*************************************************************************************************!*\
+  !*** ./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png ***!
+  \*************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR)-5795c453e9f8eb62fa6fc1e7b95aff2a.png");
+
+/***/ }),
+
 /***/ "./src/pages/index.js?export=head":
 /*!****************************************!*\
   !*** ./src/pages/index.js?export=head ***!
@@ -11625,11 +12177,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Problem__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/Problem */ "./src/components/Problem.js");
 /* harmony import */ var _components_Solution__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/Solution */ "./src/components/Solution.js");
 /* harmony import */ var _components_Features__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/Features */ "./src/components/Features.js");
-/* harmony import */ var _components_Differentiation__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Differentiation */ "./src/components/Differentiation.js");
-/* harmony import */ var _components_UseCase__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/UseCase */ "./src/components/UseCase.js");
-/* harmony import */ var _components_PilotCTA__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/PilotCTA */ "./src/components/PilotCTA.js");
-/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/Footer */ "./src/components/Footer.js");
-/* harmony import */ var _components_PilotModal__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/PilotModal */ "./src/components/PilotModal.js");
+/* harmony import */ var _components_Workforce__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../components/Workforce */ "./src/components/Workforce.js");
+/* harmony import */ var _components_Differentiation__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../components/Differentiation */ "./src/components/Differentiation.js");
+/* harmony import */ var _components_UseCase__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../components/UseCase */ "./src/components/UseCase.js");
+/* harmony import */ var _components_PilotCTA__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../components/PilotCTA */ "./src/components/PilotCTA.js");
+/* harmony import */ var _components_Footer__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../components/Footer */ "./src/components/Footer.js");
+/* harmony import */ var _components_PilotModal__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../components/PilotModal */ "./src/components/PilotModal.js");
+
 
 
 
@@ -11653,9 +12207,9 @@ const IndexPage = () => {
     onOpenModal: () => setModalOpen(true)
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Hero__WEBPACK_IMPORTED_MODULE_2__["default"], {
     onOpenModal: () => setModalOpen(true)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Problem__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Solution__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Features__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Differentiation__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_UseCase__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PilotCTA__WEBPACK_IMPORTED_MODULE_8__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Problem__WEBPACK_IMPORTED_MODULE_3__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Solution__WEBPACK_IMPORTED_MODULE_4__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Features__WEBPACK_IMPORTED_MODULE_5__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Workforce__WEBPACK_IMPORTED_MODULE_6__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Differentiation__WEBPACK_IMPORTED_MODULE_7__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_UseCase__WEBPACK_IMPORTED_MODULE_8__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PilotCTA__WEBPACK_IMPORTED_MODULE_9__["default"], {
     onOpenModal: () => setModalOpen(true)
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_9__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PilotModal__WEBPACK_IMPORTED_MODULE_10__["default"], {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_Footer__WEBPACK_IMPORTED_MODULE_10__["default"], null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PilotModal__WEBPACK_IMPORTED_MODULE_11__["default"], {
     isOpen: modalOpen,
     onClose: () => setModalOpen(false)
   }));
