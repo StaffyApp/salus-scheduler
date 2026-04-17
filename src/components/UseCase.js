@@ -1,6 +1,6 @@
 import React from "react"
 import useScrollReveal from "../hooks/useScrollReveal"
-import availableShiftsImg from "../images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png"
+import availableShiftsImg from "../images/mockups/b1.png"
 import "./UseCase.scss"
 
 const UseCase = () => {

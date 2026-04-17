@@ -1,6 +1,8 @@
 import React from "react"
 import useScrollReveal from "../hooks/useScrollReveal"
-import calendarShowcase from "../images/mockups/Untitled8.png"
+import phone1 from "../images/mockups/b1.png"
+import phone2 from "../images/mockups/b2.png"
+import phone3 from "../images/mockups/b3.png"
 import "./Features.scss"
 
 const features = [
@@ -103,18 +105,27 @@ const Features = () => {
       <div className="container container--wide">
         <div className="features__showcase reveal" ref={showcaseRef}>
           <p className="features__showcase-caption">
-            The full month — upcoming, completed, and daily summaries, in one calendar
+            Workers see every matching shift on their phone — in one tap
           </p>
-          <div className="mockup-frame">
-            <div className="mockup-frame__bar" aria-hidden="true">
-              <span className="mockup-frame__dot" />
-              <span className="mockup-frame__dot" />
-              <span className="mockup-frame__dot" />
-            </div>
-            <div className="mockup-frame__media">
+          <div className="features__phone-trio">
+            <div className="phone-frame">
               <img
-                src={calendarShowcase}
-                alt="Full calendar month view — upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls"
+                src={phone3}
+                alt="Worker profile menu — reliability score, lifetime shift count and navigation"
+                loading="lazy"
+              />
+            </div>
+            <div className="phone-frame">
+              <img
+                src={phone2}
+                alt="Shift detail modal — full shift context with Apply to this shift action"
+                loading="lazy"
+              />
+            </div>
+            <div className="phone-frame">
+              <img
+                src={phone1}
+                alt="Available Shifts feed on the worker mobile app — matching roles, distances and pay appear automatically"
                 loading="lazy"
               />
             </div>

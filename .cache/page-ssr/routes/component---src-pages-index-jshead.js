@@ -10322,9 +10322,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _images_mockups_Untitled8_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/Untitled8.png */ "./src/images/mockups/Untitled8.png");
-/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Features.scss */ "./src/components/Features.scss");
-/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_Features_scss__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _images_mockups_b1_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/b1.png */ "./src/images/mockups/b1.png");
+/* harmony import */ var _images_mockups_b2_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../images/mockups/b2.png */ "./src/images/mockups/b2.png");
+/* harmony import */ var _images_mockups_b3_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../images/mockups/b3.png */ "./src/images/mockups/b3.png");
+/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Features.scss */ "./src/components/Features.scss");
+/* harmony import */ var _Features_scss__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_Features_scss__WEBPACK_IMPORTED_MODULE_5__);
+
+
 
 
 
@@ -10464,22 +10468,25 @@ const Features = () => {
     ref: showcaseRef
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", {
     className: "features__showcase-caption"
-  }, "The full month \u2014 upcoming, completed, and daily summaries, in one calendar"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mockup-frame"
+  }, "Workers see every matching shift on their phone \u2014 in one tap"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "features__phone-trio"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mockup-frame__bar",
-    "aria-hidden": "true"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "mockup-frame__dot"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "mockup-frame__dot"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
-    className: "mockup-frame__dot"
-  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
-    className: "mockup-frame__media"
+    className: "phone-frame"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: _images_mockups_Untitled8_png__WEBPACK_IMPORTED_MODULE_2__["default"],
-    alt: "Full calendar month view \u2014 upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls",
+    src: _images_mockups_b3_png__WEBPACK_IMPORTED_MODULE_4__["default"],
+    alt: "Worker profile menu \u2014 reliability score, lifetime shift count and navigation",
+    loading: "lazy"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "phone-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_b2_png__WEBPACK_IMPORTED_MODULE_3__["default"],
+    alt: "Shift detail modal \u2014 full shift context with Apply to this shift action",
+    loading: "lazy"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "phone-frame"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
+    src: _images_mockups_b1_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    alt: "Available Shifts feed on the worker mobile app \u2014 matching roles, distances and pay appear automatically",
     loading: "lazy"
   }))))));
 };
@@ -11668,7 +11675,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "react");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _hooks_useScrollReveal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../hooks/useScrollReveal */ "./src/hooks/useScrollReveal.js");
-/* harmony import */ var _images_mockups_workforce_scheduling_staffy_com_talent_dashboard_home_iPhone_XR_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png */ "./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png");
+/* harmony import */ var _images_mockups_b1_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../images/mockups/b1.png */ "./src/images/mockups/b1.png");
 /* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./UseCase.scss */ "./src/components/UseCase.scss");
 /* harmony import */ var _UseCase_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_UseCase_scss__WEBPACK_IMPORTED_MODULE_3__);
 
@@ -11754,7 +11761,7 @@ const UseCase = () => {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "phone-frame"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("img", {
-    src: _images_mockups_workforce_scheduling_staffy_com_talent_dashboard_home_iPhone_XR_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+    src: _images_mockups_b1_png__WEBPACK_IMPORTED_MODULE_2__["default"],
     alt: "Available shifts feed on the worker mobile app \u2014 new shifts matching the worker's profile appear automatically",
     loading: "lazy"
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
@@ -12083,10 +12090,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./src/images/mockups/Untitled8.png":
-/*!******************************************!*\
-  !*** ./src/images/mockups/Untitled8.png ***!
-  \******************************************/
+/***/ "./src/images/mockups/b1.png":
+/*!***********************************!*\
+  !*** ./src/images/mockups/b1.png ***!
+  \***********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12094,7 +12101,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/Untitled8-492a824a7bc83994a98bd96a12bbcbf8.png");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/b1-c1d6336a6f985af2f58adcb73ad47932.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/b2.png":
+/*!***********************************!*\
+  !*** ./src/images/mockups/b2.png ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/b2-db0cc30d9dded1b1e749e816c0218806.png");
+
+/***/ }),
+
+/***/ "./src/images/mockups/b3.png":
+/*!***********************************!*\
+  !*** ./src/images/mockups/b3.png ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/b3-993199223287a8a9351f4900a7bc33bb.png");
 
 /***/ }),
 
@@ -12140,21 +12177,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1)-7b45ab90301bce3f970986aaaa304c1c.png");
-
-/***/ }),
-
-/***/ "./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png":
-/*!*************************************************************************************************!*\
-  !*** ./src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR).png ***!
-  \*************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/static/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone XR)-5795c453e9f8eb62fa6fc1e7b95aff2a.png");
 
 /***/ }),
 

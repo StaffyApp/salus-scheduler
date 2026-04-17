@@ -107,7 +107,7 @@
 
   &__showcase {
     margin-top: 64px;
-    max-width: 1360px;
+    max-width: 1080px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -117,6 +117,26 @@
     font-size: 16px;
     font-weight: 500;
     color: $staffy-orange;
-    margin-bottom: 20px;
+    margin-bottom: 32px;
+  }
+
+  &__phone-trio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+
+    .phone-frame { width: 240px; }
+
+    @media (max-width: 900px) {
+      gap: 20px;
+      .phone-frame { width: 200px; }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      gap: 12px;
+      .phone-frame { width: 150px; }
+    }
   }
 }

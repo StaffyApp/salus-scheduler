@@ -79,10 +79,10 @@
 
   &__kpi-overlay {
     position: absolute;
-    bottom: -40px;
-    left: -40px;
-    width: 58%;
-    max-width: 520px;
+    bottom: -56px;
+    left: -56px;
+    width: 78%;
+    max-width: 700px;
     border: 1px solid $border-gray;
     border-radius: 14px;
     overflow: hidden;
@@ -105,8 +105,9 @@
 
     @media (max-width: $breakpoint-lg) {
       left: 0;
-      bottom: -32px;
-      width: 72%;
+      bottom: -40px;
+      width: 86%;
+      max-width: none;
     }
 
     @media (max-width: $breakpoint-sm) {

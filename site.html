@@ -465,7 +465,7 @@
   /* Modifier: crop the left side (used for mockups with legacy cbi HEALTH sidebar) */
   .mockup-frame--crop-left .mockup-frame__media img {
     transform: scale(1.14);
-    transform-origin: right center;
+    transform-origin: right top;
   }
   .mockup-frame > img { display: block; width: 100%; height: auto; }
 
@@ -547,9 +547,9 @@
   }
   .hero__kpi-overlay {
     position: absolute;
-    bottom: -40px; left: -40px;
-    width: 58%;
-    max-width: 520px;
+    bottom: -56px; left: -56px;
+    width: 78%;
+    max-width: 700px;
     border: 1px solid var(--border-gray);
     border-radius: 14px;
     overflow: hidden;
@@ -559,27 +559,43 @@
     transition: transform 0.35s var(--ease-out-quart), box-shadow 0.35s var(--ease-out-quart);
   }
   .hero__kpi-overlay:hover { transform: translateY(-4px); box-shadow: var(--shadow-device-hover); }
-  .hero__kpi-overlay img { display: block; width: 100%; height: auto; }
+  .hero__kpi-overlay img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
   @media (max-width: 1024px) {
-    .hero__kpi-overlay { left: 0; bottom: -32px; width: 72%; }
+    .hero__kpi-overlay { left: 0; bottom: -40px; width: 86%; max-width: none; }
   }
   @media (max-width: 640px) {
     .hero__kpi-overlay { position: relative; left: 0; bottom: 0; width: 100%; margin-top: 20px; }
   }
 
   /* Solution — centered product preview */
-  .solution__visual { margin: 56px auto 0; max-width: 1000px; padding: 0 20px; }
-  .solution__visual .mockup-frame__media img {
-    transform: scale(1.08);
-    transform-origin: bottom center;
-  }
+  .solution__visual { margin: 56px auto 0; max-width: 900px; padding: 0 20px; }
 
   /* Features — showcase strip */
-  .features__showcase { margin-top: 64px; max-width: 1160px; margin-left: auto; margin-right: auto; }
+  .features__showcase { margin-top: 64px; max-width: 1080px; margin-left: auto; margin-right: auto; }
   .features__showcase-caption {
     text-align: center;
     font-size: 16px; font-weight: 500; color: var(--orange);
-    margin-bottom: 20px;
+    margin-bottom: 32px;
+  }
+  .features__phone-trio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    flex-wrap: wrap;
+  }
+  .features__phone-trio .phone-frame { width: 240px; }
+  @media (max-width: 900px) {
+    .features__phone-trio .phone-frame { width: 200px; }
+    .features__phone-trio { gap: 20px; }
+  }
+  @media (max-width: 640px) {
+    .features__phone-trio .phone-frame { width: 150px; }
+    .features__phone-trio { gap: 12px; }
   }
 
   /* Workforce — hero spotlight for the talent directory */
@@ -596,7 +612,7 @@
   .workforce__header .section-subtitle { margin: 0 auto; }
   .workforce__visual {
     position: relative;
-    max-width: 1160px;
+    max-width: 920px;
     margin: 0 auto;
   }
   .workforce__visual .stat-card { display: flex; }
@@ -972,15 +988,16 @@
         </div>
         <div class="container container--wide">
           <div class="features__showcase reveal">
-            <p class="features__showcase-caption">The full month — upcoming, completed, and daily summaries, in one calendar</p>
-            <div class="mockup-frame">
-              <div class="mockup-frame__bar" aria-hidden="true">
-                <span class="mockup-frame__dot"></span>
-                <span class="mockup-frame__dot"></span>
-                <span class="mockup-frame__dot"></span>
+            <p class="features__showcase-caption">Workers see every matching shift on their phone — in one tap</p>
+            <div class="features__phone-trio">
+              <div class="phone-frame">
+                <img src="src/images/mockups/b3.png" alt="Worker profile menu — reliability score, lifetime shift count and navigation" loading="lazy" />
               </div>
-              <div class="mockup-frame__media">
-                <img src="src/images/mockups/Untitled8.png" alt="Full calendar month view — upcoming shifts, completed shifts, and daily summaries color-coded across the month with export controls" loading="lazy" />
+              <div class="phone-frame">
+                <img src="src/images/mockups/b2.png" alt="Shift detail modal — full shift context with Apply to this shift action" loading="lazy" />
+              </div>
+              <div class="phone-frame">
+                <img src="src/images/mockups/b1.png" alt="Available Shifts feed on the worker mobile app — matching roles, distances and pay appear automatically" loading="lazy" />
               </div>
             </div>
           </div>
@@ -1143,7 +1160,7 @@
               </div>
               <div class="use-case__device reveal reveal--delay-2" aria-label="Worker-side mobile app">
                 <div class="phone-frame">
-                  <img src="src/images/mockups/workforce.scheduling.staffy.com_talent-dashboard_home(iPhone%20XR).png" alt="Available shifts feed on the worker mobile app — new shifts matching the worker's profile appear automatically" loading="lazy" />
+                  <img src="src/images/mockups/b1.png" alt="Available shifts feed on the worker mobile app — new shifts matching the worker's profile appear automatically" loading="lazy" />
                 </div>
                 <div class="stat-card" aria-hidden="true">
                   <div class="stat-card__icon">
