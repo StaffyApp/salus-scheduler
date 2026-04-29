@@ -1,6 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import availableShiftsImg from "../images/mockups/b1.png"
 import "./UseCase.scss"
 
 const UseCase = () => {
@@ -74,8 +74,8 @@ const UseCase = () => {
               ref={deviceRef}
             >
               <div className="phone-frame">
-                <img
-                  src={availableShiftsImg}
+                <StaticImage
+                  src="../images/mockups/b1.webp"
                   alt="Available shifts feed on the worker mobile app — new shifts matching the worker's profile appear automatically"
                   loading="lazy"
                 />

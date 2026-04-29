@@ -3,6 +3,27 @@
 .hero {
   padding: 120px 0 60px;
   background: $white;
+  position: relative;
+
+  // Ambient orange-tinted glow that sits behind the hero — adds depth without clutter
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -10%;
+    width: 60%;
+    height: 80%;
+    background: radial-gradient(circle at 60% 40%, rgba(255, 77, 0, 0.06), transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+    animation: fadeIn 1.2s var(--ease-out-quart) 0.3s both;
+  }
+
+  .container,
+  .container--wide {
+    position: relative;
+    z-index: 1;
+  }
 
   &__layout {
     display: grid;
@@ -71,6 +92,18 @@
   &__visual {
     position: relative;
     padding: 12px 0;
+    perspective: 1400px;
+    --parallax-rot-x: 0deg;
+    --parallax-rot-y: 0deg;
+    --parallax-tz: 0px;
+  }
+
+  &__tilt {
+    position: relative;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--parallax-rot-x)) rotateY(var(--parallax-rot-y)) translateZ(var(--parallax-tz));
+    transition: transform 0.4s var(--ease-out-quart);
+    will-change: transform;
 
     .mockup-frame {
       animation: riseIn 1s var(--ease-out-expo) 0.3s both;

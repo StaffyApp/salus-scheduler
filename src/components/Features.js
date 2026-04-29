@@ -1,8 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import phone1 from "../images/mockups/b1.png"
-import phone2 from "../images/mockups/b2.png"
-import phone3 from "../images/mockups/b3.png"
 import "./Features.scss"
 
 const features = [
@@ -109,22 +107,22 @@ const Features = () => {
           </p>
           <div className="features__phone-trio">
             <div className="phone-frame">
-              <img
-                src={phone3}
+              <StaticImage
+                src="../images/mockups/b3.webp"
                 alt="Worker profile menu — reliability score, lifetime shift count and navigation"
                 loading="lazy"
               />
             </div>
             <div className="phone-frame">
-              <img
-                src={phone2}
+              <StaticImage
+                src="../images/mockups/b2.webp"
                 alt="Shift detail modal — full shift context with Apply to this shift action"
                 loading="lazy"
               />
             </div>
             <div className="phone-frame">
-              <img
-                src={phone1}
+              <StaticImage
+                src="../images/mockups/b1.webp"
                 alt="Available Shifts feed on the worker mobile app — matching roles, distances and pay appear automatically"
                 loading="lazy"
               />

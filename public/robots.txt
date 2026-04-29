@@ -1,0 +1,36 @@
+# Staffy Workforce Scheduling — salus.staffy.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /*?utm_
+Disallow: /*?gclid=
+Disallow: /*?fbclid=
+
+# AI crawlers: allow by default so the platform surfaces in AI answers.
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Bandwidth hogs with little upside: block
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+Sitemap: https://salus.staffy.com/sitemap.xml

@@ -1,4 +1,12 @@
 var plugins = [{
+      name: 'gatsby-plugin-hubspot',
+      plugin: require('C:/Users/Admin/workspace/salus-scheduler/node_modules/gatsby-plugin-hubspot/gatsby-ssr.js'),
+      options: {"plugins":[],"trackingCode":"23801619","respectDNT":true,"productionOnly":true},
+    },{
+      name: 'gatsby-plugin-image',
+      plugin: require('C:/Users/Admin/workspace/salus-scheduler/node_modules/gatsby-plugin-image/gatsby-ssr.js'),
+      options: {"plugins":[]},
+    },{
       name: 'default-site-plugin',
       plugin: require('C:/Users/Admin/workspace/salus-scheduler/gatsby-ssr.js'),
       options: {"plugins":[]},

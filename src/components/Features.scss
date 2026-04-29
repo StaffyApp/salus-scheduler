@@ -35,12 +35,27 @@
     border: 1px solid $border-gray;
     border-radius: $radius-md;
     box-shadow: $shadow-card;
-    transition: border-color 0.25s var(--ease-out-quart), transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
+    transition: border-color 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-quart);
 
     &:hover {
       border-color: $navy;
-      transform: translateY(-3px);
+      transform: translateY(-6px);
       box-shadow: $shadow-card-hover;
+
+      .features__card-icon {
+        color: $staffy-orange;
+        background: rgba(255, 77, 0, 0.08);
+        transform: rotate(-4deg) scale(1.06);
+      }
+
+      .features__card-number {
+        color: $staffy-orange;
+        transform: translateX(2px);
+      }
+
+      .features__card-list li svg path {
+        stroke: $staffy-orange;
+      }
     }
 
     &-top {
@@ -57,6 +72,9 @@
       align-items: center;
       justify-content: center;
       color: $navy;
+      border-radius: 10px;
+      background: transparent;
+      transition: color 0.3s var(--ease-out-quart), background-color 0.3s var(--ease-out-quart), transform 0.4s var(--ease-out-expo);
     }
 
     &-number {
@@ -66,6 +84,7 @@
       color: $mid-gray;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      transition: color 0.25s var(--ease-out-quart), transform 0.3s var(--ease-out-expo);
     }
 
     &-title {
@@ -99,8 +118,21 @@
         font-size: 14px;
         font-weight: 500;
         color: $navy;
+        transition: transform 0.3s var(--ease-out-expo);
 
-        svg { flex-shrink: 0; }
+        svg {
+          flex-shrink: 0;
+          path { transition: stroke 0.3s var(--ease-out-quart); }
+        }
+      }
+    }
+
+    &:hover .features__card-list li {
+      @for $i from 1 through 6 {
+        &:nth-child(#{$i}) {
+          transform: translateX(4px);
+          transition-delay: #{($i - 1) * 0.03}s;
+        }
       }
     }
   }

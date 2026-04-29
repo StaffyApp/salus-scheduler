@@ -1,6 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import shiftDetailsImg from "../images/mockups/Untitled10.png"
 import "./Solution.scss"
 
 const Solution = () => {
@@ -31,8 +31,8 @@ const Solution = () => {
               <span className="mockup-frame__dot" />
             </div>
             <div className="mockup-frame__media">
-              <img
-                src={shiftDetailsImg}
+              <StaticImage
+                src="../images/mockups/Untitled10.webp"
                 alt="Schedule and broadcast a shift — single-day, multi-day and recurring options, month calendars, start and end times, unpaid break, broadcast to team and shift notes"
                 loading="lazy"
               />

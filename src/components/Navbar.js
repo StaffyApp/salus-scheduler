@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
 import "./Navbar.scss"
-import logoV3 from "../images/logo-v3.png"
 
 const Navbar = ({ onOpenModal }) => {
   const [scrolled, setScrolled] = useState(false)
@@ -45,7 +45,13 @@ const Navbar = ({ onOpenModal }) => {
     >
       <div className="navbar__inner">
         <Link to="/" className="navbar__logo" aria-label="Go to homepage">
-          <img src={logoV3} alt="Staffy Health + Hospitality — Made in Canada" className="navbar__logo-img" />
+          <StaticImage
+            src="../images/logo-v3.webp"
+            alt="Staffy Health + Hospitality — Made in Canada"
+            className="navbar__logo-img"
+            loading="eager"
+            placeholder="none"
+          />
         </Link>
 
         <button
@@ -73,9 +79,8 @@ const Navbar = ({ onOpenModal }) => {
             <li><a href="/#features" className={activeTab === "features" ? "active" : ""} onClick={() => setMobileOpen(false)}>How it works</a></li>
             <li><a href="/#difference" className={activeTab === "difference" ? "active" : ""} onClick={() => setMobileOpen(false)}>Why Us</a></li>
             <li><a href="/#use-case" className={activeTab === "use-case" ? "active" : ""} onClick={() => setMobileOpen(false)}>Use Cases</a></li>
-            <li className="navbar__mobile-only"><a href="https://salus.staffy.com/roi-calculator/" target="_blank" rel="noopener noreferrer" onClick={() => setMobileOpen(false)}>Blog</a></li>
             <li className="navbar__mobile-only"><a href="/contact" onClick={() => setMobileOpen(false)}>Contact</a></li>
-            <li className="navbar__mobile-only"><a href="/#problem" onClick={() => setMobileOpen(false)}>FAQ</a></li>
+            <li className="navbar__mobile-only"><a href="/faq" onClick={() => setMobileOpen(false)}>FAQ</a></li>
           </ul>
           <div className="navbar__actions">
             <a
@@ -94,7 +99,8 @@ const Navbar = ({ onOpenModal }) => {
               className="btn btn--orange navbar__btn"
               onClick={() => setMobileOpen(false)}
             >
-              Book a demo<br />(Facilities)
+              <span className="navbar__btn-main">Book a demo</span>
+              <span className="navbar__btn-sub">Facilities</span>
             </a>
             <a
               href="https://staffy.com/app"
@@ -103,7 +109,8 @@ const Navbar = ({ onOpenModal }) => {
               className="btn btn--dark navbar__btn"
               onClick={() => setMobileOpen(false)}
             >
-              Download the app<br />(Professionals)
+              <span className="navbar__btn-main">Download app</span>
+              <span className="navbar__btn-sub">Professionals</span>
             </a>
           </div>
         </div>

@@ -84,6 +84,9 @@
     gap: 20px;
     position: relative;
     z-index: 1;
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.55s var(--ease-out-quart), transform 0.55s var(--ease-out-expo);
 
     &-num {
       width: 32px;
@@ -98,6 +101,12 @@
       font-size: 14px;
       font-weight: 600;
       margin-top: 2px;
+      transition: background-color 0.3s var(--ease-out-quart), transform 0.3s var(--ease-out-expo);
+    }
+
+    &:hover .use-case__step-num {
+      background: $staffy-orange;
+      transform: scale(1.1);
     }
 
     &-content {
@@ -118,6 +127,18 @@
     }
   }
 
+  // Stagger the steps in once the card reveals
+  &__card.is-visible &__step {
+    opacity: 1;
+    transform: translateY(0);
+
+    @for $i from 1 through 4 {
+      &:nth-child(#{$i}) {
+        transition-delay: #{0.2 + ($i - 1) * 0.12}s;
+      }
+    }
+  }
+
   &__device {
     position: relative;
     display: flex;
@@ -134,6 +155,7 @@
       border-radius: 50%;
       z-index: 0;
       pointer-events: none;
+      animation: haloPulse 5s ease-in-out infinite;
     }
 
     .phone-frame {
@@ -170,4 +192,14 @@
       .stat-card--bottom { left: 0; }
     }
   }
+}
+
+@keyframes haloPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.08); opacity: 0.7; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .use-case__device::before { animation: none !important; }
+  .use-case__step { opacity: 1 !important; transform: none !important; }
 }

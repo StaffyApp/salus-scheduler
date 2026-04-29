@@ -1,6 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import ongoingImg from "../images/mockups/Untitled6.png"
 import "./Differentiation.scss"
 
 const items = [
@@ -53,8 +53,8 @@ const Differentiation = () => {
                 <span className="mockup-frame__dot" />
               </div>
               <div className="mockup-frame__media">
-                <img
-                  src={ongoingImg}
+                <StaticImage
+                  src="../images/mockups/Untitled6.webp"
                   alt="Ongoing Shifts detail — a Friday registered-nurse shift with the hired contractor's 88 reliability score, attendance status, late-arrival counts and contractor details"
                   loading="lazy"
                 />

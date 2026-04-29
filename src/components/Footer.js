@@ -1,6 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import caFlag from "../images/flaf.png"
 import "./Footer.scss"
 
 const Footer = () => {
@@ -18,7 +18,7 @@ const Footer = () => {
             </ul>
             <div className="footer__canada">
               <span>Proudly made in Canada</span>
-              <img src={caFlag} alt="Canadian flag" className="footer__canada-flag" />
+              <StaticImage src="../images/flaf.webp" alt="Canadian flag" className="footer__canada-flag" loading="lazy" />
             </div>
           </div>
 
@@ -26,7 +26,6 @@ const Footer = () => {
             <ul>
               <li><a href="https://staffy.com/find-talent" target="_blank" rel="noopener noreferrer">Find Talent</a></li>
               <li><a href="/#difference">About Us</a></li>
-              <li><a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer">Book a demo</a></li>
             </ul>
             <div className="footer__social">
               <a href="https://twitter.com/staffyapp" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
@@ -49,8 +48,9 @@ const Footer = () => {
 
           <div className="footer__col reveal-child">
             <ul>
-              <li><a href="https://salus.staffy.com/roi-calculator/" target="_blank" rel="noopener noreferrer">Blog</a></li>
+              <li><a href="/faq">FAQ</a></li>
               <li><a href="/contact" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</a></li>
+              <li><a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer">Book a demo</a></li>
             </ul>
           </div>
 

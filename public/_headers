@@ -1,0 +1,65 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: same-origin
+/static/Mont-Regular-842d8bea7ebfa45db77f056489f0ec54.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/Mont-Book-05a6e51345337cf3f3d9ce1fb4702c90.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/Mont-SemiBold-903d5356d702d106e617e1d8e9be4309.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/Mont-Bold-82242326dc96d696cb7e9ddae92c053d.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/static/Mont-Heavy-4a295d75162741723fad2f992f826311.woff2
+  Cache-Control: public, max-age=31536000, immutable
+/522-f239ef890823c08a9b4c.js
+  Cache-Control: public, max-age=31536000, immutable
+/styles.8cd0e6ebfdd8bed6f88d.css
+  Cache-Control: public, max-age=31536000, immutable
+/551-0d60a21be7a4207b0662.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/framework-0063067ca4f407ffd371.js.LICENSE.txt
+  Cache-Control: public, max-age=31536000, immutable
+/app-201514a6d3018ee8ff47.js
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-d8c775851cc7855b36ae.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-contact-js-8e371967da4cee3489c1.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-faq-js-7a2c37ef960f97f45c15.js
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-js-4298cde02134a7d2ba4f.js
+  Cache-Control: public, max-age=31536000, immutable
+/551-0d60a21be7a4207b0662.js
+  Cache-Control: public, max-age=31536000, immutable
+/452-616d0b43b68c6a080505.js
+  Cache-Control: public, max-age=31536000, immutable
+/framework-0063067ca4f407ffd371.js
+  Cache-Control: public, max-age=31536000, immutable
+/commons-6949ffd3fa8fb4c0f639.js
+  Cache-Control: public, max-age=31536000, immutable
+/app-201514a6d3018ee8ff47.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/webpack-runtime-d8c775851cc7855b36ae.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-contact-js-8e371967da4cee3489c1.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-faq-js-7a2c37ef960f97f45c15.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/component---src-pages-index-js-4298cde02134a7d2ba4f.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/551-0d60a21be7a4207b0662.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/452-616d0b43b68c6a080505.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/framework-0063067ca4f407ffd371.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/commons-6949ffd3fa8fb4c0f639.js.map
+  Cache-Control: public, max-age=31536000, immutable
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+/sw.js
+  Cache-Control: no-cache

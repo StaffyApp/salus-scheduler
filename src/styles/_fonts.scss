@@ -1,7 +1,10 @@
-// Mont font family — local files
+// Mont font family — only weights actually used by the site.
+// Files are WOFF2 (Brotli-compressed wrapper around the original OTF glyphs —
+// same rendering, ~55% smaller). Regenerate with `node convert-fonts.js` if
+// you replace the source OTFs in this directory.
 @font-face {
   font-family: 'Mont';
-  src: url('../fonts/Mont-Regular.otf') format('opentype');
+  src: url('../fonts/Mont-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -9,23 +12,15 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('../fonts/Mont-RegularItalic.otf') format('opentype');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-Book.otf') format('opentype');
-  font-weight: 450;
+  src: url('../fonts/Mont-Book.woff2') format('woff2');
+  font-weight: 450 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Mont';
-  src: url('../fonts/Mont-SemiBold.otf') format('opentype');
+  src: url('../fonts/Mont-SemiBold.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -33,15 +28,7 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('../fonts/Mont-SemiBoldItalic.otf') format('opentype');
-  font-weight: 600;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-Bold.otf') format('opentype');
+  src: url('../fonts/Mont-Bold.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -49,32 +36,8 @@
 
 @font-face {
   font-family: 'Mont';
-  src: url('../fonts/Mont-BoldItalic.otf') format('opentype');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-Heavy.otf') format('opentype');
+  src: url('../fonts/Mont-Heavy.woff2') format('woff2');
   font-weight: 800;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-HeavyItalic.otf') format('opentype');
-  font-weight: 800;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Mont';
-  src: url('../fonts/Mont-Black.otf') format('opentype');
-  font-weight: 900;
   font-style: normal;
   font-display: swap;
 }

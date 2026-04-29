@@ -1,11 +1,13 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import talentImg from "../images/mockups/main.png"
+import useCountUp from "../hooks/useCountUp"
 import "./Workforce.scss"
 
 const Workforce = () => {
   const headerRef = useScrollReveal()
   const visualRef = useScrollReveal()
+  const [countRef, count] = useCountUp(20000)
 
   return (
     <section className="workforce" id="workforce">
@@ -29,15 +31,15 @@ const Workforce = () => {
               <span className="mockup-frame__dot" />
             </div>
             <div className="mockup-frame__media">
-              <img
-                src={talentImg}
+              <StaticImage
+                src="../images/mockups/main.webp"
                 alt="Approved Talent directory — a table of vetted healthcare workers with shift counts, acceptance rate, reliability rating, and credential status"
                 loading="lazy"
               />
             </div>
           </div>
 
-          <div className="stat-card stat-card--top" aria-hidden="true">
+          <div className="stat-card stat-card--top" aria-hidden="true" ref={countRef}>
             <div className="stat-card__icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                 <path d="M12 3L4 7v5c0 5.5 3.6 10.7 8 12 4.4-1.3 8-6.5 8-12V7l-8-4z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -45,7 +47,7 @@ const Workforce = () => {
               </svg>
             </div>
             <div>
-              <div className="stat-card__value">20,000+</div>
+              <div className="stat-card__value">{count.toLocaleString()}+</div>
               <div className="stat-card__label">Vetted healthcare workers</div>
             </div>
           </div>

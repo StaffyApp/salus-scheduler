@@ -186,6 +186,7 @@ const PilotModal = ({ isOpen, onClose }) => {
   if (!isOpen) return null
 
   return (
+    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions -- keyboard close handled via window-level Escape listener above
     <div
       className="pilot-modal__backdrop"
       ref={modalRef}

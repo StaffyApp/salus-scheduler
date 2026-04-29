@@ -58,6 +58,7 @@
     }
 
     &-check {
+      position: relative;
       width: 36px;
       height: 36px;
       flex-shrink: 0;
@@ -67,10 +68,14 @@
       background: $staffy-orange;
       color: $white;
       border-radius: 50%;
-      transition: transform 0.3s var(--ease-out-quart);
+      transform: scale(0) rotate(-30deg);
+      transition: transform 0.35s var(--ease-out-expo), box-shadow 0.3s var(--ease-out-quart);
     }
 
-    &:hover .diff__item-check { transform: scale(1.08); }
+    &:hover .diff__item-check {
+      transform: scale(1.12) rotate(0deg);
+      box-shadow: 0 0 0 6px rgba(255, 77, 0, 0.15);
+    }
 
     &-text {
       display: flex;
@@ -89,6 +94,19 @@
         font-weight: 400;
         color: $mid-gray;
         line-height: 1.5;
+      }
+    }
+  }
+
+  // Scale-in check icons with stagger when the list reveals into view
+  &__list.is-visible &__item-check {
+    transform: scale(1) rotate(0deg);
+  }
+
+  &__list.is-visible {
+    @for $i from 1 through 8 {
+      .diff__item:nth-child(#{$i}) .diff__item-check {
+        transition-delay: #{0.1 + ($i - 1) * 0.08}s;
       }
     }
   }

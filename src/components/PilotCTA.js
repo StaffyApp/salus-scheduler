@@ -1,7 +1,6 @@
 import React from "react"
+import { StaticImage } from "gatsby-plugin-image"
 import useScrollReveal from "../hooks/useScrollReveal"
-import loginDesktopImg from "../images/mockups/login-desktop.png"
-import loginMobileImg from "../images/mockups/workforce.scheduling.staffy.com_auth_login(iPhone XR) (1).png"
 import "./PilotCTA.scss"
 
 const PilotCTA = ({ onOpenModal }) => {
@@ -45,8 +44,8 @@ const PilotCTA = ({ onOpenModal }) => {
                   <span className="mockup-frame__dot" />
                 </div>
                 <div className="mockup-frame__media">
-                  <img
-                    src={loginDesktopImg}
+                  <StaticImage
+                    src="../images/mockups/login-desktop.webp"
                     alt="Sign in to Staffy Workforce Scheduling — brand panel on the left with the tagline 'Making a Difference', sign-in form on the right"
                     loading="lazy"
                   />
@@ -55,7 +54,11 @@ const PilotCTA = ({ onOpenModal }) => {
             </div>
             <div className="pilot-cta__phone-float" aria-hidden="true">
               <div className="phone-frame">
-                <img src={loginMobileImg} alt="" loading="lazy" />
+                <StaticImage
+                  src="../images/mockups/login-mobile.webp"
+                  alt=""
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

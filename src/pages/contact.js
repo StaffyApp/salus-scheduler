@@ -2,73 +2,265 @@ import React, { useState } from "react"
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
 import PilotModal from "../components/PilotModal"
+import useScrollReveal from "../hooks/useScrollReveal"
+import { contactSchemaGraph } from "../seo/schema"
 import "./contact.scss"
+
+// AJAX endpoint for gatsby runtime; the bare endpoint on the form's `action`
+// attribute is what the JS-stripped standalone build falls back to.
+const FORMSUBMIT_AJAX = "https://formsubmit.co/ajax/info@staffy.com"
+const FORMSUBMIT_POST = "https://formsubmit.co/info@staffy.com"
+
+function validateFields(data) {
+  const errors = {}
+  if (!data.firstName.trim()) errors.firstName = "First name is required"
+  else if (!/^[A-Za-z\s\-.']{1,60}$/.test(data.firstName.trim()))
+    errors.firstName = "Please enter a valid first name"
+  if (!data.lastName.trim()) errors.lastName = "Last name is required"
+  else if (!/^[A-Za-z\s\-.']{1,60}$/.test(data.lastName.trim()))
+    errors.lastName = "Please enter a valid last name"
+  if (!data.email.trim()) errors.email = "Email is required"
+  else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(data.email.trim()))
+    errors.email = "Please enter a valid email address"
+  if (!data.phone.trim()) errors.phone = "Phone number is required"
+  else if (!/^[\d\s()+\-.]{7,20}$/.test(data.phone.trim()))
+    errors.phone = "Please enter a valid phone number"
+  return errors
+}
 
 const ContactPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+  const [fieldErrors, setFieldErrors] = useState({})
+  const [submitError, setSubmitError] = useState("")
+  const [submitting, setSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const introRef = useScrollReveal({ threshold: 0.15 })
+  const formRef = useScrollReveal({ threshold: 0.1 })
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleBlur = (e) => {
+    const { name } = e.target
+    const errors = validateFields(formData)
+    if (errors[name]) {
+      setFieldErrors((prev) => ({ ...prev, [name]: errors[name] }))
+    } else {
+      setFieldErrors((prev) => {
+        const next = { ...prev }
+        delete next[name]
+        return next
+      })
+    }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setSubmitError("")
+    const errors = validateFields(formData)
+    if (Object.keys(errors).length > 0) {
+      setFieldErrors(errors)
+      return
+    }
+    setFieldErrors({})
+    setSubmitting(true)
+
+    const payload = {
+      _subject: `Salus Contact Form — ${formData.firstName} ${formData.lastName}`,
+      _template: "table",
+      _captcha: "false",
+      "First Name": formData.firstName,
+      "Last Name": formData.lastName,
+      Email: formData.email,
+      Phone: formData.phone,
+      Message: formData.message || "—",
+      Source: "salus.staffy.com/contact",
+    }
+
+    try {
+      const res = await fetch(FORMSUBMIT_AJAX, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+      setSubmitted(true)
+      setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" })
+    } catch (err) {
+      setSubmitError("Something went wrong. Please try again.")
+    } finally {
+      setSubmitting(false)
+    }
+  }
 
   return (
     <main>
       <div className="scroll-progress" aria-hidden="true" />
       <Navbar onOpenModal={() => setModalOpen(true)} />
 
-      {/* Contact Information */}
+      {/* Contact Information + Form */}
       <section className="contact-info">
         <div className="contact-info__grid">
-          <div className="contact-info__intro">
-            <h2 className="contact-info__heading">Contact Information</h2>
+          <div ref={introRef} className="contact-info__intro reveal">
+            <h2 className="contact-info__heading">Contact Us</h2>
             <p className="contact-info__description">
               We'd love to hear from you! Whether you're interested in learning
               more about Salus, requesting a demo, or have questions about our
               platform, our team is here to help.
             </p>
-          </div>
-
-          <div className="contact-info__details">
-            <div className="contact-info__block">
-              <h3 className="contact-info__subheading">Get in Touch</h3>
+            <div className="contact-info__meta">
               <p>
-                <strong>Email:</strong> info@staffy.com{" "}
-                <strong>Phone:</strong> +1 (647) 492-7823{" "}
+                <strong>Email:</strong> info@staffy.com
+              </p>
+              <p>
+                <strong>Phone:</strong> +1 (647) 492-7823
+              </p>
+              <p>
                 <strong>Address:</strong> 485 Queen Street West, Suite 200,
                 Toronto, ON, Canada M5V 2A9
               </p>
             </div>
+          </div>
 
-            <div className="contact-info__block">
-              <h3 className="contact-info__subheading">Business Hours</h3>
-              <p>
-                <strong>Monday to Friday:</strong> 9:00 AM — 6:00 PM Eastern
-                Time <strong>Holiday Schedule:</strong> Closed on Canadian
-                statutory holidays <strong>Response Time:</strong> We strive to
-                respond to all inquiries within one business day
-              </p>
-            </div>
+          <div ref={formRef} className="contact-info__form-wrap reveal reveal--delay-2">
+            {submitted ? (
+              <div className="contact-info__success" aria-live="polite">
+                <div className="contact-info__success-icon">
+                  <svg width="56" height="56" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+                    <circle className="contact-info__success-circle" cx="24" cy="24" r="22" stroke="#10B981" strokeWidth="2" fill="#10B981" fillOpacity="0.12" />
+                    <path className="contact-info__success-check" d="M16 24L22 30L32 18" stroke="#10B981" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <h3>Message received</h3>
+                <p>Thank you for reaching out. Our team will get back to you within one business day.</p>
+              </div>
+            ) : (
+              <form
+                className="contact-info__form"
+                action={FORMSUBMIT_POST}
+                method="POST"
+                onSubmit={handleSubmit}
+                noValidate
+              >
+                {/* Hidden FormSubmit controls — consumed by the non-AJAX standalone POST */}
+                <input type="hidden" name="_subject" value="Salus Contact Form Submission" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value="https://salus.staffy.com/contact/?submitted=1" />
 
-            <div className="contact-info__block">
-              <h3 className="contact-info__subheading">Support Services</h3>
-              <p>Our dedicated support team is available to assist with:</p>
-              <ul className="contact-info__list">
-                <li>Platform demonstrations and product tours</li>
-                <li>Onboarding assistance for new organizations</li>
-                <li>Technical support and troubleshooting</li>
-                <li>Custom configuration and integration guidance</li>
-                <li>Training resources and best practices</li>
-                <li>Pricing and subscription inquiries</li>
-              </ul>
-            </div>
+                <div className="contact-info__row">
+                  <div className={`contact-info__field${fieldErrors.firstName ? " contact-info__field--error" : ""}`}>
+                    <label htmlFor="firstName">First name <span className="contact-info__required">*</span></label>
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      required
+                      placeholder="First name*"
+                      autoComplete="given-name"
+                      maxLength={60}
+                    />
+                    {fieldErrors.firstName && (
+                      <span className="contact-info__error" role="alert">{fieldErrors.firstName}</span>
+                    )}
+                  </div>
+                  <div className={`contact-info__field${fieldErrors.lastName ? " contact-info__field--error" : ""}`}>
+                    <label htmlFor="lastName">Last name <span className="contact-info__required">*</span></label>
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      required
+                      placeholder="Last name*"
+                      autoComplete="family-name"
+                      maxLength={60}
+                    />
+                    {fieldErrors.lastName && (
+                      <span className="contact-info__error" role="alert">{fieldErrors.lastName}</span>
+                    )}
+                  </div>
+                </div>
 
-            <div className="contact-info__block">
-              <h3 className="contact-info__subheading">Connect With Us Online</h3>
-              <p>
-                <strong>Website:</strong> salus.staffy.com
-              </p>
-              <p>
-                You can also fill out the contact form on our website, and a
-                member of our team will reach out to you promptly with more
-                information tailored to your organization's specific needs.
-              </p>
-            </div>
+                <div className="contact-info__row">
+                  <div className={`contact-info__field${fieldErrors.email ? " contact-info__field--error" : ""}`}>
+                    <label htmlFor="email">Email <span className="contact-info__required">*</span></label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      required
+                      placeholder="Email*"
+                      autoComplete="email"
+                      maxLength={120}
+                    />
+                    {fieldErrors.email && (
+                      <span className="contact-info__error" role="alert">{fieldErrors.email}</span>
+                    )}
+                  </div>
+                  <div className={`contact-info__field${fieldErrors.phone ? " contact-info__field--error" : ""}`}>
+                    <label htmlFor="phone">Phone number <span className="contact-info__required">*</span></label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      onBlur={handleBlur}
+                      required
+                      placeholder="Phone Number*"
+                      autoComplete="tel"
+                      maxLength={30}
+                    />
+                    {fieldErrors.phone && (
+                      <span className="contact-info__error" role="alert">{fieldErrors.phone}</span>
+                    )}
+                  </div>
+                </div>
+
+                <div className="contact-info__field">
+                  <label htmlFor="message">Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Message"
+                    rows={6}
+                    maxLength={2000}
+                  />
+                </div>
+
+                {submitError && (
+                  <div className="contact-info__submit-error" role="alert">{submitError}</div>
+                )}
+
+                <div className="contact-info__submit-row">
+                  <button type="submit" className="contact-info__submit" disabled={submitting}>
+                    {submitting ? "Submitting…" : "Submit"}
+                  </button>
+                </div>
+              </form>
+            )}
           </div>
         </div>
       </section>
@@ -83,10 +275,49 @@ export default ContactPage
 
 export const Head = () => (
   <>
-    <title>Contact | Salus Workforce Scheduling</title>
+    <meta charSet="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a2b3d" />
+
+    <title>Contact | Staffy Workforce Scheduling</title>
     <meta
       name="description"
-      content="Get in touch with the Salus Scheduling team. We're here to answer your questions about healthcare workforce management."
+      content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823. Based in Toronto, serving healthcare facilities across Canada."
+    />
+    <link rel="canonical" href="https://salus.staffy.com/contact/" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <link rel="icon" type="image/webp" href="/favicon.webp" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Staffy" />
+    <meta property="og:url" content="https://salus.staffy.com/contact/" />
+    <meta property="og:title" content="Contact | Staffy Workforce Scheduling" />
+    <meta
+      property="og:description"
+      content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823."
+    />
+    <meta property="og:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Staffy Workforce Scheduling — contact the healthcare scheduling team"
+    />
+    <meta property="og:locale" content="en_CA" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@staffyapp" />
+    <meta name="twitter:title" content="Contact | Staffy Workforce Scheduling" />
+    <meta
+      name="twitter:description"
+      content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823."
+    />
+    <meta name="twitter:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(contactSchemaGraph) }}
     />
   </>
 )
