@@ -90,7 +90,7 @@ const ContactPage = () => {
       const res = await fetch(FORMSUBMIT_AJAX, {
         method: "POST",
         mode: "cors",
-        referrerPolicy: "unsafe-url",
+        referrerPolicy: "origin",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",

@@ -8,6 +8,7 @@ import MontHeavy from './src/fonts/Mont-Heavy.woff2'
 
 export const onRenderBody = ({ setHeadComponents }) => {
   setHeadComponents([
+    <meta key="referrer-policy" name="referrer" content="origin" />,
     <link key="font-regular" rel="preload" as="font" type="font/woff2" href={MontRegular} crossOrigin="anonymous" />,
     <link key="font-semibold" rel="preload" as="font" type="font/woff2" href={MontSemiBold} crossOrigin="anonymous" />,
     <link key="font-bold" rel="preload" as="font" type="font/woff2" href={MontBold} crossOrigin="anonymous" />,
