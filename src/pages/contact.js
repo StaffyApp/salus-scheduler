@@ -82,7 +82,7 @@ const ContactPage = () => {
       Email: formData.email,
       Phone: formData.phone,
       Message: formData.message || "—",
-      Source: "salus.staffy.com/contact",
+      Source: "salusworkforcemanagement.staffy.com/contact",
     }
 
     try {
@@ -157,7 +157,7 @@ const ContactPage = () => {
                 <input type="hidden" name="_subject" value="Salus Contact Form Submission" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_next" value="https://salus.staffy.com/contact/?submitted=1" />
+                <input type="hidden" name="_next" value="https://salusworkforcemanagement.staffy.com/contact/?submitted=1" />
 
                 <div className="contact-info__row">
                   <div className={`contact-info__field${fieldErrors.firstName ? " contact-info__field--error" : ""}`}>
@@ -284,20 +284,20 @@ export const Head = () => (
       name="description"
       content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823. Based in Toronto, serving healthcare facilities across Canada."
     />
-    <link rel="canonical" href="https://salus.staffy.com/contact/" />
+    <link rel="canonical" href="https://salusworkforcemanagement.staffy.com/contact/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <link rel="icon" type="image/webp" href="/favicon.webp" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Staffy" />
-    <meta property="og:url" content="https://salus.staffy.com/contact/" />
+    <meta property="og:url" content="https://salusworkforcemanagement.staffy.com/contact/" />
     <meta property="og:title" content="Contact | Staffy Workforce Scheduling" />
     <meta
       property="og:description"
       content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823."
     />
-    <meta property="og:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+    <meta property="og:image" content="https://salusworkforcemanagement.staffy.com/social/workforce-scheduling-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -313,7 +313,7 @@ export const Head = () => (
       name="twitter:description"
       content="Contact the Staffy Workforce Scheduling team. Email info@staffy.com or call +1 (647) 492-7823."
     />
-    <meta name="twitter:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+    <meta name="twitter:image" content="https://salusworkforcemanagement.staffy.com/social/workforce-scheduling-og.png" />
 
     <script
       type="application/ld+json"

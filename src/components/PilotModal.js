@@ -158,7 +158,7 @@ const PilotModal = ({ isOpen, onClose }) => {
       "Facility Name": formData.facilityName || "—",
       "Facility Type": facilityLabel,
       "Number of Staff": formData.staffCount || "—",
-      Source: "salus.staffy.com",
+      Source: "salusworkforcemanagement.staffy.com",
     }
 
     try {
