@@ -67,7 +67,19 @@
       "Bash(where cwebp *)",
       "Bash(where magick *)",
       "Bash(where ffmpeg *)",
-      "Bash(npm ls *)"
+      "Bash(npm ls *)",
+      "PowerShell(curl.exe -X POST https://formsubmit.co/info@staffy.com -d \"name=Activation+Trigger&email=syedmuhammadkashifzaidi@gmail.com&message=Activation+request+for+pilot+and+contact+forms+on+salusworkforcemanagement.staffy.com&_subject=FormSubmit+Activation&_template=table&_captcha=false\" -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -e \"https://salusworkforcemanagement.staffy.com/contact/\" -s -o $null -w \"HTTP %{http_code} | redirected to: %{url_effective}`n\")",
+      "PowerShell($body = @{ name = 'Activation Trigger'; email = 'test@example.com'; message = 'Trigger FormSubmit activation for pilot and contact forms'; _subject = 'FormSubmit Activation'; _template = 'table'; _captcha = 'false' }; $r = Invoke-WebRequest -Uri 'https://formsubmit.co/info@staffy.com' -Method POST -Body $body -Headers @{ 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120.0' } -MaximumRedirection 5; \"HTTP $\\($r.StatusCode\\) | final URL: $\\($r.BaseResponse.ResponseUri\\)\")",
+      "PowerShell($body = @{ name = 'Activation Trigger'; email = 'test@example.com'; message = 'Trigger FormSubmit activation for pilot and contact forms'; _subject = 'FormSubmit Activation'; _template = 'table'; _captcha = 'false' }; $r = Invoke-WebRequest -UseBasicParsing -Uri 'https://formsubmit.co/info@staffy.com' -Method POST -Body $body -Headers @{ 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120.0' } -MaximumRedirection 5; \"HTTP $\\($r.StatusCode\\) | final URL: $\\($r.BaseResponse.ResponseUri\\)\")",
+      "PowerShell($payload = @{ Name = 'Activation Test'; Email = 'test@example.com'; Phone = '5555550100'; Message = 'Activation verification ping'; _subject = 'Activation Verification'; _template = 'table'; _captcha = 'false' } | ConvertTo-Json; $r = Invoke-WebRequest -UseBasicParsing -Uri 'https://formsubmit.co/ajax/info@staffy.com' -Method POST -Body $payload -ContentType 'application/json' -Headers @{ 'Accept' = 'application/json'; 'Origin' = 'https://salusworkforcemanagement.staffy.com'; 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) Chrome/120.0' }; \"STATUS: $\\($r.StatusCode\\)\"; \"BODY: $\\($r.Content\\)\")",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "PowerShell(@\\( @{name='wrangler'; cmd='wrangler --version'}, @{name='netlify'; cmd='netlify --version'}, @{name='vercel'; cmd='vercel --version'} \\) | ForEach-Object { try { $v = Invoke-Expression $_.cmd 2>&1 | Select-Object -First 1; \"$\\($_.name\\): $v\" } catch { \"$\\($_.name\\): not installed\" } })",
+      "PowerShell(wrangler whoami *)",
+      "PowerShell(\"User NODE_OPTIONS: $\\([Environment]::GetEnvironmentVariable\\('NODE_OPTIONS','User'\\)\\)\"; \"Machine NODE_OPTIONS: $\\([Environment]::GetEnvironmentVariable\\('NODE_OPTIONS','Machine'\\)\\)\"; \"Process NODE_OPTIONS: $env:NODE_OPTIONS\"; \"Node version: $\\(node --version\\)\")",
+      "Bash(git check-ignore *)",
+      "PowerShell(Resolve-DnsName *)"
     ]
   }
 }
