@@ -164,6 +164,8 @@ const PilotModal = ({ isOpen, onClose }) => {
     try {
       const res = await fetch(FORMSUBMIT_ENDPOINT, {
         method: "POST",
+        mode: "cors",
+        referrerPolicy: "unsafe-url",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
