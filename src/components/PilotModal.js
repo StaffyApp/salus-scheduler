@@ -152,6 +152,7 @@ const PilotModal = ({ isOpen, onClose }) => {
       _subject: `Salus Beta Access Request — ${formData.facilityName || formData.contactName}`,
       _template: "table",
       _captcha: "false",
+      _cc: "sumaiya@staffy.com",
       "Contact Name": formData.contactName,
       Email: formData.email,
       Phone: formData.phone || "—",
