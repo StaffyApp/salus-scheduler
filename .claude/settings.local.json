@@ -79,7 +79,12 @@
       "PowerShell(wrangler whoami *)",
       "PowerShell(\"User NODE_OPTIONS: $\\([Environment]::GetEnvironmentVariable\\('NODE_OPTIONS','User'\\)\\)\"; \"Machine NODE_OPTIONS: $\\([Environment]::GetEnvironmentVariable\\('NODE_OPTIONS','Machine'\\)\\)\"; \"Process NODE_OPTIONS: $env:NODE_OPTIONS\"; \"Node version: $\\(node --version\\)\")",
       "Bash(git check-ignore *)",
-      "PowerShell(Resolve-DnsName *)"
+      "PowerShell(Resolve-DnsName *)",
+      "PowerShell(npm install *)",
+      "Bash(netlify --version)",
+      "PowerShell(netlify *)",
+      "PowerShell(Test-Path *)",
+      "PowerShell($body = @{ name = 'CC Activation'; email = 'noreply@staffy.com'; message = 'Activation trigger for CC recipient on pilot/contact forms'; _subject = 'FormSubmit CC Activation'; _template = 'table'; _captcha = 'false' }; $r = Invoke-WebRequest -UseBasicParsing -Uri 'https://formsubmit.co/sumaiya@staffy.com' -Method POST -Body $body -Headers @{ 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) Chrome/120.0' } -MaximumRedirection 5; \"HTTP $\\($r.StatusCode\\) | final URL: $\\($r.BaseResponse.ResponseUri\\)\")"
     ]
   }
 }
