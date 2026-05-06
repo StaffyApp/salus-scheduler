@@ -2,7 +2,7 @@
 
 ## 1. Visual Theme & Atmosphere
 
-Replicated from staffy.com. Clean, professional healthcare aesthetic. Pure white canvas with dark navy headings and a single bold accent: Staffy Orange (`#ff4d00`). Body text is dark charcoal (`#333333`) — highly readable, not washed-out gray. Alternating sections use a light blue-gray (`#e8eef3`) for visual rhythm. The footer is light (white) with an orange top stripe — not dark.
+Replicated from staffy.com. Clean, professional healthcare aesthetic. Pure white canvas with dark navy headings and a one single bold accent: Staffy Orange (`#ff4d00`). Body text is dark charcoal (`#333333`) — highly readable, not washed-out gray. Alternating sections use a light blue-gray (`#e8eef3`) for visual rhythm. The footer is light (white) with an orange top stripe — not dark.
 
 **Key Characteristics:**
 - Pure white canvas (`#ffffff`)
