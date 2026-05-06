@@ -77,7 +77,6 @@ const ContactPage = () => {
       _subject: `Salus Contact Form — ${formData.firstName} ${formData.lastName}`,
       _template: "table",
       _captcha: "false",
-      _cc: "sumaiya@staffy.com",
       "First Name": formData.firstName,
       "Last Name": formData.lastName,
       Email: formData.email,
@@ -160,7 +159,6 @@ const ContactPage = () => {
                 <input type="hidden" name="_subject" value="Salus Contact Form Submission" />
                 <input type="hidden" name="_template" value="table" />
                 <input type="hidden" name="_captcha" value="false" />
-                <input type="hidden" name="_cc" value="sumaiya@staffy.com" />
                 <input type="hidden" name="_next" value="https://salusworkforcemanagement.staffy.com/contact/?submitted=1" />
 
                 <div className="contact-info__row">
