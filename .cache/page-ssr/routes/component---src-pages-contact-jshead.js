@@ -8300,7 +8300,6 @@ const PilotModal = ({
       _subject: `Salus Beta Access Request — ${formData.facilityName || formData.contactName}`,
       _template: "table",
       _captcha: "false",
-      _cc: "sumaiya@staffy.com",
       "Contact Name": formData.contactName,
       Email: formData.email,
       Phone: formData.phone || "—",
@@ -8738,7 +8737,6 @@ const ContactPage = () => {
       _subject: `Salus Contact Form — ${formData.firstName} ${formData.lastName}`,
       _template: "table",
       _captcha: "false",
-      _cc: "sumaiya@staffy.com",
       "First Name": formData.firstName,
       "Last Name": formData.lastName,
       Email: formData.email,
@@ -8838,10 +8836,6 @@ const ContactPage = () => {
     type: "hidden",
     name: "_captcha",
     value: "false"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
-    type: "hidden",
-    name: "_cc",
-    value: "sumaiya@staffy.com"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
     type: "hidden",
     name: "_next",
