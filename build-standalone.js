@@ -258,8 +258,11 @@ html = html.replace('</head>', `${noJsOverride}</head>`)
 // 11. The React modal that normally opens on "Request Beta Access" is never
 // in the SSR output (PilotModal returns null when !isOpen) and the click
 // handler is JS-only. Inject a CSS-only `:target`-driven modal with a real
-// HTML form that POSTs to FormSubmit so the archive still converts leads
-// when opened from email/offline.
+// HTML form that POSTs to the StaffyAPI salus-lead endpoint so the archive
+// still converts leads when opened from email/offline.
+const STANDALONE_API_BASE =
+  process.env.GATSBY_STAFFY_API_BASE || 'https://api.staffy.com'
+const STANDALONE_SALUS_LEAD_ENDPOINT = `${STANDALONE_API_BASE}/api/salus-leads`
 const betaModalCss = `<style id="standalone-beta-modal-css">
 .standalone-modal{display:none;position:fixed;inset:0;z-index:9999;align-items:center;justify-content:center;padding:24px;font-family:inherit}
 .standalone-modal:target{display:flex}
@@ -292,10 +295,9 @@ const betaModalHtml = `<div id="beta-modal" class="standalone-modal" role="dialo
 <a href="#" class="standalone-modal__close" aria-label="Close">&times;</a>
 <h2 id="beta-modal-title" class="standalone-modal__title">Request Beta Access</h2>
 <p class="standalone-modal__lead">Tell us about your facility. We&rsquo;ll reach out with pilot details.</p>
-<form class="standalone-modal__grid" action="https://formsubmit.co/info@staffy.com" method="POST">
-<input type="hidden" name="_subject" value="Salus Beta Access Request">
-<input type="hidden" name="_captcha" value="false">
-<input type="hidden" name="_template" value="table">
+<form class="standalone-modal__grid" action="${STANDALONE_SALUS_LEAD_ENDPOINT}" method="POST">
+<input type="hidden" name="type" value="beta">
+<input type="hidden" name="source" value="salus.staffy.com (standalone)">
 <input type="hidden" name="_next" value="https://salus.staffy.com/?submitted=1">
 <label>Facility name
 <input type="text" name="facilityName" placeholder="e.g. Sunrise Long-Term Care" maxlength="120" autocomplete="organization">
