@@ -6,10 +6,12 @@ import useScrollReveal from "../hooks/useScrollReveal"
 import { contactSchemaGraph } from "../seo/schema"
 import "./contact.scss"
 
-// AJAX endpoint for gatsby runtime; the bare endpoint on the form's `action`
-// attribute is what the JS-stripped standalone build falls back to.
-const FORMSUBMIT_AJAX = "https://formsubmit.co/ajax/info@staffy.com"
-const FORMSUBMIT_POST = "https://formsubmit.co/info@staffy.com"
+// AJAX target for gatsby runtime; the same URL handles the JS-stripped
+// standalone build's regular form POST (it honors the hidden `_next` field).
+// Configure host with GATSBY_STAFFY_API_BASE.
+const STAFFY_API_BASE =
+  process.env.GATSBY_STAFFY_API_BASE || "https://api.staffy.com"
+const SALUS_LEAD_ENDPOINT = `${STAFFY_API_BASE}/api/salus-leads`
 
 function validateFields(data) {
   const errors = {}
@@ -74,19 +76,17 @@ const ContactPage = () => {
     setSubmitting(true)
 
     const payload = {
-      _subject: `Salus Contact Form — ${formData.firstName} ${formData.lastName}`,
-      _template: "table",
-      _captcha: "false",
-      "First Name": formData.firstName,
-      "Last Name": formData.lastName,
-      Email: formData.email,
-      Phone: formData.phone,
-      Message: formData.message || "—",
-      Source: "salusworkforcemanagement.staffy.com/contact",
+      type: "contact",
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      message: formData.message,
+      source: "salusworkforcemanagement.staffy.com/contact",
     }
 
     try {
-      const res = await fetch(FORMSUBMIT_AJAX, {
+      const res = await fetch(SALUS_LEAD_ENDPOINT, {
         method: "POST",
         mode: "cors",
         referrerPolicy: "origin",
@@ -150,15 +150,14 @@ const ContactPage = () => {
             ) : (
               <form
                 className="contact-info__form"
-                action={FORMSUBMIT_POST}
+                action={SALUS_LEAD_ENDPOINT}
                 method="POST"
                 onSubmit={handleSubmit}
                 noValidate
               >
-                {/* Hidden FormSubmit controls — consumed by the non-AJAX standalone POST */}
-                <input type="hidden" name="_subject" value="Salus Contact Form Submission" />
-                <input type="hidden" name="_template" value="table" />
-                <input type="hidden" name="_captcha" value="false" />
+                {/* Hidden fields — consumed by the non-AJAX standalone POST */}
+                <input type="hidden" name="type" value="contact" />
+                <input type="hidden" name="source" value="salusworkforcemanagement.staffy.com/contact (standalone)" />
                 <input type="hidden" name="_next" value="https://salusworkforcemanagement.staffy.com/contact/?submitted=1" />
 
                 <div className="contact-info__row">

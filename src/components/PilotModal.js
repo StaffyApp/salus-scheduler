@@ -1,18 +1,11 @@
 import React, { useState, useEffect, useRef } from "react"
 import "./PilotModal.scss"
 
-const FACILITY_TYPE_LABELS = {
-  ltc: "Long-Term Care",
-  retirement: "Retirement Home",
-  hospital: "Hospital",
-  homecare: "Homecare",
-  other: "Other",
-}
-
-// Formsubmit.co relays form submissions to the target email with no backend.
-// First submission to a new address triggers a one-time activation email that
-// must be confirmed before subsequent submissions are delivered.
-const FORMSUBMIT_ENDPOINT = "https://formsubmit.co/ajax/info@staffy.com"
+// Posts to the StaffyAPI salus-lead endpoint, which persists to Mongo and
+// notifies info@staffy.com via SES. Configure host with GATSBY_STAFFY_API_BASE.
+const STAFFY_API_BASE =
+  process.env.GATSBY_STAFFY_API_BASE || "https://api.staffy.com"
+const SALUS_LEAD_ENDPOINT = `${STAFFY_API_BASE}/api/salus-leads`
 
 function validateFields(data) {
   const errors = {}
@@ -145,24 +138,19 @@ const PilotModal = ({ isOpen, onClose }) => {
     setFieldErrors({})
     setSubmitting(true)
 
-    const facilityLabel =
-      FACILITY_TYPE_LABELS[formData.facilityType] || formData.facilityType
-
     const payload = {
-      _subject: `Salus Beta Access Request — ${formData.facilityName || formData.contactName}`,
-      _template: "table",
-      _captcha: "false",
-      "Contact Name": formData.contactName,
-      Email: formData.email,
-      Phone: formData.phone || "—",
-      "Facility Name": formData.facilityName || "—",
-      "Facility Type": facilityLabel,
-      "Number of Staff": formData.staffCount || "—",
-      Source: "salusworkforcemanagement.staffy.com",
+      type: "beta",
+      contactName: formData.contactName,
+      email: formData.email,
+      phone: formData.phone,
+      facilityName: formData.facilityName,
+      facilityType: formData.facilityType,
+      staffCount: formData.staffCount,
+      source: "salusworkforcemanagement.staffy.com",
     }
 
     try {
-      const res = await fetch(FORMSUBMIT_ENDPOINT, {
+      const res = await fetch(SALUS_LEAD_ENDPOINT, {
         method: "POST",
         mode: "cors",
         referrerPolicy: "origin",
