@@ -1,10 +1,11 @@
 # Salus Workforce Scheduling — Marketing Site
 
-The public marketing site for **Staffy Workforce Scheduling** (salus.staffy.com).
+The public marketing site for **Staffy Workforce Scheduling**
+(salusworkforcemanagement.staffy.com).
 Built with Gatsby. Deployed to Netlify. Feeds leads into HubSpot and FormSubmit.
 
 ```
-Live:  https://salus.staffy.com
+Live:  https://salusworkforcemanagement.staffy.com
 Stage: Netlify deploy preview per branch
 ```
 

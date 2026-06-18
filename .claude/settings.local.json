@@ -84,7 +84,10 @@
       "Bash(netlify --version)",
       "PowerShell(netlify *)",
       "PowerShell(Test-Path *)",
-      "PowerShell($body = @{ name = 'CC Activation'; email = 'noreply@staffy.com'; message = 'Activation trigger for CC recipient on pilot/contact forms'; _subject = 'FormSubmit CC Activation'; _template = 'table'; _captcha = 'false' }; $r = Invoke-WebRequest -UseBasicParsing -Uri 'https://formsubmit.co/sumaiya@staffy.com' -Method POST -Body $body -Headers @{ 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) Chrome/120.0' } -MaximumRedirection 5; \"HTTP $\\($r.StatusCode\\) | final URL: $\\($r.BaseResponse.ResponseUri\\)\")"
+      "PowerShell($body = @{ name = 'CC Activation'; email = 'noreply@staffy.com'; message = 'Activation trigger for CC recipient on pilot/contact forms'; _subject = 'FormSubmit CC Activation'; _template = 'table'; _captcha = 'false' }; $r = Invoke-WebRequest -UseBasicParsing -Uri 'https://formsubmit.co/sumaiya@staffy.com' -Method POST -Body $body -Headers @{ 'Referer' = 'https://salusworkforcemanagement.staffy.com/contact/'; 'User-Agent' = 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) Chrome/120.0' } -MaximumRedirection 5; \"HTTP $\\($r.StatusCode\\) | final URL: $\\($r.BaseResponse.ResponseUri\\)\")",
+      "WebFetch(domain:salusworkforcemanagement.staffy.com)",
+      "Bash(curl -sS -A 'Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/124.0 Safari/537.36' -L --max-time 25 -w '\\\\n[HTTP %{http_code}]\\\\n' https://salusworkforcemanagement.staffy.com/robots.txt)",
+      "Skill(run)"
     ]
   }
 }

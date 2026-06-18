@@ -110,20 +110,20 @@ export const Head = () => (
       name="description"
       content="Answers about Staffy Workforce Scheduling: closed-loop scheduling, credential verification, CBA compliance, and the 20,000+ vetted healthcare workforce"
     />
-    <link rel="canonical" href="https://salus.staffy.com/faq/" />
+    <link rel="canonical" href="https://salusworkforcemanagement.staffy.com/faq/" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
 
     <link rel="icon" type="image/webp" href="/favicon.webp" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Staffy" />
-    <meta property="og:url" content="https://salus.staffy.com/faq/" />
+    <meta property="og:url" content="https://salusworkforcemanagement.staffy.com/faq/" />
     <meta property="og:title" content="FAQ — Staffy Workforce Scheduling" />
     <meta
       property="og:description"
       content="Closed-loop healthcare workforce scheduling — answers to the most common questions."
     />
-    <meta property="og:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+    <meta property="og:image" content="https://salusworkforcemanagement.staffy.com/social/workforce-scheduling-og.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
@@ -139,7 +139,7 @@ export const Head = () => (
       name="twitter:description"
       content="Closed-loop healthcare workforce scheduling — answers to the most common questions."
     />
-    <meta name="twitter:image" content="https://salus.staffy.com/social/workforce-scheduling-og.png" />
+    <meta name="twitter:image" content="https://salusworkforcemanagement.staffy.com/social/workforce-scheduling-og.png" />
 
     <script
       type="application/ld+json"
