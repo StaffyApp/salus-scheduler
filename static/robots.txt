@@ -1,4 +1,4 @@
-# Staffy Workforce Scheduling — salus.staffy.com
+# Staffy Workforce Scheduling — salusworkforcemanagement.staffy.com
 
 User-agent: *
 Allow: /
@@ -33,4 +33,4 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-Sitemap: https://salus.staffy.com/sitemap.xml
+Sitemap: https://salusworkforcemanagement.staffy.com/sitemap.xml

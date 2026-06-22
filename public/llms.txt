@@ -1,0 +1,33 @@
+# Staffy Workforce Scheduling
+
+> Staffy Workforce Scheduling is a closed-loop workforce management platform built specifically for healthcare. It lets operators schedule their internal staff first, then automatically cascades any unfilled shifts to Staffy's marketplace of more than 20,000 vetted workers. Every worker is verified and every shift is credential-compliant. It is currently in beta.
+
+Staffy Workforce Scheduling is a product of Staffy (https://staffy.com), the Toronto-based healthcare and hospitality workforce marketplace founded in 2015. The platform is hosted at salusworkforcemanagement.staffy.com.
+
+What makes it different: it is the only platform that connects both sides of healthcare staffing. Internal staff are scheduled first in a way that is CBA-compliant, credential-aware, and preference-based. Shifts that cannot be filled internally cascade automatically to Staffy's external marketplace, with real-time credential verification enforced inside the scheduling engine. Most tools do one side or the other. This connects both.
+
+It is built for long-term care, retirement homes, hospitals, and homecare organisations in Canada. Headquarters: 485 Queen Street West, Suite 200, Toronto, ON M5V 2A9. The product is in beta and accepting beta access requests.
+
+## Core pages
+
+- [Staffy Workforce Scheduling homepage](https://salusworkforcemanagement.staffy.com/): What the platform does, how the closed-loop model works, and how to request beta access.
+
+## Parent company
+
+- [Staffy](https://staffy.com/): The Toronto-based healthcare and hospitality workforce marketplace that makes Staffy Workforce Scheduling. More than 20,000 vetted workers.
+
+## Related products
+
+- [Salus by Staffy](https://salus.staffy.com/): Staffy's AI-powered credential compliance platform. The credential verification used inside Staffy Workforce Scheduling is part of the same Staffy product family.
+
+## Key facts
+
+- Product name: Staffy Workforce Scheduling
+- Category: Healthcare workforce management and scheduling software
+- Made by: Staffy (founded 2015, Toronto, Ontario, Canada)
+- Status: in beta, accepting beta access requests
+- Model: closed-loop. Schedule internal staff first, cascade unfilled shifts to a marketplace of 20,000+ vetted workers
+- Differentiator: the only platform connecting both internal scheduling and external marketplace staffing
+- Compliance: CBA-compliant scheduling, real-time credential verification enforced in the engine, background-check-cleared workers
+- Serves: long-term care, retirement homes, hospitals, and homecare organisations in Canada
+- Tagline: "Schedule your people first. Fill the rest with ours."

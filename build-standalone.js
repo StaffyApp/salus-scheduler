@@ -102,8 +102,12 @@ let html = fs.readFileSync(SRC, 'utf8')
 // extra-route HTML (FAQ, contact, ...) gets its main <section> pulled in as
 // an anchor section inside the home page, with its scoped CSS concatenated
 // into a new <style> block and any nav/footer links rewritten to #anchor.
+// NOTE: the FAQ is not spliced here — the home page now carries its own
+// server-rendered FAQ section (`faq-home`, id="faq"), so the standalone archive
+// already includes it. The /faq nav link is anchored to that section in step
+// 11b below. (The dedicated /faq/ route remains a separate, deeper FAQ on the
+// live site and is intentionally not duplicated into this single-file archive.)
 const extraRoutes = [
-  { path: 'faq/index.html', section: 'faq', href: '/faq', cssPrefix: '.faq', sectionClass: 'faq' },
   { path: 'contact/index.html', section: 'contact', href: '/contact', cssPrefix: '.contact', sectionClass: 'contact-info' },
 ]
 for (const route of extraRoutes) {
@@ -297,8 +301,8 @@ const betaModalHtml = `<div id="beta-modal" class="standalone-modal" role="dialo
 <p class="standalone-modal__lead">Tell us about your facility. We&rsquo;ll reach out with pilot details.</p>
 <form class="standalone-modal__grid" action="${STANDALONE_SALUS_LEAD_ENDPOINT}" method="POST">
 <input type="hidden" name="type" value="beta">
-<input type="hidden" name="source" value="salus.staffy.com (standalone)">
-<input type="hidden" name="_next" value="https://salus.staffy.com/?submitted=1">
+<input type="hidden" name="source" value="salusworkforcemanagement.staffy.com (standalone)">
+<input type="hidden" name="_next" value="https://salusworkforcemanagement.staffy.com/?submitted=1">
 <label>Facility name
 <input type="text" name="facilityName" placeholder="e.g. Sunrise Long-Term Care" maxlength="120" autocomplete="organization">
 </label>
@@ -346,6 +350,8 @@ html = html.replace('</body>', `${betaModalHtml}</body>`)
 // #-only hrefs are left alone.
 html = html.replace(/<a\b([^>]*?)\shref="\/"/gi, '<a$1 href="#"')
 html = html.replace(/<a\b([^>]*?)\shref="\/#([^"]+)"/gi, '<a$1 href="#$2"')
+// /faq nav link → in-page anchor to the home page's own FAQ section (id="faq").
+html = html.replace(/<a\b([^>]*?)\shref="\/faq\/?"/gi, '<a$1 href="#faq"')
 
 // 12. Rewire every <button> whose text contains "Request Beta Access" into an
 // anchor targeting #beta-modal. Keeps the original classes so the CTA styling

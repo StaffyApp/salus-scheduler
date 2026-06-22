@@ -70,7 +70,8 @@ const Hero = ({ onOpenModal }) => {
             </h1>
             <p className="hero__subtitle">
               A closed-loop workforce management platform built specifically for
-              healthcare. Every worker verified. Every shift compliant.
+              healthcare, made by Staffy. Every worker verified. Every shift
+              compliant.
             </p>
             <div className="hero__actions">
               <button
