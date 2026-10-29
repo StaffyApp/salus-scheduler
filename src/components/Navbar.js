@@ -84,7 +84,7 @@ const Navbar = ({ onOpenModal }) => {
           </ul>
           <div className="navbar__actions">
             <a
-              href="https://app.salus.staffy.com/login"
+              href="https://workforce.scheduling.staffy.com/"
               className="navbar__link-cta"
               target="_blank"
               rel="noopener noreferrer"
@@ -93,9 +93,7 @@ const Navbar = ({ onOpenModal }) => {
               Login
             </a>
             <a
-              href="https://salus.staffy.com/#book"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/contact"
               className="btn btn--orange navbar__btn"
               onClick={() => setMobileOpen(false)}
             >

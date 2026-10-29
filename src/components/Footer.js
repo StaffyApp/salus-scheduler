@@ -50,7 +50,7 @@ const Footer = () => {
             <ul>
               <li><a href="/faq">FAQ</a></li>
               <li><a href="/contact" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Contact</a></li>
-              <li><a href="https://salus.staffy.com/#book" target="_blank" rel="noopener noreferrer">Book a demo</a></li>
+              <li><a href="/contact" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}>Book a demo</a></li>
             </ul>
           </div>
 
