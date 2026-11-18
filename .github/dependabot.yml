@@ -1,0 +1,16 @@
+# Dependabot: security fixes for packages, plus monthly GitHub Actions updates.
+# Version-only updates for packages are off (limit 0) to keep noise down.
+# Security fix pull requests need 'Dependabot security updates' switched on in GitHub settings.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - "/"
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 0
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: monthly
+    open-pull-requests-limit: 5
