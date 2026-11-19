@@ -84,7 +84,7 @@ const Navbar = ({ onOpenModal }) => {
           </ul>
           <div className="navbar__actions">
             <a
-              href="https://workforce.scheduling.staffy.com/"
+              href="https://scheduling.staffy.com/"
               className="navbar__link-cta"
               target="_blank"
               rel="noopener noreferrer"
